@@ -1,26 +1,22 @@
 # DivIn
 
-このサイトは、ダイビングの魅力や面白さを発信できるサイトです。
-会員登録してるユーザーは、記事の投稿やユーザー同士のダイレクトメッセージを行えます。
-まだ会員登録していない方は、投稿の閲覧のみ可能です。
+## サイト概要
+このサイトは、ダイビングの魅力や面白さを発信できるサイトです
+会員登録してるユーザーは、記事の投稿や閲覧、ユーザー同士のダイレクトメッセージを行えます
+まだ会員登録していない方は、投稿の閲覧のみ可能です
 
+## サイトテーマ
+ダイビングの魅力や面白さを発信できるサイト
 
-Things you may want to cover:
+## チャレンジ機能一覧リンク
+https://docs.google.com/spreadsheets/d/16CWTnBFWClkgiQEeoI9275lvs4VwCgCn5pryIWWVimM/edit#gid=0
 
-* Ruby version
+## 設計書リンク
+*UI_FLOWS ワイヤーフレーム　ER図
+https://app.diagrams.net/#G15sGO_5xoVUBiVsbQsCJOrrJ6sPGiO9Tv
 
-* System dependencies
+*テーブル定義書
+https://docs.google.com/spreadsheets/d/1UfnTQNhfA3p4GppGakkRgRXuKsCY94HmcAqLxWd6sj8/edit#gid=0
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+*アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/1WPfde8p4F2pCQo7GRpbSmfb-h9b7Jzlw/edit#gid=549108681
