@@ -12,11 +12,11 @@
 https://docs.google.com/spreadsheets/d/16CWTnBFWClkgiQEeoI9275lvs4VwCgCn5pryIWWVimM/edit#gid=0
 
 ## 設計書リンク
-*UI_FLOWS ワイヤーフレーム　ER図
+* UI_FLOWS ワイヤーフレーム　ER図
 https://app.diagrams.net/#G15sGO_5xoVUBiVsbQsCJOrrJ6sPGiO9Tv
 
-*テーブル定義書
+* テーブル定義書
 https://docs.google.com/spreadsheets/d/1UfnTQNhfA3p4GppGakkRgRXuKsCY94HmcAqLxWd6sj8/edit#gid=0
 
-*アプリケーション詳細設計書
+* アプリケーション詳細設計書
 https://docs.google.com/spreadsheets/d/1WPfde8p4F2pCQo7GRpbSmfb-h9b7Jzlw/edit#gid=549108681
