@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_29_072322) do
+ActiveRecord::Schema.define(version: 2021_04_29_090737) do
+
+  create_table "logs", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "image_id"
+    t.string "title"
+    t.text "body"
+    t.integer "weather"
+    t.string "water_temperature"
+    t.string "dive_number"
+    t.string "dive_depth"
+    t.string "dive_point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
