@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => {
-    :registrations => 'users/registraitons',
+    :sessions => 'users/sessions',
+    :registrations => 'users/registrations',
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -12,15 +13,15 @@ Rails.application.routes.draw do
   get 'users/withdraw'
   get 'users/dive_profile'
 
-  resourses :logs do
-    resourses :logcomments, only: [:create, :destroy]
-    resourse :favorites, only: [:create, :destroy]
+  resources :logs do
+    resources :logcomments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
-  resourses :users, only: [:show, :edit, update] do
+  resources :users, only: [:show, :edit, :update] do
     member do
       get :follow, :follower
     end
-    resourse :relationships, only: [:create, :destroy]
+    resource :relationships, only: [:create, :destroy]
   end
 
 end

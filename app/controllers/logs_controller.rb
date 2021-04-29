@@ -25,5 +25,5 @@ class LogsController < ApplicationController
   def log_params
     params.require(:log).permit(:image, :title, :body, :weather, :water_temperature, :dive_number, :dive_depth, :dive_point)
   end
-  
+
 end
