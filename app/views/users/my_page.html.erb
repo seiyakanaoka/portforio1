@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
+      <%= attachment_image_tag @user, :profile_image %>
       <%= @user.last_name + @user.first_name %>
     </div>
   </div>

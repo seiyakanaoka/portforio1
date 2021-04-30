@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <% @logs.each do |log| %>
+        <%= log.user.last_name %>
+        <%= log.title %>
+        <%= log.body %>
+        <%= attachment_image_tag log, :log_image %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_04_29_090737) do
 
   create_table "logs", force: :cascade do |t|
     t.integer "user_id"
-    t.string "image_id"
+    t.string "log_image_id"
     t.string "title"
     t.text "body"
     t.integer "weather"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 2021_04_29_090737) do
     t.string "first_name", null: false
     t.string "telephone_number", null: false
     t.boolean "is_deleted", default: false, null: false
+    t.string "nick_name"
+    t.string "introduction"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

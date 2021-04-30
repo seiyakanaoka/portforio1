@@ -1,0 +1,24 @@
+<div class="container">
+  <%= form_with model: @log, local: true do |f| %>
+    <div class="row">
+      <div class="col-md-6 image">
+        <%= f.label :log_image %>
+        <%= f.attachment_field :log_image %>
+      </div>
+      <div class="col-md-6">
+        <%= f.select :weather, options_for_select(Log.weathers.keys) %>
+        <%= f.text_field :water_temperature, {prompt: '選択してください'} %>
+        <%= f.text_field :dive_depth %>
+        <%= f.text_field :dive_number %>
+        <%= f.text_field :dive_point %>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.text_field :title %>
+    </div>
+    <div class="row">
+      <%= f.text_area :body %>
+    </div>
+    <%= f.submit '投稿', class: "btn btn-success" %>
+  <% end %>
+</div>
