@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-borderd">
+        <thead class="bg-light ">
+          <tr>
+            <th>My Diving Profile</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ライセンスランク</td><td></td>
+          </tr>
+          <tr>
+            <td>累計潜水本数</td>
+            <td>
+              <% @sum = 0 %>
+              <% @log.each do |log|%>
+                <% @sum += log.dive_number.to_i %>
+              <% end %>
+              <%= @sum %> 本
+            </td>
+          </tr>
+          <tr>
+            <td>最高潜水深度</td><td> M</td>
+          </tr>
+          <tr>
+            <td>一番の思い出ポイント</td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

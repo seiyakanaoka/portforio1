@@ -41,6 +41,7 @@
       <%= f.label :内容 %><br />
       <%= f.text_area :body %>
     </div>
-    <%= f.submit '投稿', class: "btn btn-success" %>
+    <%= f.submit '編集', class: "btn btn-success" %>
   <% end %>
+  <%= link_to '削除', log_path(@log.id), method: :delete, class: "btn btn-danger" %>
 </div>

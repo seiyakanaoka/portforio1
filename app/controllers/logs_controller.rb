@@ -1,5 +1,5 @@
 class LogsController < ApplicationController
-  before_action :set_log, only: [:show, :edit, :update]
+  before_action :set_log, only: [:show, :edit, :update, :destroy]
 
   def new
     @log = Log.new
@@ -20,12 +20,21 @@ class LogsController < ApplicationController
   end
 
   def edit
+    if @log.user == current_user
+      render "edit"
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
+    @log.update(log_params)
+    redirect_to log_path(@log)
   end
 
   def destroy
+    @log.destroy
+    redirect_to logs_path
   end
 
   private

@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :dive_profile]
 
   def show
   end
 
   def edit
+    if @user == current_user
+      render "edit"
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
@@ -19,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def dive_profile
+    @log = @user.logs
   end
 
   private

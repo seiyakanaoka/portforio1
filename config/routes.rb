@@ -8,9 +8,6 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about'
   get 'homes/beginner'
-  get 'users/unsubscribe'
-  get 'users/withdraw'
-  get 'users/dive_profile'
 
   resources :logs do
     resources :logcomments, only: [:create, :destroy]
@@ -19,6 +16,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     member do
       get :follow, :follower
+      get :dive_profile
+      get :unsubscribe
+      get :withdraw
     end
     resource :relationships, only: [:create, :destroy]
   end
