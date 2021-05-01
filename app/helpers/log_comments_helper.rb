@@ -1,0 +1,2 @@
+module LogCommentsHelper
+end

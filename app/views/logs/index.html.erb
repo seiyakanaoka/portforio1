@@ -3,8 +3,10 @@
     <div class="col-md-6">
       <% @logs.each do |log| %>
         <div class="logs">
-          <%= attachment_image_tag log.user, :profile_image, size: "100x100", class: "rounded-circle" %>
-          <%= link_to user_path(log.user_id) do %><%= log.user.name %><% end %><br />
+          <%= link_to user_path(log.user_id) do %>
+            <%= attachment_image_tag log.user, :profile_image, size: "100x100", class: "rounded-circle" %>
+            <%= log.user.name %>
+          <% end %><br />
           <span>Diving Pint  <%= log.dive_point %></span><br />
           <% if log.user == current_user %>
             <%= link_to '編集', edit_log_path(log.id), class: "btn btn-success" %><br />

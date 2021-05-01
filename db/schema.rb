@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2021_04_29_090737) do
     t.string "nick_name"
     t.string "introduction"
     t.string "profile_image_id"
+    t.string "license_rank"
+    t.string "best_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

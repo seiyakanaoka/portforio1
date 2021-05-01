@@ -1,0 +1,2 @@
+class LogCommentsController < ApplicationController
+end

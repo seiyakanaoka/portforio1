@@ -9,7 +9,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>ライセンスランク</td><td></td>
+            <td>ライセンスランク</td><td><%= @user.license_rank %></td>
           </tr>
           <tr>
             <td>累計潜水本数</td>
@@ -22,10 +22,13 @@
             </td>
           </tr>
           <tr>
-            <td>最高潜水深度</td><td> M</td>
+            <td>最高潜水深度</td>
+            <td>
+              <%= @log.maximum(:dive_depth) %> M
+            </td>
           </tr>
           <tr>
-            <td>一番の思い出ポイント</td><td></td>
+            <td>一番の思い出ポイント</td><td><%= @user.best_point %></td>
           </tr>
         </tbody>
       </table>

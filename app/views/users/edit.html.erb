@@ -18,6 +18,16 @@
         <%= f.text_field :introduction, class: "form-control" %>
       </div>
 
+      <div class="form">
+        <%= f.label :ダイビングライセンス %><br />
+        <%= f.text_field :license_rank, class: "form-control" %>
+      </div>
+
+      <div class="form">
+        <%= f.label :一番の思い出ポイント %><br />
+        <%= f.text_field :best_point, class: "form-control" %>
+      </div>
+
         <%= f.submit '編集する', class: "btn btn-success" %>
       <% end %>
     </div>
