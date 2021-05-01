@@ -1,4 +1,6 @@
 class LogsController < ApplicationController
+  before_action :set_log, only: [:show, :edit, :update]
+
   def new
     @log = Log.new
   end
@@ -27,6 +29,10 @@ class LogsController < ApplicationController
   end
 
   private
+
+  def set_log
+    @log = Log.find(params[:id])
+  end
 
   def log_params
     params.require(:log).permit(:log_image, :title, :body, :weather, :water_temperature, :dive_number, :dive_depth, :dive_point)

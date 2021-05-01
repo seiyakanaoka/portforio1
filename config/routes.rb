@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about'
   get 'homes/beginner'
-  get 'users/my_page'
   get 'users/unsubscribe'
   get 'users/withdraw'
   get 'users/dive_profile'

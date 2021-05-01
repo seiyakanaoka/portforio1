@@ -2,21 +2,42 @@
   <%= form_with model: @log, local: true do |f| %>
     <div class="row">
       <div class="col-md-6 image">
-        <%= f.label :log_image %>
+        <%= f.label :log_image %><br />
         <%= f.attachment_field :log_image %>
       </div>
       <div class="col-md-6">
-        <%= f.select :weather, options_for_select(Log.weathers.keys) %>
-        <%= f.text_field :water_temperature, {prompt: '選択してください'} %>
-        <%= f.text_field :dive_depth %>
-        <%= f.text_field :dive_number %>
-        <%= f.text_field :dive_point %>
+        <div class="form">
+          <%= f.label :weather %><br />
+          <%= f.select :weather, options_for_select(Log.weathers.keys) %>
+        </div>
+
+        <div class="form">
+          <%= f.label :water_temperature %><br />
+          <%= f.text_field :water_temperature, {prompt: '選択してください'} %>
+        </div>
+
+        <div class="form">
+          <%= f.label :dive_depth %><br />
+          <%= f.text_field :dive_depth %>
+        </div>
+
+        <div class="form">
+          <%= f.label :dive_number %><br />
+          <%= f.text_field :dive_number %>
+        </div>
+
+        <div class="form">
+          <%= f.label :dive_point %><br />
+          <%= f.text_field :dive_point %>
+        </div>
       </div>
     </div>
     <div class="row">
+      <%= f.label :title %><br />
       <%= f.text_field :title %>
     </div>
     <div class="row">
+      <%= f.label :body %><br />
       <%= f.text_area :body %>
     </div>
     <%= f.submit '投稿', class: "btn btn-success" %>

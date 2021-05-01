@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= attachment_image_tag @log, :log_image, size: "100x100" %>
+    </div>
+    <div class="col-md-6">
+      <p>天気：<%= @log.weather %></p>
+      <p>水温：<%= @log.water_temperature %></p>
+      <p>潜水深度：<%= @log.dive_depth %></p>
+      <p>潜水本数：<%= @log.dive_number %></p>
+      <p>ポイント：<%= @log.dive_point %></p>
+    </div>
+  </div>
+</div>
