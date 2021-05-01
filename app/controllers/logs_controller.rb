@@ -17,6 +17,7 @@ class LogsController < ApplicationController
   end
 
   def show
+    @logcomment = LogComment.new
   end
 
   def edit

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'homes/beginner'
 
   resources :logs do
-    resources :logcomments, only: [:create, :destroy]
+    resources :log_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update] do

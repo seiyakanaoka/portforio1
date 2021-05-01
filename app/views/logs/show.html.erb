@@ -22,4 +22,22 @@
   <div class="row">
     <p><%= @log.body %></p>
   </div>
+
+  <div class="comment">
+    <% @log.log_comments.each do |comment| %>
+      <%= attachment_image_tag comment.user, :profile_image, size: "50x50", class: "rounded-circle" %>
+      <%= comment.user.name %>
+      <%= comment.comment %>
+      <% if comment.user_id == current_user.id %>
+        <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, class: "btn btn-danger" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="new_comment">
+    <%= form_with(model:[@log, @logcomment], url: log_log_comments_path(@log, @logcomment), local: true) do |f| %>
+      <%= f.text_area :comment, placeholder: "comment" , class: "form-control" %><br />
+      <%= f.submit '送信', class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
