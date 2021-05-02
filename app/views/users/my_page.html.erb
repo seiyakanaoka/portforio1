@@ -1,32 +1,24 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <%= attachment_image_tag @user, :profile_image, size: "100x100", class: "rounded-circle" %>
-    </div>
-    <div class="col-md-6">
+  <div class="row mt-5">
+    <div class="col-lg-5 text-center">
+      <%= attachment_image_tag @user, :profile_image, size: "200x200", class: "rounded-circle" %><br />
       <% if @user.nick_name %>
-        <%= @user.nick_name %><br />
+        <span class="h3"><%= @user.nick_name %></span>
         <small>by  <%= @user.name %></small><br />
       <% else %>
         <%= @user.name %>
       <% end %>
-      <span>フォロー：<%= current_user.follower.count %></span><br />
-      <span>フォロワー：<%= current_user.followed.count %></span>
+      <%= @user.introduction %>
     </div>
-  </div>
 
-  <div class="row">
-    <%= @user.introduction %>
-  </div>
-
-  <div class="row">
-    <% if @user == current_user %>
-      <%= link_to 'プロフィール編集', edit_user_path(@user.id), class: "btn btn-success" %>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <%= link_to 'ダイブプロフィール', dive_profile_user_path(@user.id), class: "btn btn-primary" %>
+    <div class="col-lg-5 mt-5">
+      <span><%= link_to follow_user_path(@user) do %>フォロー      <%= current_user.follower.count %><% end %></span><br />
+      <span><%= link_to follower_user_path(@user) do %>フォロワー    <%= current_user.followed.count %><% end %></span><br />
+      <% if @user == current_user %>
+        <%= link_to 'プロフィール編集', edit_user_path(@user.id), class: "btn btn-success" %><br />
+      <% end %>
+      <%= link_to 'ダイブプロフィール', dive_profile_user_path(@user.id), class: "btn btn-primary" %>
+    </div>
   </div>
 
   <div class="row">

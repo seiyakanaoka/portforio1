@@ -1,5 +1,7 @@
 class LogsController < ApplicationController
   before_action :set_log, only: [:show, :edit, :update, :destroy]
+  impressionist actions: [:index, :show], unique: [:session_hash.to_s]
+  # impressionist unique: [:session_hash.to_s]
 
   def new
     @log = Log.new
@@ -18,6 +20,7 @@ class LogsController < ApplicationController
 
   def show
     @logcomment = LogComment.new
+    # impressionist(@log, nil, unique: [:impressionable_type, :impressionable_id, :session_hash.to_s])
   end
 
   def edit

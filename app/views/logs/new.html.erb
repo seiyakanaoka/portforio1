@@ -12,18 +12,18 @@
         </div>
 
         <div class="form">
-          <%= f.label :水温%><br />
-          <%= f.text_field :water_temperature, {prompt: '選択してください'} %>
+          <%= f.label :水温 %><br />
+          <%= f.select :water_temperature, options_for_select((0..30).to_a), {prompt: '選択してください'} %>℃
         </div>
 
         <div class="form">
           <%= f.label :潜水深度 %><br />
-          <%= f.text_field :dive_depth %>
+          <%= f.select :dive_depth, options_for_select((0..50).to_a), {prompt: '選択してください'} %>M
         </div>
 
         <div class="form">
           <%= f.label :潜水本数 %><br />
-          <%= f.text_field :dive_number %>
+          <%= f.select :dive_number, options_for_select((0..5).to_a), {prompt: '選択してください'} %>本
         </div>
 
         <div class="form">
@@ -31,7 +31,9 @@
           <%= f.text_field :dive_point %>
         </div>
       </div>
+
     </div>
+
     <div class="row">
       <%= f.label :タイトル %><br />
       <%= f.text_field :title %>

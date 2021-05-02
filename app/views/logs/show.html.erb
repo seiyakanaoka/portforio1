@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
   <% if @log.user == current_user %>
     <%= link_to '編集', edit_log_path(@log.id), class: "btn btn-success" %>
   <% end %>
@@ -23,14 +23,24 @@
     <p><%= @log.body %></p>
   </div>
 
+  <% if @log.favorited_by?(current_user) %>
+    <%= link_to log_favorites_path(@log.id), method: :delete do %>❤<% end %><%= @log.favorites.count %>いいね
+  <% else %>
+    <%= link_to log_favorites_path(@log.id), method: :post do %>♡<% end %><%= @log.favorites.count %>いいね
+  <% end %>
+
+  <strong>閲覧数：<%= @log.impressionist_count(:filter=>:session_hash) %></strong>
+
   <div class="comment">
     <% @log.log_comments.each do |comment| %>
+    <span>
       <%= attachment_image_tag comment.user, :profile_image, size: "50x50", class: "rounded-circle" %>
       <%= comment.user.name %>
       <%= comment.comment %>
       <% if comment.user_id == current_user.id %>
         <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, class: "btn btn-danger" %>
       <% end %>
+    </span><br />
     <% end %>
   </div>
 

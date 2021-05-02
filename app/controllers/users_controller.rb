@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :dive_profile]
+  before_action :set_user, only: [:show, :edit, :update, :dive_profile, :follow, :follower]
 
   def show
     @currentUserEntry = Entry.where(user_id: current_user.id)
@@ -45,6 +45,14 @@ class UsersController < ApplicationController
 
   def dive_profile
     @log = @user.logs
+  end
+
+  def follow
+    @follow = @user.following_user
+  end
+
+  def follower
+    @follower = @user.follower_user
   end
 
   private

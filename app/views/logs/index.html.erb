@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-md-6">
       <% @logs.each do |log| %>
-        <div class="logs">
+        <div class="logs mb-3">
           <% if log.user != current_user %>
-          <%= link_to user_path(log.user_id) do %>
-            <%= attachment_image_tag log.user, :profile_image, size: "100x100", class: "rounded-circle" %>
-            <%= log.user.name %>
-          <% end %><br />
+            <%= link_to user_path(log.user_id) do %>
+              <%= attachment_image_tag log.user, :profile_image, size: "100x100", class: "rounded-circle" %>
+              <%= log.user.name %>
+            <% end %><br />
           <% else %>
-          <%= link_to my_page_user_path(current_user.id) do %>
-            <%= attachment_image_tag current_user, :profile_image, size: "100x100", class: "rounded-circle" %>
-            <%= current_user.name %>
-          <% end %><br />
+            <%= link_to my_page_user_path(current_user.id) do %>
+              <%= attachment_image_tag current_user, :profile_image, size: "100x100", class: "rounded-circle" %>
+              <%= current_user.name %>
+            <% end %><br />
           <% end %>
 
           <% if current_user != log.user %>
@@ -32,10 +32,12 @@
           <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "200x200" %><% end %><br />
 
           <% if log.favorited_by?(current_user) %>
-            <%= link_to log_favorites_path(log.id), method: :delete do %>❤︎<% end %>
+            <%= link_to log_favorites_path(log.id), method: :delete do %>❤<% end %><%= log.favorites.count %>いいね
           <% else %>
-            <%= link_to log_favorites_path(log.id), method: :post do %>♡<% end %>
+            <%= link_to log_favorites_path(log.id), method: :post do %>♡<% end %><%= log.favorites.count %>いいね
           <% end %>
+
+          <i class="far fa-comments"></i><%= log.log_comments.count %>
 
           <%= log.title %><br />
           <%= log.body %>

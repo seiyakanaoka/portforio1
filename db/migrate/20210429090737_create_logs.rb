@@ -10,6 +10,7 @@ class CreateLogs < ActiveRecord::Migration[5.2]
       t.string :dive_number
       t.string :dive_depth
       t.string :dive_point
+      t.integer :impressions_count, default: 0
 
       t.timestamps
     end

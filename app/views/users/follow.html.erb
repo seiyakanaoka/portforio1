@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>follow</h2>
+  <div class="row mt-5">
+    <div class="col-lg-6 offset-md-3">
+      <% @follow.each do |follow| %>
+        <%= attachment_image_tag follow, :profile_image, size: "100x100", class: "rounded-circle" %>
+        <% if follow.nick_name %>
+          <span class="h3"><%= follow.nick_name %></span>
+          <small>  by  <%= follow.name %></small>
+        <% else %>
+          <%= follow.name %>
+        <% end %>
+
+        <% if current_user != follow %>
+          <% if current_user.following?(follow) %>
+            <%= link_to 'フォロー中', user_relationships_path(follow.id), method: :delete %>
+        <% else %>
+            <%= link_to 'フォローする', user_relationships_path(follow.id), method: :POST %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
