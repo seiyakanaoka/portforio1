@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about'
   get 'homes/beginner'
+  get 'ranks/ranking'
 
   resources :logs do
     resources :log_comments, only: [:create, :destroy]
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
     end
     resource :relationships, only: [:create, :destroy]
   end
-  
+
   resources :rooms, only: [:show, :create]
   resources :messages, only: [:create]
 

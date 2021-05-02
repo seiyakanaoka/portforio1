@@ -16,5 +16,5 @@ class Log < ApplicationRecord
     ☔: 2,
   }
 
-  is_impressionable counter_cache: true
+  is_impressionable counter_cache: true, :unique => true
 end

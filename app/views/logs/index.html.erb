@@ -39,6 +39,8 @@
 
           <i class="far fa-comments"></i><%= log.log_comments.count %>
 
+          <strong><%= log.impressionist_count(:filter=>:session_hash) %>PV</strong><br />
+
           <%= log.title %><br />
           <%= log.body %>
         </div>
