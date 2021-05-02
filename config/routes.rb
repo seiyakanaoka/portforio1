@@ -16,11 +16,15 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     member do
       get :follow, :follower
+      get :my_page
       get :dive_profile
       get :unsubscribe
       get :withdraw
     end
     resource :relationships, only: [:create, :destroy]
   end
+  
+  resources :rooms, only: [:show, :create]
+  resources :messages, only: [:create]
 
 end
