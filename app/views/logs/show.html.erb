@@ -3,11 +3,11 @@
     <%= link_to '編集', edit_log_path(@log.id), class: "btn btn-success" %>
   <% end %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-lg-5">
       <%= attachment_image_tag @log, :log_image, size: "400x400" %>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-lg-5">
       <p>天気：<%= @log.weather %></p>
       <p>水温：<%= (@log.water_temperature).to_i %> ℃</p>
       <p>潜水深度：<%= (@log.dive_depth).to_i %> M</p>
