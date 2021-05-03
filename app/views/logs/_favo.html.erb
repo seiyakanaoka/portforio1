@@ -1,0 +1,5 @@
+<% if log.favorited_by?(current_user) %>
+  <%= link_to log_favorites_path(log.id), method: :delete, remote: true do %>❤<% end %><%= log.favorites.count %>いいね
+<% else %>
+  <%= link_to log_favorites_path(log.id), method: :post, remote: true do %>♡<% end %><%= log.favorites.count %>いいね
+<% end %>

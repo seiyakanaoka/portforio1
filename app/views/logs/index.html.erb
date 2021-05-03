@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-lg-6">
       <% @logs.each do |log| %>
         <div class="logs mb-3">
           <% if log.user != current_user %>
@@ -15,14 +15,6 @@
             <% end %><br />
           <% end %>
 
-          <% if current_user != log.user %>
-            <% if current_user.following?(log.user) %>
-              <%= link_to 'フォロー外す', user_relationships_path(log.user.id), method: :delete %>
-            <% else %>
-              <%= link_to 'フォローする', user_relationships_path(log.user.id), method: :POST %>
-            <% end %>
-          <% end %>
-
           <span>Diving Pint  <%= log.dive_point %></span><br />
 
           <% if log.user == current_user %>
@@ -31,11 +23,9 @@
 
           <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "200x200" %><% end %><br />
 
-          <% if log.favorited_by?(current_user) %>
-            <%= link_to log_favorites_path(log.id), method: :delete do %>❤<% end %><%= log.favorites.count %>いいね
-          <% else %>
-            <%= link_to log_favorites_path(log.id), method: :post do %>♡<% end %><%= log.favorites.count %>いいね
-          <% end %>
+          <span id="log_<%= log.id %>">
+            <%= render 'logs/favo', log: log %>
+          </span>
 
           <i class="far fa-comments"></i><%= log.log_comments.count %>
 
@@ -47,8 +37,9 @@
       <% end %>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-lg-6">
       サイドバー
     </div>
+
   </div>
 </div>

@@ -6,6 +6,7 @@
     <div class="col-md-6">
       <%= attachment_image_tag @log, :log_image, size: "400x400" %>
     </div>
+
     <div class="col-md-6">
       <p>天気：<%= @log.weather %></p>
       <p>水温：<%= (@log.water_temperature).to_i %> ℃</p>
@@ -23,30 +24,19 @@
     <p><%= @log.body %></p>
   </div>
 
-  <% if @log.favorited_by?(current_user) %>
-    <%= link_to log_favorites_path(@log.id), method: :delete do %>❤<% end %><%= @log.favorites.count %>いいね
-  <% else %>
-    <%= link_to log_favorites_path(@log.id), method: :post do %>♡<% end %><%= @log.favorites.count %>いいね
-  <% end %>
+  <span id="log_<%= @log.id %>">
+    <%= render 'logs/favo', log: @log %>
+  </span>
 
   <strong>閲覧数：<%= @log.impressionist_count(:filter=>:session_hash) %></strong>
 
-  <div class="comment">
-    <% @log.log_comments.each do |comment| %>
-    <span>
-      <%= attachment_image_tag comment.user, :profile_image, size: "50x50", class: "rounded-circle" %>
-      <%= comment.user.name %>
-      <%= comment.comment %>
-      <% if comment.user_id == current_user.id %>
-        <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, class: "btn btn-danger" %>
-      <% end %>
-    </span><br />
-    <% end %>
+  <div id="comment">
+    <%= render 'logs/comment', log: @log %>
   </div>
 
   <div class="new_comment">
-    <%= form_with(model:[@log, @logcomment], url: log_log_comments_path(@log, @logcomment), local: true) do |f| %>
-      <%= f.text_area :comment, placeholder: "comment" , class: "form-control" %><br />
+    <%= form_with(model:[@log, @logcomment], url: log_log_comments_path(@log, @logcomment)) do |f| %>
+      <%= f.text_area :comment, placeholder: "comment" , class: "form-control", id: "new_comment" %><br />
       <%= f.submit '送信', class: "btn btn-primary" %>
     <% end %>
   </div>

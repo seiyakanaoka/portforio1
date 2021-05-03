@@ -1,0 +1,10 @@
+<% log.log_comments.each do |comment| %>
+  <span id="comment_<%= comment.id %>">
+    <%= attachment_image_tag comment.user, :profile_image, size: "50x50", class: "rounded-circle" %>
+    <%= comment.user.name %>
+    <%= comment.comment %>
+    <% if comment.user_id == current_user.id %>
+      <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, remote: true, class: "btn btn-danger" %>
+    <% end %>
+  </span><br />
+<% end %>
