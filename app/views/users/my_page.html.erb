@@ -26,16 +26,16 @@
               <%= link_to follow_user_path(@user) do %><%= current_user.follower.count %>follow<% end %>
             </span>
 
-            <span class="follower text-light">
+            <span class="follower">
               <%= link_to follower_user_path(@user) do %><%= current_user.followed.count %>follower<% end %><br />
             </span>
           </div>
 
           <div class="profile mb-3">
             <% if @user == current_user %>
-              <%= link_to 'Profile Edit', edit_user_path(@user.id), class: "btn btn-success" %>
+              <%= link_to edit_user_path(@user.id), class: "btn btn-success" do %><i class="fas fa-user-cog"></i>  Profile Edit<% end %>
             <% end %>
-            <%= link_to 'Diving Profile', dive_profile_user_path(@user.id), class: "btn btn-primary" %>
+            <%= link_to dive_profile_user_path(@user.id), class: "btn btn-primary" do %><i class="far fa-file-alt"></i> Diving Profile<% end %>
           </div>
 
         </div>

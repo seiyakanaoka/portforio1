@@ -1,45 +1,68 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-6">
-      <% @logs.each do |log| %>
-        <div class="logs mb-3">
-          <% if log.user != current_user %>
-            <%= link_to user_path(log.user_id) do %>
-              <%= attachment_image_tag log.user, :profile_image, size: "100x100", class: "rounded-circle" %>
-              <%= log.user.name %>
-            <% end %><br />
-          <% else %>
-            <%= link_to my_page_user_path(current_user.id) do %>
-              <%= attachment_image_tag current_user, :profile_image, size: "100x100", class: "rounded-circle" %>
-              <%= current_user.name %>
-            <% end %><br />
+  <div class="row mt-5">
+    <div class="col-lg-10 mx-auto">
+
+      <div class="row">
+        <div class="col-lg-7 shadow-lg border border-light bg-light">
+          <% @logs.each do |log| %>
+          <div class="row">
+            <div class="col-lg-12 logs mb-3">
+
+              <div class="row pr-5 pl-5">
+                <div class="col-lg-12">
+
+                  <div class="index-user float-left">
+                    <% if log.user != current_user %>
+                      <%= link_to user_path(log.user_id) do %>
+                        <%= attachment_image_tag log.user, :profile_image, size: "50x50", class: "rounded-circle" %>
+                        <%= log.user.name %><br />
+                      <% end %>
+                    <% else %>
+                      <%= link_to my_page_user_path(current_user.id) do %>
+                        <%= attachment_image_tag current_user, :profile_image, size: "50x50", class: "rounded-circle" %>
+                        <%= current_user.name %><br />
+                      <% end %>
+                    <% end %>
+
+                    <span>Diving Point<%= log.dive_point %></span>
+                  </div><br />
+
+                  <span class="log-edit">
+                    <% if log.user == current_user %>
+                      <%= link_to edit_log_path(log.id), class: "float-right pt-4" do %><i class="fas fa-cog"></i><% end %><br />
+                    <% end %>
+                  </span>
+                  
+                </div>
+              </div>
+
+              <div class="log-image text-center">
+                <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "430x430" %><% end %><br />
+              </div>
+              <span id="log_<%= log.id %>">
+                <%= render 'logs/favo', log: log %>
+              </span>
+
+              <i class="far fa-comments"></i><%= log.log_comments.count %>
+
+              <strong><%= log.impressionist_count(:filter=>:session_hash) %>PV</strong><br />
+
+              <%= log.title %><br />
+              <%= log.body %>
+            </div>
+          </div>
           <% end %>
-
-          <span>Diving Pint  <%= log.dive_point %></span><br />
-
-          <% if log.user == current_user %>
-            <%= link_to '編集', edit_log_path(log.id), class: "btn btn-success" %><br />
-          <% end %>
-
-          <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "200x200" %><% end %><br />
-
-          <span id="log_<%= log.id %>">
-            <%= render 'logs/favo', log: log %>
-          </span>
-
-          <i class="far fa-comments"></i><%= log.log_comments.count %>
-
-          <strong><%= log.impressionist_count(:filter=>:session_hash) %>PV</strong><br />
-
-          <%= log.title %><br />
-          <%= log.body %>
         </div>
-      <% end %>
-    </div>
 
-    <div class="col-lg-6">
-      サイドバー
-    </div>
+        <div class="col"></div>
 
+        <div class="col-lg-4 shadow-lg border border-light bg-light">
+          <h3>My Profile</h3>
+          <%= attachment_image_tag @user, :profile_image, size: "50x50", class: "rounded-circle" %>
+          <%= @user.nick_name %>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

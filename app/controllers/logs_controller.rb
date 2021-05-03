@@ -14,6 +14,7 @@ class LogsController < ApplicationController
 
   def index
     @logs = Log.all
+    @user = User.find(current_user.id)
   end
 
   def show
