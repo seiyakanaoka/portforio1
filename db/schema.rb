@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 2021_05_02_065215) do
     t.string "title"
     t.text "body"
     t.integer "weather"
-    t.string "water_temperature"
-    t.string "dive_number"
-    t.string "dive_depth"
+    t.integer "water_temperature"
+    t.integer "dive_number"
+    t.integer "dive_depth"
     t.string "dive_point"
     t.integer "impressions_count", default: 0
     t.datetime "created_at", null: false

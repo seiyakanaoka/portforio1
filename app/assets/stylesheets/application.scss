@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bxslider
  *= require_tree .
  *= require_self
  */
@@ -17,7 +18,8 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-body {
+
+.all {
   height: 100%;
   margin-top: 130px;
   margin-bottom: 100px;
@@ -30,6 +32,29 @@ header {
   .nav-link {
     font-size: 30px;
   }
+.bx-wrapper {
+  background-color: transparent;
+  margin: 0px auto;
+  border: none;
+  box-shadow: none;
+}
+.bx-wrapper img {
+    display: block;
+    margin: 0px auto;
+}
+.bxslider-bg {
+  height: 400px;
+  width: 100%;
+  h4 {
+    font-family: 'Homemade Apple', cursive;
+    font-size: 32px;
+  }
+}
+.bxslider-name {
+  background-color: rgba(255, 255, 255, 0.6);
+  display: inline-block;
+  margin-left: 50px;
+}
 }
 .form_in {
   background-color: #d3d3d3;
@@ -38,4 +63,45 @@ header {
 .logo {
   font-family: 'Kaushan Script', cursive;
   font-size: 40px;
+}
+.top-image {
+  height: auto;
+  width: 100%;
+  margin-top: 86px;
+}
+.a {
+  height: 500px;
+  background-color: rgba(57, 206, 255, 0.3);
+}
+
+.new-btn {
+  font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+}
+.btn-gradation {
+  display: inline-block;
+  width: 180px;
+  text-align: center;
+  font-size: 16px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 4px;
+  background: #02AAB0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #00CDAC, #02AAB0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transition: .5s;
+  background-size: 200%;
+}
+
+.btn-gradation:hover {
+  background-position: right center;
+  text-decoration: none;
+}
+
+
+.text {
+  background-color: rgba(57, 206, 255, 0.1);
 }

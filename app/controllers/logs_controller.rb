@@ -1,4 +1,5 @@
 class LogsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_log, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -14,7 +15,6 @@ class LogsController < ApplicationController
 
   def index
     @logs = Log.all
-    @user = User.find(current_user.id)
   end
 
   def show

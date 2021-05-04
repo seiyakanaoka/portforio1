@@ -1,7 +1,4 @@
-<div class="container mt-5">
-  <% if @log.user == current_user %>
-    <%= link_to '編集', edit_log_path(@log.id), class: "btn btn-success" %>
-  <% end %>
+<div class="container all">
   <div class="row">
     <div class="col-lg-5">
       <%= attachment_image_tag @log, :log_image, size: "400x400" %>
@@ -30,11 +27,11 @@
 
   <strong>閲覧数：<%= @log.impressionist_count(:filter=>:session_hash) %></strong>
 
-  <div id="comment">
+  <div id="row comment">
     <%= render 'logs/comment', log: @log %>
   </div>
 
-  <div class="new_comment">
+  <div class="row new_comment">
     <%= form_with(model:[@log, @logcomment], url: log_log_comments_path(@log, @logcomment)) do |f| %>
       <%= f.text_area :comment, placeholder: "comment" , class: "form-control", id: "new_comment" %><br />
       <%= f.submit '送信', class: "btn btn-primary" %>
