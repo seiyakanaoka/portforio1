@@ -21,6 +21,17 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', () => {
+$(function() {
+	setTimeout(function(){
+		$('.start p').fadeIn(600);  // pの表示スピード
+	},500); //0.5秒後にロゴをフェードイン!
+	setTimeout(function(){
+		$('.start').fadeOut(1000);  // start自体の消えるスピード
+	},2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト！(状態維持時間)
+});
+});
+
+$(document).on('turbolinks:load', () => {
   $('.bxslider').bxSlider({
     auto: true,           // 自動スライド
     speed: 1000,          // スライドするスピード

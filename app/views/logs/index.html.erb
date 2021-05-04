@@ -1,9 +1,5 @@
 <div class="container all">
-  <div class="row">
-    <div class="col-sm-7">
-      <h1 class="logo text-center">Memories</h1>
-    </div>
-  </div>
+
 
   <div class="row mt-5">
     <div class="col-sm-10 mx-auto">
@@ -12,148 +8,25 @@
 
         <% if user_signed_in? %>
           <% unless current_user.logs.empty? %>
-            <div class="col-sm-6 shadow-lg text pt-5">
-              <% @logs.reverse.each do |log| %>
-              <div class="row">
-                <div class="col-sm-12 logs mb-5 pt-3 pb-3 content">
-
-                  <div class="row">
-                    <div class="col-sm-1"></div>
-                      <div class="col-sm-7 index-user float-left">
-                        <% if log.user != current_user %>
-                          <%= link_to user_path(log.user_id) do %>
-                            <%= attachment_image_tag log.user, :profile_image, size: "50x50", class: "rounded-circle" %>
-                            <%= log.user.name %><br />
-                          <% end %>
-                        <% else %>
-                          <%= link_to my_page_user_path(current_user.id) do %>
-                            <%= attachment_image_tag current_user, :profile_image, size: "50x50", class: "rounded-circle" %>
-                            <%= current_user.name %><br />
-                          <% end %>
-                        <% end %>
-
-                        <%= log.dive_point %>
-
-                        <%= log.title %>
-                      </div>
-
-                      <div class="col-sm-3 log-edit align-items-end">
-                        <% if log.user == current_user %>
-                          <%= link_to edit_log_path(log.id), class: "float-right pt-4" do %><i class="fas fa-cog"></i><% end %><br />
-                        <% end %>
-                      </div>
-
-
-                  </div>
-
-                  <div class="row log-image text-center">
-                    <div class="col-sm-12">
-                      <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "430x430", class: "img-fluid" %><% end %><br />
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-4">
-                      <span id="log_<%= log.id %>">
-                        <%= render 'logs/favo', log: log %>
-                      </span>
-                    </div>
-
-                    <div class="col-sm-3 text-center">
-                      <i class="far fa-comments"></i><%= log.log_comments.count %>
-                    </div>
-
-                    <div class="col-sm-3 mx-auto text-right">
-                      <strong><%= log.impressionist_count(:filter=>:session_hash) %>PV</strong><br />
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-              <% end %>
-            </div>
+            <%= render 'logs/log', logs: @logs %>
           <% else %>
-            <div class="col-sm-6 shadow-lg text pt-5"><br /><br />
-              <h2>さぁ、思い出を投稿しよう！</h2><br /><br />
-              <p>初投稿はここからできるよ！</p>
-              <p class="new-btn"><%= link_to new_log_path, class: "btn-gradation" do %>投稿画面へ<% end %></p><br />
-
-              <% @logs.reverse.each do |log| %>
+            <div class="col-sm-6 shadow-lg bg-light pt-3"><br /><br />
             <div class="row">
-              <div class="col-sm-12 logs mb-5 pt-3 pb-3 content">
-
-                <div class="row">
-                  <div class="col-sm-1"></div>
-                    <div class="col-sm-7 index-user float-left">
-                      <% if log.user != current_user %>
-                        <%= link_to user_path(log.user_id) do %>
-                          <%= attachment_image_tag log.user, :profile_image, size: "50x50", class: "rounded-circle" %>
-                          <%= log.user.name %><br />
-                        <% end %>
-                      <% else %>
-                        <%= link_to my_page_user_path(current_user.id) do %>
-                          <%= attachment_image_tag current_user, :profile_image, size: "50x50", class: "rounded-circle" %>
-                          <%= current_user.name %><br />
-                        <% end %>
-                      <% end %>
-
-                      <%= log.dive_point %>
-
-                      <%= log.title %>
-                    </div>
-
-                    <div class="col-sm-3 log-edit align-items-end">
-                      <% if log.user == current_user %>
-                        <%= link_to edit_log_path(log.id), class: "float-right pt-4" do %><i class="fas fa-cog"></i><% end %><br />
-                      <% end %>
-                    </div>
-
-
-                </div>
-
-                <div class="row log-image text-center">
-                  <div class="col-sm-12">
-                    <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "430x430", class: "img-fluid" %><% end %><br />
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-1"></div>
-                  <div class="col-sm-4">
-                    <span id="log_<%= log.id %>">
-                      <%= render 'logs/favo', log: log %>
-                    </span>
-                  </div>
-
-                  <div class="col-sm-3 text-center">
-                    <i class="far fa-comments"></i><%= log.log_comments.count %>
-                  </div>
-
-                  <div class="col-sm-3 mx-auto text-right">
-                    <strong><%= log.impressionist_count(:filter=>:session_hash) %>PV</strong><br />
-                  </div>
-
-                </div>
-
+              <div class="col-sm-12">
+                <h1 class="logo text-center">Memories</h1>
               </div>
             </div>
-            <% end %>
-            </div>
-          <% end %>
-
-        <% else %>
-
-          <div class="col-sm-6 shadow-lg text pt-5">
-            <% @logs.reverse.each do |log| %>
+            <h2 class="text-center">さぁ、思い出を投稿しよう！</h2><br /><br />
+            <p class="text-center">初投稿はここからできるよ！</p>
+            <p class="custom-btn"><%= link_to new_log_path, class: "btn-gradation rounded-pill" do %>投稿する<% end %></p><br />
+              <% @logs.reverse.each do |log| %>
             <div class="row">
-              <div class="col-sm-12 logs mb-5 pt-3 pb-3 content">
+              <div class="col-sm-12 logs text-dark mb-5 pt-3 pb-3 content">
                 <div class="row">
                   <div class="col-sm-1"></div>
                   <div class="col-sm-7 index-user float-left">
                     <% if log.user != current_user %>
-                      <%= link_to user_path(log.user_id) do %>
+                      <%= link_to user_path(log.user_id) ,class: "text-dark" do %>
                         <%= attachment_image_tag log.user, :profile_image, size: "50x50", class: "rounded-circle" %>
                         <%= log.user.name %><br />
                       <% end %>
@@ -163,25 +36,20 @@
                         <%= current_user.name %><br />
                       <% end %>
                     <% end %>
-
                     <%= log.dive_point %>
-
                     <%= log.title %>
                   </div>
-
                   <div class="col-sm-3 log-edit align-items-end">
                     <% if log.user == current_user %>
                       <%= link_to edit_log_path(log.id), class: "float-right pt-4" do %><i class="fas fa-cog"></i><% end %><br />
                     <% end %>
                   </div>
                 </div>
-
                 <div class="row log-image text-center">
                   <div class="col-sm-12">
                     <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "430x430", class: "img-fluid" %><% end %><br />
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-sm-1"></div>
                   <div class="col-sm-4">
@@ -189,11 +57,9 @@
                       <%= render 'logs/favo', log: log %>
                     </span>
                   </div>
-
                   <div class="col-sm-3 text-center">
                     <i class="far fa-comments"></i><%= log.log_comments.count %>
                   </div>
-
                   <div class="col-sm-3 mx-auto text-right">
                     <strong><%= log.impressionist_count(:filter=>:session_hash) %>PV</strong><br />
                   </div>
@@ -201,13 +67,17 @@
               </div>
             </div>
             <% end %>
-          </div>
+            </div>
+          <% end %>
+
+        <% else %>
+          <%= render 'logs/log', logs: @logs %>
         <% end %>
 
         <div class="col-sm-1"></div>
 
         <% if user_signed_in? %>
-          <div class="col-sm-3 shadow-lg pt-5 text" style="height: 400px; position: fixed; right: 150px; top: 130px;">
+          <div class="col-sm-3 shadow-lg bg-light pt-5 text" style="height: 400px; position: fixed; right: 150px; top: 130px;">
             <h3 class="text-center logo mb-3">My Profile</h3>
 
             <table class="table table-borderless">

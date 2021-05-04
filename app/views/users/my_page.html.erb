@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-sm-10 mx-auto">
 
-      <div class="row pt-5 pb-5">
+      <div class="row pt-5 text-dark pb-5">
         <div class="col-lg-6 text-center mx-auto mt-3">
           <%= attachment_image_tag @user, :profile_image, size: "230x230", class: "rounded-circle" %><br />
         </div>
@@ -27,11 +27,11 @@
 
           <div class="follow-follower mb-3">
             <span class="follow">
-              <%= link_to follow_user_path(@user) do %><%= current_user.follower.count %>follow<% end %>
+              <%= link_to follow_user_path(@user), class: "text-dark" do %><%= current_user.follower.count %>follow<% end %>
             </span>
 
             <span class="follower">
-              <%= link_to follower_user_path(@user) do %><%= current_user.followed.count %>follower<% end %><br />
+              <%= link_to follower_user_path(@user), class: "text-dark" do %><%= current_user.followed.count %>follower<% end %><br />
             </span>
           </div>
 

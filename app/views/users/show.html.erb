@@ -7,7 +7,7 @@
           <%= attachment_image_tag @user, :profile_image, size: "230x230", class: "rounded-circle" %><br />
         </div>
 
-        <div class="col-lg-5 mt-5">
+        <div class="col-lg-5 mt-5 text-dark">
           <div class="name mb-3">
             <% if @user.nick_name %>
               <span class="h3"><%= @user.nick_name %></span>
@@ -17,21 +17,17 @@
             <% end %>
           </div>
 
-          <div class="log_count">
-            <%= @user.logs.count %>
-          </div>
-
           <div class="name mb-3">
             <%= @user.introduction %>
           </div>
 
           <div class="follow-follower mb-3">
             <span class="follow">
-              <%= link_to follow_user_path(@user) do %><%= current_user.follower.count %>フォロー<% end %>
+              <%= link_to follow_user_path(@user), class: "text-dark" do %><%= current_user.follower.count %>フォロー<% end %>
             </span>
 
             <span class="follower">
-              <%= link_to follower_user_path(@user) do %><%= current_user.followed.count %>フォロワー<% end %><br />
+              <%= link_to follower_user_path(@user), class: "text-dark" do %><%= current_user.followed.count %>フォロワー<% end %><br />
             </span>
           </div>
 
