@@ -28,7 +28,6 @@ body {
   margin-bottom: 100px;
 }
 header {
-  text-decoration: none;
   background: #EEFFFF;
   color: #FF4500;
   width: 100%;
@@ -133,4 +132,11 @@ a {
 a:hover {
   text-decoration: none;
   color: #FF4500;
+}
+.user-memory {
+  transition: all 0.6s ease 0s;
+}
+.user-memory:hover {
+  cursor: pointer;
+  transform: scale(1.1, 1.1);
 }

@@ -50,7 +50,7 @@
       <% unless @user.logs.empty? %>
         <div class="row mt-5 border border-light bg-light shadow-lg">
           <% @user.logs.reverse.each do |user_log| %>
-            <div class="col-lg-4 mt-5 mb-5 text-center img-fluid">
+            <div class="col-lg-4 mt-5 mb-5 text-center user-memory img-fluid">
               <%= link_to log_path(user_log.id) do %><%= attachment_image_tag user_log, :log_image, size: "260x260" %><% end %>
             </div>
           <% end %>
