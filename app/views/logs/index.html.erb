@@ -74,7 +74,7 @@
           <table class="table table-borderless">
             <thead>
               <tr><th><%= attachment_image_tag @user, :profile_image, size: "50x50", class: "rounded-circle" %>　<%= @user.nick_name %></th></tr>
-              <tr><th>ライセンスランク</th><th><%= @user.license_rank %></th></tr>
+              <tr><th>ライセンス</th><th><%= @user.license_rank %></th></tr>
               <tr><th>follow</th><th><%= @user.following_user.count %></th></tr>
               <tr><th>follower</th><th><%= @user.follower_user.count %></th></tr>
               <tr><th>投稿数</th><th><%= @user.logs.count %></th></tr>
