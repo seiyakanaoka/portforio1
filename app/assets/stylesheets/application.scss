@@ -10,26 +10,80 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bxslider
  *= require_tree .
  *= require_self
  */
 @import "bootstrap";
+@import "tagsinput";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
 body {
+  background-color: #EEFFFF;
+  color: #FF4500;
+}
+.all {
   height: 100%;
   margin-top: 130px;
   margin-bottom: 100px;
 }
-
 header {
-  background: #74ebd5;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  .nav-link {
+  background: #EEFFFF;
+  color: #FF4500;
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+.nav-link {
     font-size: 30px;
   }
+}
+.start {
+  background: #1FA2FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9000;
+}
+.start p {
+  position: fixed;
+  left: 30%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 9999;
+  width: 280px;
+  color: #FF4500;
+  font-size: 100px;
+}
+.bx-wrapper {
+  background-color: transparent;
+  margin: 0px auto;
+  border: none;
+  box-shadow: none;
+}
+.bx-wrapper img {
+    display: block;
+    margin: 0px auto;
+}
+.bxslider-bg {
+  height: 400px;
+  width: 100%;
+  h4 {
+    font-family: 'Homemade Apple', cursive;
+    font-size: 32px;
+  }
+}
+.bxslider-name {
+  background-color: rgba(255, 255, 255, 0.6);
+  display: inline-block;
+  margin-left: 50px;
 }
 .form_in {
   background-color: #d3d3d3;
@@ -38,4 +92,45 @@ header {
 .logo {
   font-family: 'Kaushan Script', cursive;
   font-size: 40px;
+  color: #FF4500;
+}
+.top-image {
+  height: auto;
+  width: 100%;
+  margin-top: 86px;
+}
+.custom-btn {
+  font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+}
+.btn-gradation {
+  display: inline-block;
+  width: 180px;
+  text-align: center;
+  font-size: 16px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 4px;
+  background: #00d2ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transition: .5s;
+  background-size: 200%;
+}
+.btn-gradation:hover {
+  background-position: right center;
+  text-decoration: none;
+  color: #FFF;
+}
+
+
+.user-memory {
+  transition: all 0.6s ease 0s;
+}
+.user-memory:hover {
+  cursor: pointer;
+  transform: scale(1.1, 1.1);
 }

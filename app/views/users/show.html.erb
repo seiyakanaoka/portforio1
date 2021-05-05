@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container all">
   <div class="row mt-5">
     <div class="col-sm-10 mx-auto">
 
@@ -7,7 +7,7 @@
           <%= attachment_image_tag @user, :profile_image, size: "230x230", class: "rounded-circle" %><br />
         </div>
 
-        <div class="col-lg-5 mt-5">
+        <div class="col-lg-5 mt-5 text-dark">
           <div class="name mb-3">
             <% if @user.nick_name %>
               <span class="h3"><%= @user.nick_name %></span>
@@ -17,21 +17,17 @@
             <% end %>
           </div>
 
-          <div class="log_count">
-            <%= @user.logs.count %>
-          </div>
-
           <div class="name mb-3">
             <%= @user.introduction %>
           </div>
 
           <div class="follow-follower mb-3">
             <span class="follow">
-              <%= link_to follow_user_path(@user) do %><%= current_user.follower.count %>フォロー<% end %>
+              <%= link_to follow_user_path(@user), class: "text-dark" do %><%= current_user.follower.count %>フォロー<% end %>
             </span>
 
             <span class="follower">
-              <%= link_to follower_user_path(@user) do %><%= current_user.followed.count %>フォロワー<% end %><br />
+              <%= link_to follower_user_path(@user), class: "text-dark" do %><%= current_user.followed.count %>フォロワー<% end %><br />
             </span>
           </div>
 
@@ -61,15 +57,20 @@
               <% end %>
             <% end %>
           </div>
-    </div>
-  </div>
-
-  <div class="row mt-5 border-top border-dark">
-    <% @user.logs.reverse.each do |user_log| %>
-      <div class="col-lg-4 mt-5 text-center img-fluid">
-        <%= link_to log_path(user_log.id) do %><%= attachment_image_tag user_log, :log_image, size: "260x260" %><% end %>
       </div>
+    </div>
+
+    <h1 class="logo text-center mt-5">My Memories</h1>
+    <% unless @user.logs.empty? %>
+      <div class="row mt-5 border border-light bg-light shadow-lg">
+        <% @user.logs.reverse.each do |user_log| %>
+          <div class="col-lg-4 mt-5 mb-5 text-center user-memory img-fluid">
+            <%= link_to log_path(user_log.id) do %><%= attachment_image_tag user_log, :log_image, size: "260x260" %><% end %>
+          </div>
+        <% end %>
+      </div>
+    <% else%>
+      <div></div>
     <% end %>
-  </div>
 
 </div>

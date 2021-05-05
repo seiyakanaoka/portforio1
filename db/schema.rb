@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_02_065215) do
+ActiveRecord::Schema.define(version: 2021_05_05_053858) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "room_id"
@@ -26,6 +26,22 @@ ActiveRecord::Schema.define(version: 2021_05_02_065215) do
     t.integer "log_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "hashtag_logs", id: false, force: :cascade do |t|
+    t.integer "log_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashtag_id"], name: "index_hashtag_logs_on_hashtag_id"
+    t.index ["log_id"], name: "index_hashtag_logs_on_log_id"
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -68,10 +84,11 @@ ActiveRecord::Schema.define(version: 2021_05_02_065215) do
     t.string "title"
     t.text "body"
     t.integer "weather"
-    t.string "water_temperature"
-    t.string "dive_number"
-    t.string "dive_depth"
+    t.integer "water_temperature"
+    t.integer "dive_number"
+    t.integer "dive_depth"
     t.string "dive_point"
+    t.string "hashbody"
     t.integer "impressions_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

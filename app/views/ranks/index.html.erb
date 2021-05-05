@@ -1,0 +1,31 @@
+<div class="container all">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="row search">
+        <div class="col-sm-8 offset-sm-2">
+          <p>検索</p>
+          <%= form_with model: Log.new, url: search_ranks_path, method: :get, id: "search" do |f| %>
+            <%= f.text_field :keyword, required: true, id: "form", placeholder: "投稿タイトル" %>
+            <%= f.submit '検索', class: "btn" %>
+          <% end %>
+          <p>検索結果<p/>
+          <ul id="result"></ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+          <% @ranking.each do |rank| %>
+            <div class="rank mb-3">
+              <%= attachment_image_tag rank, :log_image, size: "200x200" %>
+              <%= rank.title %>
+              <%= attachment_image_tag rank.user, :profile_image, size: "100x100", class: "rounded-circle" %>
+              <%= rank.user.name %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

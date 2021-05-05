@@ -6,10 +6,11 @@ class CreateLogs < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :body
       t.integer :weather
-      t.string :water_temperature
-      t.string :dive_number
-      t.string :dive_depth
+      t.integer :water_temperature
+      t.integer :dive_number
+      t.integer :dive_depth
       t.string :dive_point
+      t.string :hashbody
       t.integer :impressions_count, default: 0
 
       t.timestamps

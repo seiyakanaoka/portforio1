@@ -8,7 +8,14 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about'
   get 'homes/beginner'
-  get 'ranks/ranking'
+  get '/log/hashtag/:name' => 'logs#hashtag'
+  get '/log/hashtag' => 'logs#hashtag'
+
+  resources :ranks, only: [:index] do
+    collection do
+      get 'search'
+    end
+  end
 
   resources :logs do
     resources :log_comments, only: [:create, :destroy]

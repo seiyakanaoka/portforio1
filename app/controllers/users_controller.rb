@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :dive_profile, :follow, :follower]
 
   def show
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to user_path(@user.id)
+    redirect_to my_page_user_path(current_user.id)
   end
 
   def my_page
