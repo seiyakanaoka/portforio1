@@ -70,7 +70,5 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'impressionist', '~>1.6.1'
 gem 'bxslider-rails'
-<<<<<<< HEAD
 gem 'kaminari','~> 1.2.1'
-=======
->>>>>>> 0d6fb8762518a52ebe4fc6526bf43e0abc115547
+
