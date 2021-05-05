@@ -1,0 +1,14 @@
+<div class="container all">
+  <div class="row">
+    <div class="col-lg-12">
+      <% @ranking.each do |rank| %>
+        <div class="rank mb-3">
+          <%= attachment_image_tag rank, :log_image, size: "200x200" %>
+          <%= rank.title %>
+          <%= attachment_image_tag rank.user, :profile_image, size: "100x100", class: "rounded-circle" %>
+          <%= rank.user.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

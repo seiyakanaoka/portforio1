@@ -48,6 +48,7 @@ $(document).on('turbolinks:load', () => {
   });
 });
 
+
 $(document).on('turbolinks:load', () => {
   $(function(){
     $("#search__form").on('ajax:success', function(event) {
