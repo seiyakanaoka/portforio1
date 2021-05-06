@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_065347) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "hashtag_logs", id: false, force: :cascade do |t|
+  create_table "hashtag_logs", force: :cascade do |t|
     t.integer "log_id"
     t.integer "hashtag_id"
     t.datetime "created_at", null: false

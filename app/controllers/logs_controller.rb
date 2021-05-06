@@ -37,6 +37,7 @@ class LogsController < ApplicationController
 
   def destroy
     p '@@@@@@@@@@@@@@@@@@@@'
+
     @log.destroy
     redirect_to logs_path
   end
@@ -59,7 +60,7 @@ class LogsController < ApplicationController
   end
 
   def log_params
-    params.require(:log).permit(:log_image, :title, :body, :weather, :water_temperature, :dive_number, :dive_depth, :dive_point, :hashbody, hashtag_ids: [])
+    params.require(:log).permit(:log_image, :title, :body, :weather, :water_temperature, :dive_number, :dive_depth, :dive_point, :hashbody)
   end
 
 end
