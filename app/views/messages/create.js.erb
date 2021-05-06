@@ -1,2 +1,2 @@
-$("#message").append("<%= @message.content %><small><%= @message.user.name %></small><br />");
+$('.message').append("<p class='ml-auto' style='text-align: right; margin: 0 10px 0 0; padding: 8px; max-width: 250px; border-radius: 12px; background: #30e852; font-size: 15px;'><%= @message.content %></p>");
 document.getElementById("new_message").value = "";

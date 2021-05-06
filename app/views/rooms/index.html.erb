@@ -1,0 +1,15 @@
+<div class="container all">
+  <div class="row">
+    <div class="col-sm-10">
+
+        <% @anotherEntries.each do |e| %>
+          <ul class="dm_list">
+            <%= attachment_image_tag e.user, :profile_image, size: "50x50", class: "rounded-circle" %>
+            <%= e.user.name %>とのDM
+            <%= link_to 'メッセージを送る', room_path(e), class: "btn btn-primary" %>
+          </ul><br />
+        <% end %>
+
+    </div>
+  </div>
+</div>

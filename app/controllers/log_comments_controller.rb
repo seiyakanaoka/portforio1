@@ -15,7 +15,7 @@ class LogCommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:log_comment).permit(:comment)
+    params.require(:log_comment).permit(:comment, :reply_comment)
   end
 
 end

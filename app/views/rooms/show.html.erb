@@ -1,24 +1,49 @@
 <div class="container all">
   <h1>DM</h1>
   <div class="row">
-    <div class="col-md-12">
-      <div id="message">
-        <% @messages.each do |message| %>
-          <%= message.content %><small><%= message.user.name %></small><br />
-        <% end %>
+    <div class="col-sm-12">
+
+      <div class="row">
+        <div class="col-md-8 offset-sm-2">
+          <div class="message">
+            <% @messages.each do |message| %>
+              <% if message.user_id == current_user.id %>
+                <div class="mycomment">
+                  <p class="ml-auto" style='text-align: right; margin: 0 10px 0 0; padding: 8px; max-width: 250px; border-radius: 12px; background: #30e852; font-size: 15px;'><%= message.content %></p>
+                </div>
+              <% else %>
+                <div class="fukidashi">
+                  <p>
+                    <%= attachment_image_tag message.user, :profile_image, size: "50x50", class: " faceicon rounded-circle" %>
+                    <span style='margin: 0 10px 0 0; padding: 8px; max-width: 250px; border-radius: 12px; background: #30e852; font-size: 15px;'><%= message.content %></span>
+                  </p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
 
-      <div class="new_message">
-        <%= form_with model: @message, url: messages_path, method: :post do |f| %>
-          <%= f.text_field :content, class: "form-control", id: "new_message" %>
-          <%= f.hidden_field :room_id, value: @room.id %>
-          <%= f.submit '送信', class: "btn btn-success" %>
-        <% end %>
+      <div class="row">
+        <div class="col-md-8 offset-sm-2">
+          <div class="new_message">
+            <%= form_with model: @message, url: messages_path, method: :post do |f| %>
+              <%= f.text_field :content, class: "form-control", id: "new_message" %>
+              <%= f.hidden_field :room_id, value: @room.id %>
+              <%= f.submit '送信', class: "btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
       </div>
 
-      <%= link_to '一覧画面へ戻る', logs_path, class: "btn btn-primary" %>
+      <div class="row">
+        <div class="col-md-8 offset-sm-2">
+          <div class="new_message">
+            <%= link_to '一覧画面へ戻る', logs_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
 </div>
-

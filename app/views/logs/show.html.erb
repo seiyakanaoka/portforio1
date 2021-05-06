@@ -38,9 +38,9 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-6 offset-sm-3 shadow-lg">
+        <div class="col-sm-6 offset-sm-3">
           <div id="comment">
-            <%= render 'logs/comment', log: @log %>
+            <%= render 'logs/comment', log: @log, logs: @logs, reply_comment: @reply_comment %>
           </div>
         </div>
       </div>

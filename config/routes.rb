@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   end
 
-  resources :rooms, only: [:show, :create]
+  resources :rooms, only: [:index, :show, :create]
   resources :messages, only: [:create]
 
 end

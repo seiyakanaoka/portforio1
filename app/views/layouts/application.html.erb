@@ -34,6 +34,10 @@
                 </li>
 
                 <li class="nav-item">
+                  <%= link_to rooms_path, class: "nav-link" do %><i class="fas fa-envelope"></i><% end %>
+                </li>
+
+                <li class="nav-item">
                   <%= link_to my_page_user_path(current_user.id), class: "nav-link" do %><i class="fas fa-user-circle"></i><% end %>
                 </li>
 

@@ -1,10 +1,17 @@
 <% log.log_comments.each do |comment| %>
   <span id="comment_<%= comment.id %>">
     <%= attachment_image_tag comment.user, :profile_image, size: "50x50", class: "rounded-circle" %>
-    <%= comment.user.name %>
+    <%= comment.user.nick_name %>
     <%= comment.comment %>
     <% if comment.user_id == current_user.id %>
       <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, remote: true, class: "btn btn-danger" %>
+    <% end %>
+
+    <%= form_with(model:[log, log.log_comments.new], url: log_log_comments_path(log, reply_comment)) do |f| %>
+      <%= f.text_field :comment %>
+      <!--ここ大事！hidden_fieldでフォーム無しに送信先コメントのidをreply_commentに追加-->
+      <%= f.hidden_field :reply_comment, :value => comment.id  %>
+      <%= f.submit "返信する" %>
     <% end %>
   </span><br />
 <% end %>

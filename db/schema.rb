@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_053858) do
+ActiveRecord::Schema.define(version: 2021_05_06_065347) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "room_id"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_053858) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "reply_comment"
   end
 
   create_table "logs", force: :cascade do |t|
