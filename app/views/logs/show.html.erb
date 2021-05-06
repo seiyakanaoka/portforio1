@@ -1,41 +1,59 @@
 <div class="container all">
   <div class="row">
-    <div class="col-lg-5 user-memory">
-      <%= attachment_image_tag @log, :log_image, size: "400x400" %>
+    <div class="col-sm-10">
+      <div class="row">
+        <div class="col-sm-5 user-memory">
+          <div class="row">
+            <strong><%= @log.title %></strong>
+          </div>
+          <div class="row">
+            <span><%= @log.weather %></span>
+            <span>水温：<%= (@log.water_temperature).to_i %> ℃</span>
+            <span>潜水深度：<%= (@log.dive_depth).to_i %> M</span>
+            <span>潜水本数：<%= (@log.dive_number).to_i %> 本</span>
+          </div>
+          <%= attachment_image_tag @log, :log_image, size: "400x400" %>
+        </div>
+
+        <div class="col-lg-5">
+          <p><strong>ポイント：<%= @log.dive_point %></strong></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="row">
+            <span id="log_<%= @log.id %>">
+              <%= render 'logs/favo', log: @log %>
+            </span>
+            <strong>閲覧数：<%= @log.impressionist_count(:filter=>:session_hash) %></strong>
+          </div>
+          <div class="row">
+            <p><%= @log.body %></p>
+          </div>
+          <div class="row">
+            <%= render_with_hashtags(@log.hashbody) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3 shadow-lg">
+          <div id="comment">
+            <%= render 'logs/comment', log: @log %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row new_comment">
+        <div class="col-sm-6 offset-sm-3">
+          <%= form_with(model:[@log, @logcomment], url: log_log_comments_path(@log, @logcomment)) do |f| %>
+            <%= f.text_area :comment, placeholder: "#{@log.user.nick_name}のコメント" , class: "form-control", id: "new_comment" %><br />
+            <%= f.submit '送信', class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+
     </div>
-
-    <div class="col-lg-5">
-      <p>天気：<%= @log.weather %></p>
-      <p>水温：<%= (@log.water_temperature).to_i %> ℃</p>
-      <p>潜水深度：<%= (@log.dive_depth).to_i %> M</p>
-      <p>潜水本数：<%= (@log.dive_number).to_i %> 本</p>
-      <p>ポイント：<%= @log.dive_point %></p>
-    </div>
-  </div>
-
-  <div class="row">
-    <p><%= @log.title %></p>
-  </div>
-
-  <div class="row">
-    <p><%= @log.body %></p>
-    <%= render_with_hashtags(@log.hashbody) %><br />
-  </div>
-
-  <span id="log_<%= @log.id %>">
-    <%= render 'logs/favo', log: @log %>
-  </span>
-
-  <strong>閲覧数：<%= @log.impressionist_count(:filter=>:session_hash) %></strong>
-
-  <div id="row comment">
-    <%= render 'logs/comment', log: @log %>
-  </div>
-
-  <div class="row new_comment">
-    <%= form_with(model:[@log, @logcomment], url: log_log_comments_path(@log, @logcomment)) do |f| %>
-      <%= f.text_area :comment, placeholder: "comment" , class: "form-control", id: "new_comment" %><br />
-      <%= f.submit '送信', class: "btn btn-primary" %>
-    <% end %>
   </div>
 </div>

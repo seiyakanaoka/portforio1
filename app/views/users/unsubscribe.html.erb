@@ -1,0 +1,28 @@
+<div class="container all">
+  <div class="row">
+    <div class="col-sm-10 offset-sm-1">
+      <div class="row">
+        <div class="col-sm-12">
+          <h2>退会確認</h2>
+          <p>
+            一度退会すると今後このアカウントは使用できなくなります<br />
+            本当に退会してもよろしいですか？
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+          <%= link_to '退会しない', my_page_user_path(current_user.id) %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+          <%= link_to '退会する', withdraw_user_path, method: :patch, data: { confilm: "本当に退会しますか？" }  %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get :my_page
       get :dive_profile
       get :unsubscribe
-      get :withdraw
+      patch :withdraw
     end
     resource :relationships, only: [:create, :destroy]
   end

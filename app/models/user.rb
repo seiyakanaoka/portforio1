@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
   has_many :logs, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :log_comments, dependent: :destroy
