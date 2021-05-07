@@ -1,41 +1,57 @@
 <div class="container all text-dark">
   <div class="row">
-    <div class="col-md-12">
-      <%= form_with model: @user, local: true do |f| %>
-
-      <div class="form">
-        <%= f.label :プロフィール画像 %><br />
-        <%= f.attachment_field :profile_image %>
+    <div class="col-md-10 offset-sm-1 border border-dark">
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+          <h1 class="logo text-center mb-5">Edit Profile</h1>
+        </div>
       </div>
 
-      <div class="form">
-        <%= f.label :ニックネーム %><br />
-        <%= f.text_field :nick_name, class: "form-control" %>
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+          <%= form_with model: @user, local: true do |f| %>
+
+          <div class="form">
+            <%= f.label :プロフィール画像 %><br />
+            <%= f.attachment_field :profile_image %>
+          </div>
+
+          <div class="form">
+            <%= f.label :ニックネーム %><br />
+            <%= f.text_field :nick_name, class: "form-control" %>
+          </div>
+
+          <div class="form">
+            <%= f.label :自己紹介 %><br />
+            <%= f.text_field :introduction, class: "form-control" %>
+          </div>
+
+          <div class="form">
+            <%= f.label :ダイビングライセンス %><br />
+            <%= f.text_field :license_rank, class: "form-control" %>
+          </div>
+
+          <div class="form">
+            <%= f.label :一番の思い出ポイント %><br />
+            <%= f.text_field :best_point, class: "form-control" %>
+          </div>
+
+          <div class="row edit-btn">
+            <div class="col-sm-6 offset-sm-3">
+              <%= f.submit '編集', class: "btn edit-btn-gradation rounded-pill" %>
+            </div>
+          </div>
+
+          <% end %>
+
+          <div class="row danger-btn">
+            <div class="col-sm-6 offset-sm-3">
+              <%= link_to unsubscribe_user_path, class: "btn danger-btn-gradation rounded-pill" do %>退会画面へ<% end %>
+            <div>
+          </div>
+
+        </div>
       </div>
-
-      <div class="form">
-        <%= f.label :自己紹介 %><br />
-        <%= f.text_field :introduction, class: "form-control" %>
-      </div>
-
-      <div class="form">
-        <%= f.label :ダイビングライセンス %><br />
-        <%= f.text_field :license_rank, class: "form-control" %>
-      </div>
-
-      <div class="form">
-        <%= f.label :一番の思い出ポイント %><br />
-        <%= f.text_field :best_point, class: "form-control" %>
-      </div>
-
-        <%= f.submit '編集する', class: "btn btn-success" %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-8 offset-sm-2">
-      <%= link_to unsubscribe_user_path do %><p>退会画面へ</p><% end %>
     </div>
   </div>
 </div>

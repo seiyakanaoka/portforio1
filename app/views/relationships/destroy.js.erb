@@ -1,3 +1,3 @@
 $("#follow_<%= @user.id %>").html("<%= j(render 'relationships/follow', user: @user) %>");
-$(".follow_count_<%= @user.id %>").html('<%= link_to follow_user_path(@user) do %>フォロー<%= @user.follower.count %><% end %>');
-$(".follower_count_<%= @user.id %>").html('<%= link_to follower_user_path(@user) do %>フォロワー<%= @user.followed.count %><% end %>');
+$(".follow_count_<%= @user.id %>").html('<%= link_to follow_user_path(@user), class: "text-dark" do %><%= @user.follower.count %>フォロー<% end %>');
+$(".follower_count_<%= @user.id %>").html('<%= link_to follower_user_path(@user), class: "text-dark" do %><%= @user.followed.count %>フォロワー<% end %>');

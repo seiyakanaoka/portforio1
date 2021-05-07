@@ -1,58 +1,114 @@
 <div class="container all">
   <%= form_with model: @log, local: true do |f| %>
     <div class="row">
-      <div class="col-md-6 image">
-        <%= f.label :画像 %><br />
-        <%= f.attachment_field :log_image %>
+      <div class="col-sm-12 shadow-lg text bg-light pt-5 pb-5">
+
+        <div class="row logo text-center mb-4">
+          <div class="col-sm-6 offset-sm-3">
+          <h1>Edit Memory</h1>
+          </div>
+        </div>
+
+        <div class="row text-dark">
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-4 mx-auto">
+                <div class="form mb-3">
+                  <%= f.label :画像 %><br />
+                  <%= f.attachment_field :log_image %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4 mx-auto">
+                <div class="form mb-3">
+                  <%= f.label :天気 %><br />
+                  <%= f.select :weather, options_for_select(Log.weathers.keys), class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4 mx-auto">
+                <div class="form mb-3">
+                  <%= f.label :水温 %>
+                  <%= f.select :water_temperature, options_for_select((0..30).to_a), {prompt: '選択'}, class: "form-control" %>℃
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4 mx-auto">
+                <div class="form mb-3">
+                  <%= f.label :潜水深度 %>
+                  <%= f.select :dive_depth, options_for_select((0..50).to_a), {prompt: '選択'}, class: "form-control" %>M
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4 mx-auto">
+                <div class="form mb-3">
+                  <%= f.label :潜水本数 %>
+                  <%= f.select :dive_number, options_for_select((0..5).to_a), {prompt: '選択'}, class: "form-control" %>本
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-10">
+                <div class="form mb-3">
+                  <%= f.label :ダイビングポイント %>
+                  <%= f.text_field :dive_point, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-10">
+                <div class="form mb-3">
+                  <%= f.label :タイトル %>
+                  <%= f.text_field :title, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-10">
+                <div class="form mb-3">
+                  <%= f.label :内容 %>
+                  <%= f.text_area :body, class: "form-control", rows: "6", placeholder: "150文字まで" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-10">
+                <div class="form mb-3">
+                  <%= f.label :タグ %>
+                  <%= f.text_field :hashbody, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row edit-btn">
+          <div class="col-sm-6 offset-sm-3">
+            <%= f.submit '編集', class: "btn edit-btn-gradation rounded-pill" %>
+          </div>
+        </div>
+
+        <div class="row danger-btn">
+          <div class="col-sm-6 offset-sm-3">
+            <%= link_to '削除', log_path(@log.id), method: :delete, class: "btn danger-btn-gradation rounded-pill" %>
+          <div>
+        </div>
       </div>
-
-      <div class="col-md-6">
-        <div class="form">
-          <%= f.label :天気 %><br />
-          <%= f.select :weather, options_for_select(Log.weathers.keys) %>
-        </div>
-
-        <div class="form">
-          <%= f.label :水温%><br />
-          <%= f.text_field :water_temperature, {prompt: '選択してください'} %>
-        </div>
-
-        <div class="form">
-          <%= f.label :潜水深度 %><br />
-          <%= f.text_field :dive_depth %>
-        </div>
-
-        <div class="form">
-          <%= f.label :潜水本数 %><br />
-          <%= f.text_field :dive_number %>
-        </div>
-
-        <div class="form">
-          <%= f.label :ダイビングポイント %><br />
-          <%= f.text_field :dive_point %>
-        </div>
-      </div>
     </div>
-    <div class="row">
-      <%= f.label :タイトル %><br />
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="row">
-      <%= f.label :内容 %><br />
-      <%= f.text_area :body %>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-10">
-        <div class="form mb-3">
-          <%= f.label :タグ %>
-          <%= f.text_field :hashbody, class: "form-control" %>
-        </div>
-      </div>
-    </div>
-    
-    <%= f.submit '編集', class: "btn btn-success" %>
   <% end %>
-  <%= link_to '削除', log_path(@log.id), method: :delete, class: "btn btn-danger" %>
 </div>

@@ -181,6 +181,7 @@ header {
   width: 100%;
   margin-top: 86px;
 }
+// ------------------------>カスタムボタン
 .custom-btn {
   font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
   text-align: center;
@@ -207,6 +208,60 @@ header {
   text-decoration: none;
   color: #FFF;
 }
+.danger-btn {
+  font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+}
+.danger-btn-gradation {
+  display: inline-block;
+  width: 180px;
+  text-align: center;
+  font-size: 16px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 4px;
+  background: #e52d27;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transition: .5s;
+  background-size: 200%;
+}
+.danger-btn-gradation:hover {
+  background-position: right center;
+  text-decoration: none;
+  color: #FFF;
+}
+.edit-btn {
+  font-family: "Yu Gothic", YuGothic, Verdana, 'Hiragino Kaku Gothic ProN','Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+  text-align: center;
+  padding-top: 40px;
+}
+.edit-btn-gradation {
+  display: inline-block;
+  width: 180px;
+  text-align: center;
+  font-size: 16px;
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 4px;
+background: #02AAB0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #00CDAC, #02AAB0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  transition: .5s;
+  background-size: 200%;
+}
+.edit-btn-gradation:hover {
+  background-position: right center;
+  text-decoration: none;
+  color: #FFF;
+}
+// ------------------------>カスタムボタン
 a {
   text-decoration: none;
 }

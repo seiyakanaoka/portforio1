@@ -1,14 +1,16 @@
 <div class="container all">
   <h1 class="logo text-center mb-5">My Dive Profile</h1>
   <div class="row">
-    <div class="col-sm-8 offset-sm-2">
-      <table class="table table-borderd">
-        <tbody>
-          <tr>
-            <td>ライセンスランク</td><td><%= @user.license_rank %></td>
+    <div class="col"></div>
+    <div class="col-sm-4">
+      <table class="table table-borderd table-hover">
+        <tbody class="text-center">
+          <tr class="bg-light">
+            <th>ライセンスランク</th>
           </tr>
+          <tr><td><%= @user.license_rank %></td></tr>
+          <tr class="bg-light"><th>累計潜水本数</th></tr>
           <tr>
-            <td>累計潜水本数</td>
             <td>
               <% @sum = 0 %>
               <% @log.each do |log|%>
@@ -17,17 +19,22 @@
               <%= @sum %> 本
             </td>
           </tr>
+          <tr class="bg-light"><th>最高潜水深度</th></tr>
           <tr>
-            <td>最高潜水深度</td>
             <td>
               <%= @log.maximum(:dive_depth) %> M
             </td>
           </tr>
+          <tr class="bg-light"><th>一番の思い出ポイント</th></tr>
           <tr>
-            <td>一番の思い出ポイント</td><td><%= @user.best_point %></td>
+            <td><%= @user.best_point %></td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="col-sm-6">
+      <h2>思い出ポイント</h2>
     </div>
   </div>
 </div>

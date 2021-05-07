@@ -27,19 +27,19 @@
 
           <div class="follow-follower mb-3">
             <span class="follow">
-              <%= link_to follow_user_path(@user), class: "text-dark" do %><%= current_user.follower.count %>follow<% end %>
+              <%= link_to follow_user_path(@user), class: "text-dark" do %><%= current_user.follower.count %>フォロー<% end %>
             </span>
 
             <span class="follower">
-              <%= link_to follower_user_path(@user), class: "text-dark" do %><%= current_user.followed.count %>follower<% end %><br />
+              <%= link_to follower_user_path(@user), class: "text-dark" do %><%= current_user.followed.count %>フォロワー<% end %><br />
             </span>
           </div>
 
           <div class="profile mb-3">
             <% if @user == current_user %>
-              <%= link_to edit_user_path(@user.id), class: "btn btn-success mr-3" do %><i class="fas fa-user-cog"></i>  Profile Edit<% end %>
+              <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary mr-3" do %><i class="fas fa-user-cog"></i> Edit Profile<% end %>
             <% end %>
-            <%= link_to dive_profile_user_path(@user.id), class: "btn btn-primary" do %><i class="far fa-file-alt"></i> Diving Profile<% end %>
+            <%= link_to dive_profile_user_path(@user.id), class: "btn btn-outline-secondary" do %><i class="far fa-file-alt"></i> Diving Profile<% end %>
           </div>
 
         </div>

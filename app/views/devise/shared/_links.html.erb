@@ -1,7 +1,7 @@
 <%- if controller_name != 'sessions' %>
   <div class="row mt-4">
     <div class="col-sm-4 offset-sm-4 text-center">
-      <span class="btn-border2"><%= link_to new_session_path(resource_name), class: "btn" do %>Log in<br /><i class="fas fa-arrow-alt-circle-right"></i>︎<% end %> </span><br />
+      <span class="btn-border2"><%= link_to new_session_path(resource_name), class: "btn" do %>Log in︎<% end %> </span><br />
     </div>
   </div>
 <% end %>
@@ -9,7 +9,7 @@
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <div class="row mt-4">
     <div class="col-sm-4 offset-sm-4 text-center">
-      <span class="btn-border2"><%= link_to new_registration_path(resource_name), class: "btn" do %>Sign up<br /><i class="fas fa-arrow-alt-circle-right"></i>︎<% end %></span><br />
+      <span class="btn-border1"><%= link_to new_registration_path(resource_name), class: "btn" do %>Sign up︎<% end %></span><br />
     </div>
   </div>
 <% end %>

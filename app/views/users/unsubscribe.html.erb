@@ -3,23 +3,35 @@
     <div class="col-sm-10 offset-sm-1">
       <div class="row">
         <div class="col-sm-12">
-          <h2>退会確認</h2>
-          <p>
-            一度退会すると今後このアカウントは使用できなくなります<br />
-            本当に退会してもよろしいですか？
-          </p>
+
+          <table class="table table-borderless">
+            <thead>
+              <th class="h1 text-center"><strong><i class="fas fa-exclamation-triangle text-warning"></i>退会確認<i class="fas fa-exclamation-triangle text-warning"></i></strong></th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
+                  一度退会すると今後このアカウントは使用できなくなります<br />
+                  本当に退会してもよろしいですか？
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr></tr>
+            </tbody>
+          </table>
+
         </div>
       </div>
 
       <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-          <%= link_to '退会しない', my_page_user_path(current_user.id) %>
+        <div class="col-sm-4 offset-sm-1 edit-btn">
+          <%= link_to my_page_user_path(current_user.id), class: "btn edit-btn-gradation rounded-pill" do %>退会しない<% end %>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-          <%= link_to '退会する', withdraw_user_path, method: :patch, data: { confilm: "本当に退会しますか？" }  %>
+        <div class="col-sm-4 offset-sm-2 danger-btn">
+          <%= link_to withdraw_user_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn danger-btn-gradation rounded-pill" do %>退会する<% end %>
         </div>
       </div>
 

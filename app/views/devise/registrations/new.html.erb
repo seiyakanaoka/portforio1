@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3 border border-dark form_in">
 
-      <h2 class="start-title">Sign up</h2>
+      <h2 class="start-title text-center">Sign up</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -37,7 +37,7 @@
 
         <div class="row mt-4">
           <div class="col-sm-4 offset-sm-4 text-center">
-            <span class="btn-border1"><%= f.submit "Sign up", class: "btn" %></span>
+            <span class="btn-border1"><%= f.submit "Sign up", class: "btn" %><br /><i class="fas fa-arrow-alt-circle-right pb-2"></i></span>
           </div>
         </div>
 
