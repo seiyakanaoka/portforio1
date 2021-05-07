@@ -1,44 +1,53 @@
 <div class="container all">
   <div class="row">
-    <div class="col-sm-10">
-      <div class="row">
-        <div class="col-sm-5 user-memory">
-          <div class="row">
-            <strong><%= @log.title %></strong>
-          </div>
-          <div class="row">
-            <span><%= @log.weather %></span>
-            <span>水温：<%= (@log.water_temperature).to_i %> ℃</span>
-            <span>潜水深度：<%= (@log.dive_depth).to_i %> M</span>
-            <span>潜水本数：<%= (@log.dive_number).to_i %> 本</span>
-          </div>
-          <%= attachment_image_tag @log, :log_image, size: "400x400" %>
-        </div>
+    <div class="col-sm-12">
 
-        <div class="col-lg-5">
-          <p><strong>ポイント：<%= @log.dive_point %></strong></p>
+      <div class="row">
+        <div class="col-sm-6">
+          <strong>【<%= @log.title %>】</strong>
+          <p><strong><%= @log.dive_point %></strong></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <span><%= @log.weather %></span> / <span><%= (@log.water_temperature).to_i %> ℃</span> / <span><%= (@log.dive_depth).to_i %> M</span> / <span><%= (@log.dive_number).to_i %> 本</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <%= attachment_image_tag @log, :log_image, size: "400x400" %>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-12">
           <div class="row">
-            <span id="log_<%= @log.id %>">
-              <%= render 'logs/favo', log: @log %>
-            </span>
-            <strong>閲覧数：<%= @log.impressionist_count(:filter=>:session_hash) %></strong>
+            <div class="col-sm-4">
+              <span id="log_<%= @log.id %>">
+                <%= render 'logs/favo', log: @log %>
+              </span>
+            </div>
+            <div class="col-sm-3">
+              <strong>閲覧数：<%= @log.impressionist_count(:filter=>:session_hash) %></strong>
+            </div>
           </div>
           <div class="row">
-            <p><%= @log.body %></p>
+            <div class="col-sm-6">
+              <p><%= @log.body %></p>
+            </div>
           </div>
           <div class="row">
+            <div class="col-sm-6">
             <%= render_with_hashtags(@log.hashbody) %>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-sm-6 offset-sm-3">
+        <div class="col-sm-6 offset-sm-3 mx-auto">
           <div id="comment">
             <%= render 'logs/comment', log: @log, logs: @logs, reply_comment: @reply_comment %>
           </div>
@@ -48,8 +57,12 @@
       <div class="row new_comment">
         <div class="col-sm-6 offset-sm-3">
           <%= form_with(model:[@log, @logcomment], url: log_log_comments_path(@log, @logcomment)) do |f| %>
-            <%= f.text_area :comment, placeholder: "#{@log.user.nick_name}のコメント" , class: "form-control", id: "new_comment" %><br />
-            <%= f.submit '送信', class: "btn btn-primary" %>
+            <%= f.text_area :comment, placeholder: "#{@log.user.nick_name}のコメント" , class: "form-control rounded-pill", id: "new_comment" %><br />
+            <div class="row custom-btn">
+              <div class="col-sm-6 offset-sm-3">
+              <%= f.submit '送信', class: "btn btn-gradation rounded-pill" %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
