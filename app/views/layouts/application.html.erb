@@ -8,69 +8,71 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
   </head>
 
   <body>
-    <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+    <header class="header">
+
+      <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <%= link_to 'DivIn', root_path, class: "logo navbar-brand" %>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropDown" aria-controls="navbarNavDropDown" aria-expanded="false" aria-label="Toggle navgation">
-            <span class="navbar-toggler-icon"></span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></sapn>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropDown">
-            <ul class="navbar-nav ml-auto">
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+             <ul class="navbar-nav">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to logs_path,  class: "nav-link" do %><i class="fas fa-list"></i><% end %>
+                  <%= link_to logs_path,  class: "nav-link deco" do %><i class="fas fa-list"></i><% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to new_log_path, class: "nav-link" do %><i class="far fa-plus-square"></i><% end %>
+                  <%= link_to new_log_path, class: "nav-link deco" do %><i class="far fa-plus-square"></i><% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to ranks_path, class: "nav-link" do %><i class="fas fa-award"></i><% end %>
+                  <%= link_to ranks_path, class: "nav-link deco" do %><i class="fas fa-award"></i><% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to rooms_path, class: "nav-link" do %><i class="fas fa-envelope"></i><% end %>
+                  <%= link_to rooms_path, class: "nav-link deco" do %><i class="fas fa-envelope"></i><% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to my_page_user_path(current_user.id), class: "nav-link" do %><i class="fas fa-user-circle"></i><% end %>
+                  <%= link_to my_page_user_path(current_user.id), class: "nav-link deco" do %><i class="fas fa-user-circle"></i><% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %><i class="fas fa-sign-out-alt"></i><% end %>
+                  <%= link_to destroy_user_session_path, method: :delete, class: "nav-link deco" do %><i class="fas fa-sign-out-alt"></i><% end %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to homes_about_path,  class: "nav-link" do %><i class="fas fa-water"></i><% end %>
+                  <%= link_to homes_about_path,  class: "nav-link deco" do %><i class="fas fa-water"></i><% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to logs_path,  class: "nav-link" do %><i class="far fa-list-alt"></i><% end %>
+                  <%= link_to logs_path,  class: "nav-link deco" do %><i class="far fa-list-alt"></i><% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to ranks_path, class: "nav-link" do %><i class="fas fa-award"></i><% end %>
+                  <%= link_to ranks_path, class: "nav-link deco" do %><i class="fas fa-award"></i><% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to new_user_registration_path, class: "nav-link" do %><i class="fas fa-plus"></i><% end %>
+                  <%= link_to new_user_registration_path, class: "nav-link deco" do %><i class="fas fa-plus"></i><% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to new_user_session_path, class: "nav-link" do %><i class="fas fa-sign-in-alt"></i><% end %>
+                  <%= link_to new_user_session_path, class: "nav-link deco" do %><i class="fas fa-sign-in-alt"></i><% end %>
                 </li>
               <% end %>
             </ul>
           </div>
+          <%= link_to 'DivIn', root_path, class: "deco logo navbar-brand" %>
         </div>
       </nav>
     </header>
-
     <%= yield %>
   </body>
 </html>

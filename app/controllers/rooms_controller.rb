@@ -16,10 +16,7 @@ class RoomsController < ApplicationController
       myRoomIds << entry.room.id
     end
     @anotherEntries = Entry.where(room_id: myRoomIds).where('user_id != ?', @user)
-    p '@@@@@@@@@@@@@@@@@@@@@@@@@'
-    p @anotherEntries
-    p '@@@@@@@@@@@@@@@@@@@@@@@@@'
-
+    @anotherEntries
   end
 
   def show

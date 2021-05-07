@@ -1,23 +1,15 @@
 <div class="container all">
-  <h1>DM</h1>
   <div class="row">
     <div class="col-sm-12">
 
-      <div class="row">
+      <div class="row mb-5">
         <div class="col-md-8 offset-sm-2">
-          <div class="message">
-            <% @messages.each do |message| %>
-              <% if message.user_id == current_user.id %>
-                <div class="mycomment">
-                  <p class="ml-auto" style='text-align: right; margin: 0 10px 0 0; padding: 8px; max-width: 250px; border-radius: 12px; background: #30e852; font-size: 15px;'><%= message.content %></p>
-                </div>
-              <% else %>
-                <div class="fukidashi">
-                  <p>
-                    <%= attachment_image_tag message.user, :profile_image, size: "50x50", class: " faceicon rounded-circle" %>
-                    <span style='margin: 0 10px 0 0; padding: 8px; max-width: 250px; border-radius: 12px; background: #30e852; font-size: 15px;'><%= message.content %></span>
-                  </p>
-                </div>
+          <div class="new_message">
+            <%= link_to rooms_path, class: "btn back-btn" do %><strong><i class="fas fa-chevron-left"></i></strong><% end %>
+            <% @entry.each do |e| %>
+              <% unless e.user == current_user %>
+                <%= attachment_image_tag e.user, :profile_image, size: "70x70", class: "rounded-circle" %>
+                <strong><span class="message_my_name"><%= e.user.name %></span></strong>
               <% end %>
             <% end %>
           </div>
@@ -26,24 +18,40 @@
 
       <div class="row">
         <div class="col-md-8 offset-sm-2">
-          <div class="new_message">
-            <%= form_with model: @message, url: messages_path, method: :post do |f| %>
-              <%= f.text_field :content, class: "form-control", id: "new_message" %>
-              <%= f.hidden_field :room_id, value: @room.id %>
-              <%= f.submit '送信', class: "btn btn-success" %>
+          <div class="message">
+            <% @messages.each do |message| %>
+              <% if message.user_id == current_user.id %>
+                <div class="mycomment mt-1 mb-1">
+                  <p class="ml-auto" style='text-align: right; margin: 0 10px 0 0; padding: 8px; max-width: 250px; border-radius: 12px; background: #32cd54; font-size: 15px;'><%= message.content %></p>
+                </div>
+              <% else %>
+                <div class="fukidashi">
+                  <p>
+                    <%= attachment_image_tag message.user, :profile_image, size: "50x50", class: " faceicon rounded-circle" %>
+                    <span style='margin: 0 10px 0 0; padding: 8px; max-width: 250px; border-radius: 12px; background: #e9e9ed; font-size: 15px;'><%= message.content %></span>
+                  </p>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-8 offset-sm-2">
-          <div class="new_message">
-            <%= link_to '一覧画面へ戻る', logs_path, class: "btn btn-primary" %>
+      <div class="row mt-3">
+        <div class="col"></div>
+        <div class="col-md-7 offset-sm-1">
+          <div class="new_message form-group">
+          <%= form_with model: @message, url: messages_path, method: :post do |f| %>
+            <%= f.text_field :content, class: "form-control", id: "new_message" %>
+            <%= f.hidden_field :room_id, value: @room.id %>
           </div>
         </div>
+          <div class="col-sm-2">
+            <%= f.submit '⬆︎', class: "btn message-btn rounded-circle text-white" %>
+          </div>
+           <% end %>
+           <div class="col"></div>
       </div>
-
     </div>
   </div>
 </div>

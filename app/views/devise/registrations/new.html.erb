@@ -1,15 +1,15 @@
 <div class="container all">
   <div class="row">
-    <div class="col-md-6 offset-md-3 form_in">
+    <div class="col-md-6 offset-md-3 border border-dark form_in">
 
-      <h2>Sign up</h2>
+      <h2 class="start-title">Sign up</h2>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
           <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "名前", class: "form-control" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "dmmtarou", class: "form-control" %>
         </div>
 
         <div class="field">
@@ -19,7 +19,7 @@
 
         <div class="field">
           <%= f.label :telephone_number %><br />
-          <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", placeholder: "電話番号", class: "form-control"   %>
+          <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", placeholder: "000xxxxxxxx", class: "form-control"   %>
         </div>
 
         <div class="field">
@@ -35,12 +35,15 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード確認", class: "form-control"   %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Sign up" %>
+        <div class="row mt-4">
+          <div class="col-sm-4 offset-sm-4 text-center">
+            <span class="btn-border1"><%= f.submit "Sign up", class: "btn" %></span>
+          </div>
         </div>
+
       <% end %>
 
-      <%= render "devise/shared/links" %>
+ <%= render "devise/shared/links" %>
 
    </div>
   </div>

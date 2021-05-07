@@ -19,18 +19,12 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-body {
-  background-color: #EEFFFF;
-  color: #FF4500;
-}
 .all {
   height: 100%;
   margin-top: 130px;
   margin-bottom: 100px;
 }
 header {
-  background: #EEFFFF;
-  color: #FF4500;
   width: 100%;
   z-index: 1000;
   position: fixed;
@@ -39,6 +33,16 @@ header {
 .nav-link {
     font-size: 30px;
   }
+}
+.deco {
+  cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.deco:hover {
+  transform: translateY(-0.1875em);
+}
+.nav-items {
+  list-style: none;
 }
 .start {
   background: #1FA2FF;  /* fallback for old browsers */
@@ -62,6 +66,88 @@ header {
   color: #FF4500;
   font-size: 100px;
 }
+// ----------------------->新規登録・ログインここから
+.form_in {
+  padding: 25px;
+}
+.start-title {
+}
+.btn-border1 {
+  border-radius: 0;
+}
+.btn-border1:before,
+.btn-border1:after {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  content: '';
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  background: blue;
+}
+.btn-border1:before {
+  top: 0;
+  left: 0;
+}
+.btn-border1:after {
+  right: 0;
+  bottom: 0;
+}
+.btn-border1:hover:before,
+.btn-border1:hover:after {
+  width: 0;
+}
+.btn-border2 {
+  border-radius: 0;
+}
+.btn-border2:before,
+.btn-border2:after {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  content: '';
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  background: green;
+}
+.btn-border2:before {
+  top: 0;
+  left: 0;
+}
+.btn-border2:after {
+  right: 0;
+  bottom: 0;
+}
+.btn-border2:hover:before,
+.btn-border2:hover:after {
+  width: 0;
+}
+.btn-border3 {
+  border-radius: 0;
+}
+.btn-border3:before,
+.btn-border3:after {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  content: '';
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  background: orange;
+}
+.btn-border3:before {
+  top: 0;
+  left: 0;
+}
+.btn-border3:after {
+  right: 0;
+  bottom: 0;
+}
+.btn-border3:hover:before,
+.btn-border3:hover:after {
+  width: 0;
+}
+// ----------------------->
 .bx-wrapper {
   background-color: transparent;
   margin: 0px auto;
@@ -84,10 +170,6 @@ header {
   background-color: rgba(255, 255, 255, 0.6);
   display: inline-block;
   margin-left: 50px;
-}
-.form_in {
-  background-color: #d3d3d3;
-  box-shadow: 0px 30px 60px -5px #000;
 }
 .logo {
   font-family: 'Kaushan Script', cursive;
@@ -127,11 +209,9 @@ header {
 }
 a {
   text-decoration: none;
-  color: #FF4500;
 }
 a:hover {
   text-decoration: none;
-  color: #FF4500;
 }
 .user-memory {
   transition: all 0.6s ease 0s;
@@ -142,6 +222,21 @@ a:hover {
 }
 
 // DM機能ーーーーーーーーーーーーー＞
-
+.dm_host_user {
+  font-size: 32px;
+}
+.dm_user {
+  font-size: 20px;
+}
+.back-btn {
+  font-size: 32px;
+}
+.message_my_name {
+  font-size: 32px;
+}
+.message-btn {
+  text-decoration: none;
+  background: #32cd54;
+}
 
 // DM機能ここまでーーーーーーーーー＞
