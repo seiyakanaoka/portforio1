@@ -9,8 +9,6 @@
       <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, remote: true, class: "btn text-danger" %>
     <% end %>
 
-    
-
     <div class="row mt-1">
       <div class="col-sm-8">
         <%= form_with(model:[log, LogComment.new]) do |f| %>

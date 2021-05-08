@@ -73,6 +73,14 @@
         </div>
       </nav>
     </header>
+
+    <% if flash[:notice] %>
+      <div class="row flash text-center text-success">
+        <div class="col-sm-6 offset-sm-3">
+          <%= flash[:notice] %>
+        </div>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

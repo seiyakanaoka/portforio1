@@ -8,6 +8,17 @@
       </div>
 
       <div class="row">
+        <div class="col-sm-6 offset-sm-3 text-center text-danger mb-5">
+          <% if @user.errors.any? %>
+            <strong><%= @user.errors.count %>件のエラーが発生しました</strong><br />
+            <% @user.errors.full_messages.each do |message| %>
+              <%= message %><br />
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-sm-6 offset-sm-3">
           <%= form_with model: @user, local: true do |f| %>
 

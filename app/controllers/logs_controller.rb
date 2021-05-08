@@ -9,8 +9,11 @@ class LogsController < ApplicationController
   def create
     @log = Log.new(log_params)
     @log.user_id = current_user.id
-    @log.save
-    redirect_to logs_path
+    if @log.save
+      redirect_to logs_path, notice: 'You have created log successfully.'
+    else
+      render :new
+    end
   end
 
   def index
@@ -24,15 +27,18 @@ class LogsController < ApplicationController
 
   def edit
     if @log.user == current_user
-      render "edit"
+      render :edit
     else
       redirect_to user_path(current_user)
     end
   end
 
   def update
-    @log.update(log_params)
-    redirect_to log_path(@log)
+    if @log.update(log_params)
+      redirect_to log_path(@log)
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -30,8 +30,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-    redirect_to my_page_user_path(current_user.id)
+    if @user.update(user_params)
+      redirect_to my_page_user_path(current_user.id)
+    else
+      render :edit
+    end
   end
 
   def my_page
@@ -45,7 +48,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:alert] = "退会処理を実行いたしました"
     redirect_to root_path
   end
 

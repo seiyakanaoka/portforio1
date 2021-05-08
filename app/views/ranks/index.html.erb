@@ -24,15 +24,21 @@
           <ul id="result">
             <div class='row mb-5'>
               <div class='col-sm-6 offset-sm-3 text-center'>
-                <h1 class='logo pr-5'>Ranking</h1>
+                <h1 class='logo pr-5'><i class="fas fa-crown text-warning"></i>Ranking</h1>
               </div>
             </div>
-            <% @ranking.each do |rank| %>
-              <div class="rank mb-3">
-                <%= attachment_image_tag rank, :log_image, size: "200x200" %>
-                <%= rank.title %>
-                <%= attachment_image_tag rank.user, :profile_image, size: "100x100", class: "rounded-circle" %>
-                <%= rank.user.name %>
+            <% @ranking.each.with_index(1) do |rank, i| %>
+              <div class="row mx-auto rank mb-3">
+                <div class="col rank_number"><%= i %></div>
+                <div class="col-sm-4">
+                  <%= attachment_image_tag rank, :log_image, size: "200x200" %>
+                </div>
+                <div class="col-sm-6">
+                  <strong><%= rank.title %></strong><br />
+                  <%= attachment_image_tag rank.user, :profile_image, size: "50x50", class: "rounded-circle" %>
+                  <%= rank.user.name %><br />
+                  <%= rank.body %>
+                </div>
               </div>
             <% end %>
           </ul>
