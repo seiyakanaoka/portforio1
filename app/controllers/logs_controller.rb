@@ -36,8 +36,6 @@ class LogsController < ApplicationController
   end
 
   def destroy
-    p '@@@@@@@@@@@@@@@@@@@@'
-
     @log.destroy
     redirect_to logs_path
   end

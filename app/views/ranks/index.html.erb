@@ -2,30 +2,43 @@
   <div class="row">
     <div class="col-sm-12">
 
-      <div class="row search">
-        <div class="col-sm-8 offset-sm-2">
-          <p>検索</p>
-          <%= form_with model: Log.new, url: search_ranks_path, method: :get, id: "search" do |f| %>
-            <%= f.text_field :keyword, required: true, id: "form", placeholder: "投稿タイトル" %>
-            <%= f.submit '検索', class: "btn" %>
-          <% end %>
-          <p>検索結果<p/>
-          <ul id="result"></ul>
+      <div class="row mb-4">
+        <div class="col-sm-6 offset-sm-3 text-center">
+          <h1 class="logo">Search Memory</h1>
         </div>
+      </div>
+
+      <div class="row search mb-5">
+        <div class="col-sm-5 offset-sm-3 pt-2">
+          <%= form_with model: Log.new, url: search_ranks_path, method: :get, id: "search" do |f| %>
+          <%= f.text_field :keyword, required: true, id: "form", placeholder: "投稿タイトル", class: "form-control" %>
+        </div>
+        <div class="col-sm-1 pb-2">
+          <%= f.submit '🔍', class: "btn search-btn" %>
+        </div>
+          <% end %>
       </div>
 
       <div class="row">
         <div class="col-sm-8 offset-sm-2">
-          <% @ranking.each do |rank| %>
-            <div class="rank mb-3">
-              <%= attachment_image_tag rank, :log_image, size: "200x200" %>
-              <%= rank.title %>
-              <%= attachment_image_tag rank.user, :profile_image, size: "100x100", class: "rounded-circle" %>
-              <%= rank.user.name %>
+          <ul id="result">
+            <div class='row mb-5'>
+              <div class='col-sm-6 offset-sm-3 text-center'>
+                <h1 class='logo pr-5'>Ranking</h1>
+              </div>
             </div>
-          <% end %>
+            <% @ranking.each do |rank| %>
+              <div class="rank mb-3">
+                <%= attachment_image_tag rank, :log_image, size: "200x200" %>
+                <%= rank.title %>
+                <%= attachment_image_tag rank.user, :profile_image, size: "100x100", class: "rounded-circle" %>
+                <%= rank.user.name %>
+              </div>
+            <% end %>
+          </ul>
         </div>
       </div>
+
     </div>
   </div>
 </div>

@@ -1,1 +1,1 @@
-$("#result").html("<% @logs.each do |log| %><%= log.title %><% end %>");
+$("#result").html("<%= j(render 'ranks/rank', logs: @logs) %>");

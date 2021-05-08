@@ -6,9 +6,5 @@ class RanksController < ApplicationController
 
   def search
     @logs = Log.where('title LIKE(?)', "%#{params[:log][:keyword]}%")
-
-    p '@@@@@@@@@@'
-    p @logs
-    p '@@@@@@@@@@'
   end
 end

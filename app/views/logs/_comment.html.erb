@@ -1,11 +1,15 @@
-<% log.log_comments.each do |comment| %>
+<% log.log_comments.reverse.each do |comment| %>
   <span id="comment_<%= comment.id %>">
-    <%= attachment_image_tag comment.user, :profile_image, size: "50x50", class: "rounded-circle" %>
-    <%= link_to user_path(comment.user.id), class: "text-dark" do %><strong><%= comment.user.name %></strong><% end %>
+    <%= link_to user_path(comment.user.id), class: "text-dark" do %>
+      <%= attachment_image_tag comment.user, :profile_image, size: "50x50", class: "rounded-circle" %>
+      <strong><%= comment.user.name %></strong>
+    <% end %>
     <%= comment.comment %>
     <% if comment.user_id == current_user.id %>
       <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, remote: true, class: "btn text-danger" %>
     <% end %>
+
+    
 
     <div class="row mt-1">
       <div class="col-sm-8">

@@ -1,0 +1,23 @@
+<div class='row mb-3'>
+  <div class='col-sm-6 offset-sm-3 text-center'>
+    <h1 class='logo pr-5'>Search Result</h1>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-sm-6 offset-sm-3 text-center'>
+    <% logs.each do |log| %>
+      <%= link_to log_path(log) do %>
+        <div class='row mb-3'>
+          <strong><span class='text-dark'>【<%= log.title %>】</span></strong><br />
+        </div>
+        <div class='row'>
+          <%= attachment_image_tag log, :log_image, size: '200x200' %>
+        </div>
+        <div class='row text-dark'>
+          User Name<br />【<%= log.user.nick_name %>】
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

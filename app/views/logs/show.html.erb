@@ -29,9 +29,6 @@
                 <%= render 'logs/favo', log: @log %>
               </span>
             </div>
-            <div class="col-sm-3">
-              <strong>閲覧数：<%= @log.impressionist_count(:filter=>:session_hash) %></strong>
-            </div>
           </div>
           <div class="row">
             <div class="col-sm-6">
@@ -49,7 +46,7 @@
       <div class="row">
         <div class="col-sm-6 offset-sm-3 mx-auto">
           <div id="comment">
-            <%= render 'logs/comment', log: @log, logs: @logs, reply_comment: @reply_comment %>
+            <%= render 'logs/comment', log: @log, logs: @logs %>
           </div>
         </div>
       </div>
