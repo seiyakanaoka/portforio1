@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :dive_profile, :follow, :follower]
 
   def show
+    if @user.id == current_user.id
+      render :my_page
+    end
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id

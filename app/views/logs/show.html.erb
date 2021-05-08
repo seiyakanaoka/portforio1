@@ -30,10 +30,15 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <span id="log_<%= @log.id %>">
                 <%= render 'logs/favo', log: @log %>
               </span>
+            </div>
+            <div class="col-sm-1">
+                <% if @log.user == current_user %>
+                <%= link_to edit_log_path(@log.id), class: "float-right pt-4" do %><i class="fas fa-cog"></i><% end %>
+              <% end %>
             </div>
           </div>
           <div class="row">

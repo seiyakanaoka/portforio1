@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  validates :profile_image, presence: true, on: :update
+  validates :nick_name, presence: true, length: { maximum: 30}, uniqueness: true, on: :update
 
   has_many :logs, dependent: :destroy
   has_many :favorites, dependent: :destroy

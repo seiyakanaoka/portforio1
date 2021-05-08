@@ -1,22 +1,37 @@
 <% log.log_comments.reverse.each do |comment| %>
-  <span id="comment_<%= comment.id %>">
-    <%= link_to user_path(comment.user.id), class: "text-dark" do %>
-      <%= attachment_image_tag comment.user, :profile_image, size: "50x50", class: "rounded-circle" %>
-      <strong><%= comment.user.name %></strong>
-    <% end %>
-    <%= comment.comment %>
-    <% if comment.user_id == current_user.id %>
-      <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, remote: true, class: "btn text-danger" %>
-    <% end %>
+  <% if comment.reply_comment.present? %>
+    <% next %>
+  <% end %>
+  <!--reply_commentが存在しているコメントはスルーしてください＝返信コメントはスルーして大元のコメントだけ繰り返してください-->
+    <span id="comment_<%= comment.id %>">
+      <%= link_to user_path(comment.user.id), class: "text-dark" do %>
+        <%= attachment_image_tag comment.user, :profile_image, size: "50x50", class: "rounded-circle" %>
+        <strong><%= comment.user.name %></strong>
+      <% end %>
+      <%= comment.comment %>
+      <% if comment.user_id == current_user.id %>
+        <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, remote: true, class: "btn text-danger" %>
+      <% end %>
 
-    <div class="row mt-1">
-      <div class="col-sm-8">
-        <%= form_with(model:[log, LogComment.new]) do |f| %>
-        <%= f.text_field :comment, class: "rounded-pill form-control" %>
-        <%= f.hidden_field :reply_comment, :value => comment.id  %>
-        <%= f.submit "返信する", class: "btn" %>
-        <% end %>
+      <div class="row mt-1">
+        <div class="col-sm-8">
+          <%= form_with(model:[log, LogComment.new]) do |f| %>
+          <%= f.text_field :comment, class: "rounded-pill form-control" %>
+          <%= f.hidden_field :reply_comment, :value => comment.id  %>
+          <%= f.submit "返信する", class: "btn" %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  </span><br />
+
+      <!--ここの部分が返信コメントの記述。２０pxにしてるから小さくなる-->
+      <% if comment.replies.present? %>
+        <% comment.replies.reverse.each do |reply| %>
+          <p style="padding-left: 20px;">
+            <%= attachment_image_tag reply.user, :profile_image, size: "25x25", class: "rounded-circle" %>
+            <%= reply.user.name %>
+            <%= reply.comment %>
+          </p>
+        <% end %>
+      <% end %>
+    </span><br />
 <% end %>

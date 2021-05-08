@@ -7,13 +7,13 @@ class Log < ApplicationRecord
   validates :dive_number, presence: true
   validates :dive_point, presence: true
   validates :water_temperature, presence: true
-  validates :title, length: { maximum: 50 }
+  validates :title, length: { maximum: 12 }
   validates :body, length: { maximum: 150 }
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :log_comments, dependent: :destroy
-  has_many :replies, class_name: "LogComment", foreign_key: :reply_comment, dependent: :destroy
+  # has_many :replies, class_name: "LogComment", foreign_key: :reply_comment, dependent: :destroy
   has_many :hashtag_logs, dependent: :destroy
   has_many :hashtags, through: :hashtag_logs
 

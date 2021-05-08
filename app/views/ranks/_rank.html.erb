@@ -5,8 +5,8 @@
 </div>
 
 <div class='row'>
-  <div class='col-sm-6 offset-sm-3 text-center'>
-    <% logs.each do |log| %>
+  <% logs.each do |log| %>
+    <div class='col-sm-4 mb-2'>
       <%= link_to log_path(log) do %>
         <div class='row mb-3'>
           <strong><span class='text-dark'>【<%= log.title %>】</span></strong><br />
@@ -14,10 +14,12 @@
         <div class='row'>
           <%= attachment_image_tag log, :log_image, size: '200x200' %>
         </div>
-        <div class='row text-dark'>
-          User Name<br />【<%= log.user.nick_name %>】
-        </div>
       <% end %>
-    <% end %>
-  </div>
+        <div class='row text-dark'>
+          User Name<br />
+          <%= link_to user_path(log.user.id), class: "text-dark" do %>【<%= log.user.nick_name %>】<% end %>
+        </div>
+
+    </div>
+  <% end %>
 </div>

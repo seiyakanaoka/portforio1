@@ -52,7 +52,7 @@
                   <%= fields_for @entry do |e| %>
                     <%= e.hidden_field :user_id, value: @user.id%>
                   <% end %>
-                  <%= f.submit class: "btn btn-outline-secondary" do %><i class="fas fa-envelope"></i> メッセージを始める<% end %>
+                  <%= f.submit 'メッセージを始める', class: "btn btn-outline-secondary" do %><i class="fas fa-envelope"></i><% end %>
                 <% end %>
               <% end %>
             <% end %>
