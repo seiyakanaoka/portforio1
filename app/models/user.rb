@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   validates :profile_image, presence: true, on: :update
   validates :nick_name, presence: true, length: { maximum: 30}, uniqueness: true, on: :update
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   validates :telephone_number, presence: true
 
   has_one :maps, dependent: :destroy
