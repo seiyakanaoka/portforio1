@@ -47,6 +47,11 @@
             <%= f.text_field :best_point, class: "form-control" %>
           </div>
 
+          <div class="form">
+            <%= f.label :思い出画像 %><br />
+            <%= f.attachment_field :best_point_image %>
+          </div>
+
           <div class="row edit-btn">
             <div class="col-sm-6 offset-sm-3">
               <%= f.submit '編集', class: "btn edit-btn-gradation rounded-pill" %>

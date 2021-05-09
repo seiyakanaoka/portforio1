@@ -5,10 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attachment :profile_image
+  attachment :best_point_image
 
   validates :profile_image, presence: true, on: :update
   validates :nick_name, presence: true, length: { maximum: 30}, uniqueness: true, on: :update
 
+  has_one :maps, dependent: :destroy
   has_many :logs, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :log_comments, dependent: :destroy

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/log/hashtag/:name' => 'logs#hashtag'
   get '/log/hashtag' => 'logs#hashtag'
 
+  resources :maps, only: [:index, :create]
+
   resources :ranks, only: [:index] do
     collection do
       get 'search'

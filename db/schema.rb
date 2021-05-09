@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_06_065347) do
+ActiveRecord::Schema.define(version: 2021_05_09_002554) do
 
   create_table "entries", force: :cascade do |t|
     t.integer "room_id"
@@ -95,6 +95,18 @@ ActiveRecord::Schema.define(version: 2021_05_06_065347) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "maps", force: :cascade do |t|
+    t.text "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.text "title"
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "log_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
@@ -135,6 +147,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_065347) do
     t.string "profile_image_id"
     t.string "license_rank"
     t.string "best_point"
+    t.string "best_point_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

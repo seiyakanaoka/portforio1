@@ -21,13 +21,16 @@
           </tr>
           <tr class="bg-light"><th>最高潜水深度</th></tr>
           <tr>
-            <td>
-              <%= @log.maximum(:dive_depth) %> M
-            </td>
+            <td><%= @log.maximum(:dive_depth) %> M</td>
           </tr>
-          <tr class="bg-light"><th>一番の思い出ポイント</th></tr>
+          <tr class="bg-light">
+            <th>一番の思い出ポイント</th>
+          </tr>
           <tr>
             <td><%= @user.best_point %></td>
+          </tr>
+          <tr>
+            <td><%= attachment_image_tag @user, :best_point_image, size: "200x200" %></td>
           </tr>
         </tbody>
       </table>
@@ -35,6 +38,7 @@
 
     <div class="col-sm-6">
       <h2>思い出ポイント</h2>
+
     </div>
   </div>
 </div>

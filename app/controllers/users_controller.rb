@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:profile_image, :nick_name, :introduction, :license_rank, :best_point)
+    params.require(:user).permit(:profile_image, :nick_name, :introduction, :license_rank, :best_point, :best_point_image)
   end
 
   def set_user

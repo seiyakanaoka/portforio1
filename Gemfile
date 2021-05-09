@@ -71,4 +71,6 @@ gem 'dotenv-rails'
 gem 'impressionist', '~>1.6.1'
 gem 'bxslider-rails'
 gem 'kaminari','~> 1.2.1'
-
+gem 'geocoder'
+gem "gmaps4rails"
+gem "gon"
