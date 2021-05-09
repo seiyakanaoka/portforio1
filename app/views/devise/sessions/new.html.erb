@@ -4,6 +4,12 @@
 
       <h2 class="start-title text-center">Log in</h2>
 
+      <div class="row flash text-center text-danger">
+        <div class="col-sm-8 offset-sm-2">
+          <%= render 'devise/shared/error_messages', resource: resource %>
+        </div>
+      </div>
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.label :name %><br />

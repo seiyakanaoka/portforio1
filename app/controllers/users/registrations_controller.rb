@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    WelcomeMailer.with(user: @user).welcome_email.deliver_later
   end
 
   # GET /resource/edit
@@ -53,11 +52,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    edit_user_path(current_user.id)
+    WelcomeMailer.with(user: resource).welcome_email.deliver_later
+    edit_user_path(resource)
   end
 
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
-    edit_user_path(current_user.id)
+    edit_user_path(resource)
   end
 end
