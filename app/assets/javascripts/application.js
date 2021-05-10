@@ -15,39 +15,23 @@
 //= require bootstrap-sprockets
 
 //= require rails-ujs
-//= require bxslider
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+/*global $*/
 
-$(document).on('turbolinks:load', () => {
-  $(function() {
-  	setTimeout(function(){
-	  	$('.start p').fadeIn(600);  // pの表示スピード
-  	},500); //0.5秒後にロゴをフェードイン!
-  	setTimeout(function(){
-	  	$('.start').fadeOut(1000);  // start自体の消えるスピード
-  	},2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト！(状態維持時間)
-  });
-});
+// $(document).on('turbolinks:load', () => {
+//   $(function() {
+//   	setTimeout(function(){
+// 	  	$('.start p').fadeIn(600);  // pの表示スピード
+//   	},500); //0.5秒後にロゴをフェードイン!
+//   	setTimeout(function(){
+// 	  	$('.start').fadeOut(1000);  // start自体の消えるスピード
+//   	},2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト！(状態維持時間)
+//   });
+// });
 
-$(document).on('turbolinks:load', () => {
-  $('.bxslider').bxSlider({
-    auto: true,           // 自動スライド
-    speed: 1000,          // スライドするスピード
-    moveSlides: 1,        // 移動するスライド数
-    pause: 3000,          // 自動スライドの待ち時間
-    maxSlides: 4,         // 一度に表示させる最大数
-    slideWidth: 250,      // 各スライドの幅
-	randomStart: true,    // 最初に表示するスライドをランダムに設定
-    autoHover: true,       // ホバー時に自動スライドを停止
-    controls: true,
-    pager: false,
-    prevText:'＜',
-		nextText:'＞',
-  });
-});
-
+// 検索機能ーーーーーーーー＞
 $(document).on('turbolinks:load', () => {
   $(function(){
     $("#search__form").on('ajax:success', function(event) {
@@ -55,14 +39,32 @@ $(document).on('turbolinks:load', () => {
     });
   });
 });
+// 検索機能ここまでーーーーーーーー＞
 //ハンバーガー------------>
 document.addEventListener("turbolinks:load", function () {
   $(function(){
     $('.menu-trigger').on('click',function(event){
       $(this).toggleClass('active');
       $('#sp-menu').fadeToggle();
-      event.PreventDefault();
+      // event.PreventDefault();
     });
   });
 });
-// ハンバーガー----------->
+// ハンバーガーここまで----------->
+
+// Slickここから----------->
+$(document).on('turbolinks:load', function(){
+   $('.slider').slick({
+    autoplay: true,//自動的に動き出すか。初期値はfalse。
+    infinite: true,//スライドをループさせるかどうか。初期値はtrue。
+    speed: 500,//スライドのスピード。初期値は300。
+    slidesToShow: 3,//スライドを画面に3枚見せる
+    slidesToScroll: 1,//1回のスクロールで1枚の写真を移動して見せる
+    prevArrow: '<div class="slick-prev"></div>',//矢印部分PreviewのHTMLを変更
+    nextArrow: '<div class="slick-next"></div>',//矢印部分NextのHTMLを変更
+    centerMode: true,//要素を中央ぞろえにする
+    variableWidth: true,//幅の違う画像の高さを揃えて表示
+    dots: true,//下部ドットナビゲーションの表示
+  });
+});
+// Slickここまで----------->

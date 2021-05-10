@@ -2,20 +2,19 @@
   <p class="logo">WELCOMEtoDivIn!!</p>
 </div>
 
-<div class="image image.fluid">
+<div class="image img-fluid">
   <%= image_tag 'sea-view13.jpeg', class: "top-image" %>
 </div>
 
-<div class="bxslider-bg a">
-	<h4 class="text-center pt-4 mb-5">New  Content</h4>
-  <ul class="bxslider">
-	<% @logs.each do |log| %>
-	  <li class="bxslider-block">
-	    <%= link_to log_path(log.id) do %><% attachment_image_tag log, :log_image, size: "150x150", class: "bxslider-img" %><% end %>
-	    <p class="bxslider-name"><%= log.title %></p>
-	  </li>
-	<% end %>
-  </ul>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h4 class="text-center pt-4 mb-5">====================== New  Content ======================</h4>
+			<div class="slider">
+				<% @logs.each do |log| %>
+				  <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "300x300", class: "slick-img mr-3" %><% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
-
-
