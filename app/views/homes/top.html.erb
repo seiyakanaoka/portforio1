@@ -6,15 +6,33 @@
   <%= image_tag 'sea-view13.jpeg', class: "top-image" %>
 </div>
 
-<div class="container">
+<div class="container slide">
 	<div class="row">
 		<div class="col-sm-12">
-			<h4 class="text-center pt-4 mb-5">====================== New  Content ======================</h4>
+			<h4 class="slide-title text-center">============ New  Content ============</h4>
 			<div class="slider">
-				<% @logs.each do |log| %>
+				<% @logs.reverse.first(6).each do |log| %>
 				  <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "300x300", class: "slick-img mr-3" %><% end %>
 				<% end %>
 			</div>
 		</div>
+	</div>
+</div>
+
+<div style="background-color: #DEF3F7; padding-top: 100px; padding-bottom: 100px; margin-bottom: 100px;">
+	<div class="container">
+		<div class="row touroku text-center">
+			<div class="col-sm-12">
+				<h4 class="slide-title">============ Account ============</h4>
+				<div class="row">
+					<div class="col-sm-6">新規登録はこちらから</div>
+					<div class="col-sm-6">既に登録済みの方ははこちらから</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 custom-btn"><%= link_to new_user_registration_path, class: "btn btn-gradation rounded-pill" do %>新規登録<% end %></div>
+					<div class="col-sm-6 edit-btn"><%= link_to new_user_registration_path, class: "btn edit-btn-gradation rounded-pill" do %>ログイン<% end %></div>
+				</div>
+			</div>
+	  </div>
 	</div>
 </div>

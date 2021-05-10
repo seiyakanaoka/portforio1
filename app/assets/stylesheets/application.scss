@@ -191,6 +191,12 @@ header {
   width: 100%;
   margin-top: 86px;
 }
+.slide-title {
+  font-size: 60px;
+  font-family: 'Caveat', cursive;
+  padding-top: 60px;
+  margin-bottom: 60px;
+}
 .slider .slick-slide {
   transform: scale(0.8);/*左右の画像のサイズを80%に*/
   transition: all .5s;/*拡大や透過のアニメーションを0.5秒で行う*/
@@ -236,11 +242,15 @@ header {
     width:8px;/*ドットボタンのサイズ*/
     height:8px;/*ドットボタンのサイズ*/
     display:block;
-    border-radius:50%;
+    border-radius: 50%;
     background:#ccc;/*ドットボタンの色*/
 }
 .slick-dots .slick-active button{
     background:#333;/*ドットボタンの現在地表示の色*/
+}
+.slide {
+  padding-top: 100px;
+  margin-bottom: 150px;
 }
 // Homeここまでーーーーーーー＞
 // ----------------------->新規登録・ログインここから
