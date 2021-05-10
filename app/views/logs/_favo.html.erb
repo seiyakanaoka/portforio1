@@ -1,5 +1,5 @@
 <% if log.favorited_by?(current_user) %>
-  <%= link_to log_favorites_path(log.id), method: :delete, remote: true, class: "text-dark" do %>❤<% end %><%= log.favorites.count %><br />いいね
+  <%= link_to log_favorites_path(log.id), method: :delete, remote: true, class: "text-danger" do %>❤<% end %><%= log.favorites.count %><br />
 <% else %>
-  <%= link_to log_favorites_path(log.id), method: :post, remote: true, class: "text-dark" do %>♡<% end %><%= log.favorites.count %><br />いいね
+  <%= link_to log_favorites_path(log.id), method: :post, remote: true, class: "text-dark" do %>♡<% end %><%= log.favorites.count %><br />
 <% end %>

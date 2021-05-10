@@ -16,8 +16,7 @@
         </div>
       <% end %>
         <div class='row text-dark'>
-          User Name<br />
-          <%= link_to user_path(log.user.id), class: "text-dark" do %>【<%= log.user.nick_name %>】<% end %>
+          <%= link_to user_path(log.user.id), class: "text-dark" do %><%= log.user.nick_name %><% end %>
         </div>
 
     </div>

@@ -48,7 +48,6 @@ $(document).on('turbolinks:load', () => {
   });
 });
 
-
 $(document).on('turbolinks:load', () => {
   $(function(){
     $("#search__form").on('ajax:success', function(event) {
@@ -56,3 +55,14 @@ $(document).on('turbolinks:load', () => {
     });
   });
 });
+//ハンバーガー------------>
+document.addEventListener("turbolinks:load", function () {
+  $(function(){
+    $('.menu-trigger').on('click',function(event){
+      $(this).toggleClass('active');
+      $('#sp-menu').fadeToggle();
+      event.PreventDefault();
+    });
+  });
+});
+// ハンバーガー----------->

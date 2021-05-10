@@ -29,14 +29,21 @@
             </div>
             <% @ranking.each.with_index(1) do |rank, i| %>
               <div class="row mx-auto rank mb-3">
-                <div class="col rank_number"><%= i %></div>
-                <div class="col-sm-4">
+                <div class="col-sm-6 text-center">
+                  <% if i == 1 %>
+                    <span class="award text-warning"><i class="fas fa-award"></i><%= i %></span>
+                  <% elsif i == 2 %>
+                    <span class="award text-secondary"><i class="fas fa-award"></i><%= i %></span>
+                  <% else  %>
+                    <span class="award" style="color: #BA6E40;"><i class="fas fa-award"></i><%= i %></span>
+                  <% end %>
+                  <strong><%= rank.impressionist_count %>PV</strong><br />
                   <%= link_to log_path(rank.id) do %>
-                    <%= attachment_image_tag rank, :log_image, size: "200x200" %>
+                    <%= attachment_image_tag rank, :log_image, size: "250x250", class: "image-fluid" %>
                   <% end %>
                 </div>
                 <div class="col-sm-6">
-                  <strong><%= rank.title %></strong><br />
+                  <strong>【<%= rank.title %>】</strong><br />
                   <%= link_to user_path(rank.user.id) do %>
                     <%= attachment_image_tag rank.user, :profile_image, size: "50x50", class: "rounded-circle" %>
                     <%= rank.user.name %><br />

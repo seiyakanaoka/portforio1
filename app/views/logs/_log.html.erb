@@ -1,4 +1,4 @@
-<div class="col-sm-6 shadow-lg pt-5">
+<div class="col-sm-6 pt-5">
     <div class="row">
       <div class="col-sm-12">
         <h1 class="logo text-center">Memories</h1>
@@ -6,31 +6,34 @@
     </div>
     <% logs.reverse.each do |log| %>
     <div class="row">
-      <div class="col-sm-12 logs text-dark mb-5 pt-3 pb-3 content">
+      <div class="col-sm-12 logs text-dark shadow-lg border border-light mb-5 pt-3 pb-3 content" style="background: #DEF3F7;">
 
         <div class="row">
           <div class="col-sm-1"></div>
             <div class="col-sm-7 index-user float-left">
               <% if log.user != current_user %>
                 <%= link_to user_path(log.user_id) do %>
-                  <%= attachment_image_tag log.user, :profile_image, size: "50x50", class: "rounded-circle" %>
-                  <%= log.user.name %><br />
+                  <p class="text-dark">
+                    <%= attachment_image_tag log.user, :profile_image, size: "50x50", class: "rounded-circle" %>
+                    <%= log.user.name %>
+                  </p>
                 <% end %>
               <% else %>
                 <%= link_to my_page_user_path(current_user.id) do %>
-                  <%= attachment_image_tag current_user, :profile_image, size: "50x50", class: "rounded-circle" %>
-                  <%= current_user.name %><br />
+                  <p class="text-dark">
+                    <%= attachment_image_tag current_user, :profile_image, size: "50x50", class: "rounded-circle" %>
+                    <%= current_user.name %>
+                  </p>
                 <% end %>
               <% end %>
 
+              <span>【<%= log.title %>】</span><br />
               <%= log.dive_point %>
-
-              <%= log.title %>
             </div>
 
             <div class="col-sm-3 log-edit align-items-end">
               <% if log.user == current_user %>
-                <%= link_to edit_log_path(log.id), class: "float-right pt-4" do %><i class="fas fa-cog"></i><% end %><br />
+                <%= link_to edit_log_path(log.id), class: "float-right pt-4 text-dark" do %><i class="fas fa-cog"></i><% end %><br />
               <% end %>
             </div>
         </div>
