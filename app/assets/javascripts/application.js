@@ -68,3 +68,31 @@ $(document).on('turbolinks:load', function(){
   });
 });
 // Slickここまで----------->
+// 画像スライドここから----------->
+$(document).on('turbolinks:load', function(){
+  $(function(){
+    $(window).scroll(function(){
+      $(".scroll-block").each(function(){
+        var scroll = $(window).scrollTop(); //画面トップからのスクロール量
+        var blockPosition = $(this).offset().top; //画面トップから見たブロックのある位置
+        var windowHeight = $(window).height(); //ウィンドウの高さ
+        if (scroll > blockPosition - windowHeight + 260){
+          $(this).addClass("blockIn");
+        }
+      });
+    });
+  });
+});
+// 画像スライドここまで----------->
+// リップルズここから----------->
+$(document).on('turbolinks:load', function(){
+  $('.ripples-image').ripples({
+    dropRadius: 20, //波紋の大きさ
+    resolution: 500, //波紋の広がり速度
+    perturbance: 0.001, //波紋のブレ
+  });
+});
+// リップルズここまで----------->
+// タブメニューここから----------->
+
+// タブメニューここまで----------->

@@ -9,7 +9,7 @@
         <strong><%= comment.user.name %></strong>
       <% end %>
       <%= comment.comment %>
-      <% if comment.user_id == current_user.id %>
+      <% if comment.user_id == current_user %>
         <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, remote: true, class: "btn text-danger" %>
       <% end %>
 
