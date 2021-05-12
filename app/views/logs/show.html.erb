@@ -46,6 +46,11 @@
               </span>
             </div>
             <div class="col-sm-1">
+              <span id="log_bookmark_<%= @log.id %>">
+                <%= render 'logs/bookmark', log: @log %>
+              </span>
+            </div>
+            <div class="col-sm-1">
                 <% if @log.user == current_user %>
                 <%= link_to edit_log_path(@log.id), class: "float-right text-dark" do %><i class="fas fa-cog"></i><% end %>
               <% end %>

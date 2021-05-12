@@ -38,8 +38,9 @@
           <div class="profile mb-3">
             <% if @user == current_user %>
               <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary mr-3" do %><i class="fas fa-user-cog"></i> Edit Profile<% end %>
+              <%= link_to bookmark_list_user_path(@user.id), class: "btn btn-outline-secondary" do %><i class="fas fa-bookmark"></i> Bookmark List<% end %>
             <% end %>
-            <%= link_to dive_profile_user_path(@user.id), class: "btn btn-outline-secondary" do %><i class="far fa-file-alt"></i> Diving Profile<% end %>
+            <%= link_to dive_profile_user_path(@user.id), class: "btn btn-outline-secondary mt-3" do %><i class="far fa-file-alt"></i> Diving Profile<% end %>
           </div>
 
         </div>

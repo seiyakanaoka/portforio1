@@ -29,16 +29,13 @@
           <tr>
             <td><%= @user.best_point %></td>
           </tr>
-          <tr>
-            <td><%= attachment_image_tag @user, :best_point_image, size: "200x200" %></td>
-          </tr>
         </tbody>
       </table>
     </div>
 
     <div class="col-sm-6">
-      <h2>思い出ポイント</h2>
-
+      <h2>思い出画像</h2>
+      <%= attachment_image_tag @user, :best_point_image, size: "300x300" %>
     </div>
   </div>
 </div>

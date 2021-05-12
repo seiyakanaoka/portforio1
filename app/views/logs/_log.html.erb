@@ -45,8 +45,12 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-1"></div>
-          <div class="col-sm-4">
+          <div class="col-sm-3">
+            <span id="log_bookmark_<%= log.id %>">
+              <%= render 'logs/bookmark', log: log %>
+            </span>
+          </div>
+          <div class="col-sm-3">
             <span id="log_<%= log.id %>">
               <%= render 'logs/favo', log: log %>
             </span>
