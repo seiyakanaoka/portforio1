@@ -12,6 +12,9 @@ class CreateLogs < ActiveRecord::Migration[5.2]
       t.string :dive_point
       t.string :hashbody
       t.integer :impressions_count, default: 0
+      t.text :address
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

@@ -9,6 +9,7 @@ class Log < ApplicationRecord
   validates :water_temperature, presence: true
   validates :title, length: { maximum: 12 }
   validates :body, length: { maximum: 150 }
+  validates :address, presence: true
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -16,6 +17,10 @@ class Log < ApplicationRecord
   # has_many :replies, class_name: "LogComment", foreign_key: :reply_comment, dependent: :destroy
   has_many :hashtag_logs, dependent: :destroy
   has_many :hashtags, through: :hashtag_logs
+  has_many :bookmarks, dependent: :destroy
+
+  geocoded_by :address
+  after_validation :geocode
 
     enum weather: {
     ☀️: 0,
@@ -27,6 +32,10 @@ class Log < ApplicationRecord
 
   def favorited_by?(user)
     favorites.where(user_id: user).exists?
+  end
+
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user).exists?
   end
 
    #DBへのコミット直前に実施する

@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   get '/log/hashtag/:name' => 'logs#hashtag'
   get '/log/hashtag' => 'logs#hashtag'
 
-  resources :maps, only: [:index, :create]
-
   resources :ranks, only: [:index] do
     collection do
       get 'search'
@@ -22,6 +20,7 @@ Rails.application.routes.draw do
   resources :logs do
     resources :log_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
+    resource :bookmarks, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update] do
     member do

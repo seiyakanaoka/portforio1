@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_09_002554) do
+ActiveRecord::Schema.define(version: 2021_05_12_080737) do
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "log_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["log_id"], name: "index_bookmarks_on_log_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "entries", force: :cascade do |t|
     t.integer "room_id"
@@ -91,18 +100,9 @@ ActiveRecord::Schema.define(version: 2021_05_09_002554) do
     t.string "dive_point"
     t.string "hashbody"
     t.integer "impressions_count", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "maps", force: :cascade do |t|
     t.text "address"
     t.float "latitude"
     t.float "longitude"
-    t.text "title"
-    t.text "comment"
-    t.integer "user_id"
-    t.integer "log_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

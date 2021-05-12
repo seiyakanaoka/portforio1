@@ -22,6 +22,7 @@ class LogsController < ApplicationController
 
   def show
     @logcomment = LogComment.new
+    gon.log = @log
     impressionist(@log, nil, :unique => [:session_hash.to_s])
   end
 
@@ -64,7 +65,7 @@ class LogsController < ApplicationController
   end
 
   def log_params
-    params.require(:log).permit(:log_image, :title, :body, :weather, :water_temperature, :dive_number, :dive_depth, :dive_point, :hashbody)
+    params.require(:log).permit(:log_image, :title, :body, :weather, :water_temperature, :dive_number, :dive_depth, :dive_point, :hashbody, :address, :latitude, :longitude)
   end
 
 end

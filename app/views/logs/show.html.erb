@@ -19,11 +19,21 @@
         <div class="col-sm-6">
           <span><%= @log.weather %></span> / <span><%= (@log.water_temperature).to_i %> ℃</span> / <span><%= (@log.dive_depth).to_i %> M</span> / <span><%= (@log.dive_number).to_i %> 本</span>
         </div>
+        <div class="col"></div>
+        <div class="col-sm-5">
+          <%= @log.address %>
+        </div>
       </div>
 
       <div class="row">
         <div class="col-sm-6">
           <%= attachment_image_tag @log, :log_image, size: "400x400" %>
+        </div>
+
+        <div class="col"></div>
+
+        <div class="col-sm-5">
+          <div id="map" style="width: 400px; height: 400px;"></div>
         </div>
       </div>
 
@@ -78,3 +88,34 @@
     </div>
   </div>
 </div>
+
+<!--GoogleMapの記述-->
+<script>
+
+  let map;
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+      center: {
+        lat: gon.log.latitude,
+        lng: gon.log.longitude
+      },
+      zoom: 16,
+    });
+
+    marker = new google.maps.Marker({
+      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+      position: {
+        lat: gon.log.latitude,
+        lng: gon.log.longitude
+      },
+      map: map
+    });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MY_GOOGLE_MAP_API'] %>&callback=initMap" async defer>
+</script>
