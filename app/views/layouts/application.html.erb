@@ -81,46 +81,57 @@
               <% if user_signed_in? %>
                 <li>
                   <%= link_to logs_path do %>Log List<% end %>
+                  <p>投稿一覧</p>
                 </li>
 
                 <li>
                   <%= link_to new_log_path do %>New Log<% end %>
+                  <p>新規投稿</p>
                 </li>
 
                 <li>
                   <%= link_to ranks_path do %>Log Ranking<% end %>
+                  <p>ランキング</p>
                 </li>
 
                 <li>
                   <%= link_to rooms_path do %>DM List<% end %>
+                  <p>ダイレクトメッセージ</p>
                 </li>
 
                 <li>
                   <%= link_to my_page_user_path(current_user.id) do %>My Page<% end %>
+                  <p>マイページ</p>
                 </li>
 
                 <li>
                   <%= link_to destroy_user_session_path, method: :delete do %>Log Out<% end %>
+                  <p>ログアウト</p>
                 </li>
               <% else %>
                 <li>
                   <%= link_to homes_about_path do %>About<% end %>
+                  <p>アバウト</p>
                 </li>
 
                 <li>
                   <%= link_to logs_path do %>Log List<% end %>
+                  <p>投稿一覧</p>
                 </li>
 
                 <li>
                   <%= link_to ranks_path do %>Ranking<% end %>
+                  <p>ランキング</p>
                 </li>
 
                 <li>
                   <%= link_to new_user_registration_path do %>Sign Up<% end %>
+                  <p>会員登録</p>
                 </li>
 
                 <li>
                   <%= link_to new_user_session_path do %>Sign In<% end %>
+                  <p>ログイン</p>
                 </li>
               <% end %>
             </ul>

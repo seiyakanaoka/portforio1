@@ -54,7 +54,7 @@ document.addEventListener("turbolinks:load", function () {
 
 // Slickここから----------->
 $(document).on('turbolinks:load', function(){
-   $('.slider').slick({
+  $('.slider').slick({
     autoplay: true,//自動的に動き出すか。初期値はfalse。
     infinite: true,//スライドをループさせるかどうか。初期値はtrue。
     speed: 500,//スライドのスピード。初期値は300。
@@ -87,6 +87,13 @@ $(document).on('turbolinks:load', function(){
 // リップルズここから----------->
 $(document).on('turbolinks:load', function(){
   $('.ripples-image').ripples({
+    dropRadius: 20, //波紋の大きさ
+    resolution: 500, //波紋の広がり速度
+    perturbance: 0.001, //波紋のブレ
+  });
+});
+$(document).on('turbolinks:load', function(){
+  $('#rippler').ripples({
     dropRadius: 20, //波紋の大きさ
     resolution: 500, //波紋の広がり速度
     perturbance: 0.001, //波紋のブレ
