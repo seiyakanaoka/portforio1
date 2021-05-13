@@ -195,9 +195,9 @@ header {
   color: #FB8014;
 }
 .top-image {
-  height: auto;
-  width: 100%;
-  margin-top: 86px;
+  background-image: image-url('/assets/sea-view13.jpeg');
+  background-size: cover;
+  background-position: center;
 }
 .slide-title {
   font-size: 60px;
