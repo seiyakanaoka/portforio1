@@ -77,3 +77,6 @@ gem 'kaminari','~> 1.2.1'
 gem 'geocoder'
 gem "gmaps4rails"
 gem "gon"
+group :production do
+  gem 'mysql2'
+end

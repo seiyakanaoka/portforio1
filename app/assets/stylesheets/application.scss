@@ -161,28 +161,28 @@ header {
   list-style: none;
 }
 // Homeここからーーーーーーー＞
-// .start {
-//   background: #1FA2FF;  /* fallback for old browsers */
-//   background: -webkit-linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);  /* Chrome 10-25, Safari 5.1-6 */
-//   background: linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   height: 100%;
-//   width: 100%;
-//   z-index: 9000;
-// }
-// .start p {
-//   position: fixed;
-//   left: 30%;
-//   top: 48%;
-//   transform: translate(-50%, -50%);
-//   display: none;
-//   z-index: 9999;
-//   width: 280px;
-//   color: #FF4500;
-//   font-size: 100px;
-// }
+.start {
+  background: #1FA2FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9000;
+}
+.start p {
+  position: fixed;
+  left: 30%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 9999;
+  width: 280px;
+  color: #FF4500;
+  font-size: 100px;
+}
 
 .ripples {
 	width: 100%;
@@ -605,3 +605,26 @@ a:hover {
   font-size: 32px;
 }
 // ランキングここまでーーーーーーーーー＞
+
+
+
+.slide-image1 {
+  background-image: image-url('/assets/sea-view16.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+.slide-image2 {
+  background-image: image-url('/assets/sea-view.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+.slide-image3 {
+  background-image: image-url('/assets/sea-view22.jpeg');
+  background-size: cover;
+  background-position: bottom;
+}
+.footer-image {
+  background-image: image-url('/assets/sea-view25.jpeg');
+  background-size: cover;
+  background-position: center;
+}
