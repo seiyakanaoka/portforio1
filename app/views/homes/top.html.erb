@@ -1,12 +1,11 @@
-<div id="rippler" style="background-color: #B0E0E6;">
+<div id="rippler" style="background-color: #B0E0E6; width: 100%; height: auto;">
 <div class="start">
-  <p class="logo">WELCOMEtoDivIn!!</p>
+  <div class="container"><p class="logo">WELCOMEtoDivIn!!</p></div>
 </div>
 
-
-<div class="top-image" style="width: 100%; height: 800px; margin-top: 86px;"></div>
-
-
+<div class="top-image img-fluid">
+	<%= image_tag asset_path('sea-view13.jpg') %>
+</div>
 
 <div class="container">
 	<div class="row">
@@ -73,6 +72,7 @@
 <div class="container">
 <div class="ripples-image scroll-block fade-block2-2 slide-image3" style="width: 100%; height: 650px;"></div>
 </div>
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
@@ -102,22 +102,24 @@
 	</div>
 </div>
 
-<div class="ripples footer-image" style="padding-top: 25px; padding-bottom: 100px;">
-	<div class="container">
-		<div class="row touroku text-center">
-			<div class="col-sm-12">
-				<h2 class="slide-title text-light">Account</h2>
-				<div class="row">
-					<div class="col-sm-6 text-dark" style="font-size: 25px;"><strong>新規登録はこちらから</strong></div>
-					<div class="col-sm-6 text-dark" style="font-size: 25px;"><strong>会員の方はこちらから</strong></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-6 custom-btn"><%= link_to new_user_registration_path, class: "btn btn-gradation rounded-pill" do %>新規登録<% end %></div>
-					<div class="col-sm-6 edit-btn"><%= link_to new_user_registration_path, class: "btn edit-btn-gradation rounded-pill" do %>ログイン<% end %></div>
-				</div>
+
+<div  style="background-color: #68C0CB; padding-bottom: 150px;">
+<div class="container">
+	<div class="row touroku text-center">
+		<div class="col-sm-12">
+			<h2 class="slide-title text-light">Account</h2>
+			<div class="row">
+				<div class="col-sm-6 text-dark" style="font-size: 25px;"><strong>新規登録はこちらから</strong></div>
+				<div class="col-sm-6 text-dark" style="font-size: 25px;"><strong>会員の方はこちらから</strong></div>
 			</div>
-	  </div>
-	</div>
+			<div class="row">
+				<div class="col-sm-6 custom-btn"><%= link_to new_user_registration_path, class: "btn btn-gradation rounded-pill" do %>新規登録<% end %></div>
+				<div class="col-sm-6 edit-btn"><%= link_to new_user_registration_path, class: "btn edit-btn-gradation rounded-pill" do %>ログイン<% end %></div>
+			</div>
+		</div>
+  </div>
 </div>
+</div>
+
 </div>
 
