@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    models:
+      user:
+      log:
+    attributes:
+      user:
+        name: 名前
+        email: Eメール
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        telephone_number: 電話番号
+        nick_name: ニックネーム
+        profile_image: プロフィール画像
+      log:
+        log_image: 投稿画像
+        dive_depth: 潜水深度
+        dive_number: 潜水本数
+        dive_point: ダイビングポイント
+        water_temperature: 水温
+        address: 住所
+        body: 内容
+        title: タイトル

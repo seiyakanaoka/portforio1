@@ -5,6 +5,11 @@
 
 <div>
 	<%= image_tag asset_path('sea-view13.jpeg'), class: "top-image img-fluid" %>
+	<div class="container">
+		<p class="top-text-content">
+		  DivIn
+	  </p>
+	</div>
 </div>
 
 <div class="container">
@@ -114,7 +119,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-6 custom-btn"><%= link_to new_user_registration_path, class: "btn btn-gradation rounded-pill" do %>新規登録<% end %></div>
-				<div class="col-sm-6 edit-btn"><%= link_to new_user_registration_path, class: "btn edit-btn-gradation rounded-pill" do %>ログイン<% end %></div>
+				<div class="col-sm-6 edit-btn"><%= link_to new_user_session_path, class: "btn edit-btn-gradation rounded-pill" do %>ログイン<% end %></div>
 			</div>
 		</div>
   </div>

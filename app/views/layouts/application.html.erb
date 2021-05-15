@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
   </head>
 
   <body>
@@ -51,9 +52,6 @@
                   <%= link_to destroy_user_session_path, method: :delete, class: "nav-link deco text-dark" do %><i class="fas fa-sign-out-alt"></i><% end %>
                 </li>
               <% else %>
-                <li class="nav-item">
-                  <%= link_to homes_about_path,  class: "nav-link deco text-dark" do %><i class="fas fa-water"></i><% end %>
-                </li>
 
                 <li class="nav-item">
                   <%= link_to logs_path,  class: "nav-link deco text-dark" do %><i class="far fa-list-alt"></i><% end %>
@@ -110,11 +108,6 @@
                 </li>
               <% else %>
                 <li>
-                  <%= link_to homes_about_path do %>About<% end %>
-                  <p>アバウト</p>
-                </li>
-
-                <li>
                   <%= link_to logs_path do %>Log List<% end %>
                   <p>投稿一覧</p>
                 </li>
@@ -147,7 +140,6 @@
 
         </div>
       </nav>
-
     </header>
 
     <%= yield %>

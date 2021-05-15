@@ -1,7 +1,7 @@
 <div class="container all">
   <%= form_with model: @log, local: true do |f| %>
     <div class="row">
-      <div class="col-sm-12 shadow-lg text pt-5 pb-5" style="background: #DEF3F7;">
+      <div class="col-sm-12 shadow-lg bg-light text pt-5 pb-5">
 
         <div class="row logo text-center mb-4">
           <div class="col-sm-6 offset-sm-3">
@@ -12,10 +12,15 @@
         <div class="row text-center text-danger mb-4">
           <div class="col-sm-6 offset-sm-3">
             <% if @log.errors.any? %>
+            <div id="error_explanation">
               <strong><%= @log.errors.count %>件のエラーが発生しました</strong><br />
-              <% @log.errors.full_messages.each do |message|%><br />
-                <%= message %>
+              <h5 class="text-danger">入力内容を確認してください</h5>
+              <ul class="h6" style="list-style: none;">
+              <% @log.errors.full_messages.each do |message| %>
+                <%= message %><br />
               <% end %>
+              </ul>
+            </div>
             <% end %>
           </div>
         </div>
@@ -26,7 +31,7 @@
               <div class="col-sm-4 mx-auto">
                 <div class="form mb-3">
                   <%= f.label :画像 %><br />
-                  <%= f.attachment_field :log_image %>
+                  <%= f.attachment_field :log_image, class: "#{"is-invalid" if @log.errors.include?(:log_image)}" %>
                 </div>
               </div>
             </div>
@@ -35,7 +40,7 @@
               <div class="col-sm-4 mx-auto">
                 <div class="form mb-3">
                   <%= f.label :天気 %><br />
-                  <%= f.select :weather, options_for_select(Log.weathers.keys), class: "form-control" %>
+                  <%= f.select :weather, options_for_select(Log.weathers.keys), class: "form-control #{"is-invalid" if @log.errors.include?(:weather)}" %>
                 </div>
               </div>
             </div>
@@ -44,7 +49,7 @@
               <div class="col-sm-4 mx-auto">
                 <div class="form mb-3">
                   <%= f.label :水温 %>
-                  <%= f.select :water_temperature, options_for_select((0..30).to_a), {prompt: '選択'}, class: "form-control" %>℃
+                  <%= f.select :water_temperature, options_for_select((0..30).to_a), {prompt: '選択'}, class: "form-control #{"is-invalid" if @log.errors.include?(:water_temperature)}" %>℃
                 </div>
               </div>
             </div>
@@ -53,7 +58,7 @@
               <div class="col-sm-4 mx-auto">
                 <div class="form mb-3">
                   <%= f.label :潜水深度 %>
-                  <%= f.select :dive_depth, options_for_select((0..50).to_a), {prompt: '選択'}, class: "form-control" %>M
+                  <%= f.select :dive_depth, options_for_select((0..50).to_a), {prompt: '選択'}, class: "form-control #{"is-invalid" if @log.errors.include?(:dive_depth)}" %>M
                 </div>
               </div>
             </div>
@@ -62,7 +67,7 @@
               <div class="col-sm-4 mx-auto">
                 <div class="form mb-3">
                   <%= f.label :潜水本数 %>
-                  <%= f.select :dive_number, options_for_select((0..5).to_a), {prompt: '選択'}, class: "form-control" %>本
+                  <%= f.select :dive_number, options_for_select((0..5).to_a), {prompt: '選択'}, class: "form-control #{"is-invalid" if @log.errors.include?(:dive_number)}" %>本
                 </div>
               </div>
             </div>
@@ -74,7 +79,7 @@
               <div class="col-sm-10">
                 <div class="form mb-3">
                   <%= f.label :ダイビングポイント %>
-                  <%= f.text_field :dive_point, class: "form-control" %>
+                  <%= f.text_field :dive_point, class: "form-control #{"is-invalid" if @log.errors.include?(:dive_point)}" %>
                 </div>
               </div>
             </div>
@@ -83,7 +88,7 @@
               <div class="col-sm-10">
                 <div class="form mb-3">
                   <%= f.label :タイトル %>
-                  <%= f.text_field :title, class: "form-control" %>
+                  <%= f.text_field :title, class: "form-contro #{"is-invalid" if @log.errors.include?(:title)}l" %>
                 </div>
               </div>
             </div>
@@ -92,7 +97,7 @@
               <div class="col-sm-10">
                 <div class="form mb-3">
                   <%= f.label :内容 %>
-                  <%= f.text_area :body, class: "form-control", rows: "6", placeholder: "150文字まで" %>
+                  <%= f.text_area :body, class: "form-control #{"is-invalid" if @log.errors.include?(:body)}", rows: "6", placeholder: "150文字まで" %>
                 </div>
               </div>
             </div>
@@ -116,7 +121,7 @@
             <input type="button" value="検索" onclick="codeAddress()">
             <div class="row">
               <div class="col-sm-8 mx-auto">
-                <%= f.text_field :address, class: "form-control mt-3 mb-4", placeholder: "住所をここに" %>
+                <%= f.text_field :address, class: "form-control #{"is-invalid" if @log.errors.include?(:address)} mt-3 mb-4", placeholder: "住所をここに" %>
               </div>
             </div>
             <div id='map' style="width: 100%; height: 500px;"></div>

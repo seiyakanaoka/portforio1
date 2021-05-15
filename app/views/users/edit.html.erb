@@ -10,10 +10,13 @@
       <div class="row">
         <div class="col-sm-6 offset-sm-3 text-center text-danger mb-5">
           <% if @user.errors.any? %>
-            <strong><%= @user.errors.count %>件のエラーが発生しました</strong><br />
-            <% @user.errors.full_messages.each do |message| %>
-              <%= message %><br />
-            <% end %>
+            <div id="error_explanation">
+              <strong><%= @user.errors.count %>件のエラーが発生しました</strong><br />
+              <h5 class="text-danger">入力内容を確認してください</h5>
+              <% @user.errors.full_messages.each do |message| %>
+                <%= message %><br />
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -24,12 +27,12 @@
 
           <div class="form">
             <%= f.label :プロフィール画像 %><br />
-            <%= f.attachment_field :profile_image %>
+            <%= f.attachment_field :profile_image, class: "#{"is-invalid" if @user.errors.include?(:profile_image)}" %>
           </div>
 
           <div class="form">
             <%= f.label :ニックネーム %><br />
-            <%= f.text_field :nick_name, class: "form-control" %>
+            <%= f.text_field :nick_name, class: "form-control #{"is-invalid" if @user.errors.include?(:nick_name)}" %>
           </div>
 
           <div class="form">

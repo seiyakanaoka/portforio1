@@ -174,7 +174,7 @@ header {
 }
 .start p {
   position: fixed;
-  left: 30%;
+  left: 27%;
   top: 48%;
   transform: translate(-50%, -50%);
   display: none;
@@ -357,7 +357,7 @@ header {
 }
 .fade-block2-3.blockIn {
   opacity: 1;
-  transform: translateX(150px);
+  transform: translateX(200px);
 }
 
 .go {
@@ -621,9 +621,19 @@ a:hover {
 //   background-position: center;
 //   width: 100%;
 // }
-
 .top-image {
   width: 100%;
   height: auto;
   margin-top: 86px;
+  position: relative;
 }
+.top-text-content {
+  font-family: "Sawarabi Mincho";
+  color: #fff;
+  font-size: 80px;
+  position: absolute;
+  top: 530px;
+  right: 40%;
+  text-align: center;
+}
+
