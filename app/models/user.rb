@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :telephone_number, presence: true
 
-  has_one :maps, dependent: :destroy
   has_many :logs, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :log_comments, dependent: :destroy
