@@ -26,6 +26,18 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      # ユーザーを見つける、なければ作成する
+      user.name = "ゲスト"
+      user.telephone_number = "00000000000"
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+    end
+  end
+
   def active_for_authentication?
     super && (is_deleted == false)
   end

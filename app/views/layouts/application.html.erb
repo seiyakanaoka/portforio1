@@ -126,6 +126,11 @@
                   <%= link_to new_user_session_path do %>Sign In<% end %>
                   <p>ログイン</p>
                 </li>
+
+                <li>
+                  <%= link_to users_guest_sign_in_path, method: :post do %>Guest<% end %>
+                  <p>ゲストログイン</p>
+                </li>
               <% end %>
             </ul>
           </div>

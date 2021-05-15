@@ -114,12 +114,14 @@
 		<div class="col-sm-12">
 			<h2 class="slide-title text-light">Account</h2>
 			<div class="row">
-				<div class="col-sm-6 text-dark" style="font-size: 25px;"><strong>新規登録はこちらから</strong></div>
-				<div class="col-sm-6 text-dark" style="font-size: 25px;"><strong>会員の方はこちらから</strong></div>
+				<div class="col-sm-4 text-dark" style="font-size: 25px;"><strong>新規登録はこちらから</strong></div>
+				<div class="col-sm-4 text-dark" style="font-size: 25px;"><strong>会員の方はこちらから</strong></div>
+				<div class="col-sm-4 text-dark" style="font-size: 25px;"><strong>閲覧のみの方はこちらから</strong></div>
 			</div>
 			<div class="row">
-				<div class="col-sm-6 custom-btn"><%= link_to new_user_registration_path, class: "btn btn-gradation rounded-pill" do %>新規登録<% end %></div>
-				<div class="col-sm-6 edit-btn"><%= link_to new_user_session_path, class: "btn edit-btn-gradation rounded-pill" do %>ログイン<% end %></div>
+				<div class="col-sm-4 custom-btn"><%= link_to new_user_registration_path, class: "btn btn-gradation rounded-pill" do %>新規登録<% end %></div>
+				<div class="col-sm-4 edit-btn"><%= link_to new_user_session_path, class: "btn edit-btn-gradation rounded-pill" do %>ログイン<% end %></div>
+				<div class="col-sm-4 guest-btn"><%= link_to users_guest_sign_in_path, method: :post, class: "btn guest-btn-gradation rounded-pill" do %>ゲストログイン<% end %>
 			</div>
 		</div>
   </div>

@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :ensure_normal_user, only: %i[update destroy]
 
   # GET /resource/sign_up
   # def new
@@ -50,6 +51,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
+  def ensure_normal_user
+    if resource.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません'
+    end
+  end
+
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     WelcomeMailer.with(user: resource).welcome_email.deliver_later
@@ -60,4 +67,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_inactive_sign_up_path_for(resource)
     edit_user_path(resource)
   end
+
 end
