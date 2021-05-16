@@ -22,7 +22,7 @@
             <% @messages.each do |message| %>
               <% if message.user_id == current_user.id %>
                 <div class="mycomment mt-1 mb-1">
-                  <p class="ml-auto" style='text-align: right; margin: 0 10px 0 0; padding: 8px; max-width: 250px; border-radius: 12px; background: #32cd54; font-size: 15px;'><%= message.content %></p>
+                  <p class="my-dm ml-auto"><%= message.content %></p>
                 </div>
               <% else %>
                 <div class="fukidashi">

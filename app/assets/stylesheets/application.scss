@@ -598,7 +598,18 @@ a:hover {
   text-decoration: none;
   background: #32cd54;
 }
-
+.my-dm {
+   position: relative;
+    background: #32cd54;
+    border: 1px solid #777;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    margin-left: 20%;
+    clear: both;
+    max-width: 500px;
+    float: right;
+}
 // DM機能ここまでーーーーーーーーー＞
 // ランキングーーーーーーーーーーー＞
 .rank_number {
@@ -673,3 +684,11 @@ a:hover {
   left: 15px;
   background: Tomato;
 }
+
+
+
+
+
+
+
+
