@@ -5,7 +5,12 @@ class LogCommentsController < ApplicationController
     @log = Log.find(params[:log_id])
     @comment = current_user.log_comments.new(comment_params)
     @comment.log_id = @log.id
-    @comment.save
+    if @comment.save
+      # 通知機能
+      @log.create_notification_comment!(current_user, @comment.id)
+    else
+      render 'logs/show'
+    end
   end
 
   def destroy

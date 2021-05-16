@@ -5,6 +5,9 @@ class FavoritesController < ApplicationController
   def create
     @favorite = current_user.favorites.new(log_id: @log.id)
     @favorite.save
+    # ここから
+    @log.create_notification_favorite!(current_user)
+    # ここまで
   end
 
   def destroy

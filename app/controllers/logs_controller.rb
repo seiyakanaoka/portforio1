@@ -17,7 +17,7 @@ class LogsController < ApplicationController
   end
 
   def index
-    @logs = Log.all
+    @logs = Log.all.includes(:user)
   end
 
   def show

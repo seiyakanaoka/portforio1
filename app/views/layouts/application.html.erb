@@ -41,7 +41,9 @@
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to rooms_path, class: "nav-link deco text-dark" do %><i class="fas fa-envelope"></i><% end %>
+                  <%= link_to rooms_path, class: "nav-link deco text-dark" do %>
+                    <i class="fas fa-envelope"></i>
+                  <% end %>
                 </li>
 
                 <li class="nav-item">
@@ -146,6 +148,16 @@
         </div>
       </nav>
     </header>
+
+    <span class="tuchi">
+        <%= link_to notifications_path, class: "btn deco" do %>
+          <% if unchecked_notifications.any? %>
+            <i class="fas fa-bell"></i>
+          <% else %>
+            <i class="fas fa-bell tuchi-bell"></i><i class="fas fa-circle bell-alert"></i>
+          <% end %>
+        <% end %>
+    </span>
 
     <%= yield %>
   </body>

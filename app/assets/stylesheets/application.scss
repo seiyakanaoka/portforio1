@@ -45,6 +45,21 @@ header {
     font-size: 30px;
   }
 }
+.tuchi {
+  position: fixed;
+  top: 18px;
+  right: 90px;
+}
+.tuchi-bell {
+  font-size: 30px;
+  position: relative;
+}
+.bell-alert {
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  color: orange;
+}
 .nav-logo {
   font-size: 45px;
   color: #FFAE00;

@@ -3,6 +3,7 @@ class LogComment < ApplicationRecord
   belongs_to :log
   belongs_to :log_comment, foreign_key: :reply_comment, optional: true
   has_many :replies, class_name: "LogComment", foreign_key: :reply_comment, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   # def self.parent_comments
   #   where(reply_comment: nil)
