@@ -45,21 +45,6 @@ header {
     font-size: 30px;
   }
 }
-.tuchi {
-  position: fixed;
-  top: 18px;
-  right: 90px;
-}
-.tuchi-bell {
-  font-size: 30px;
-  position: relative;
-}
-.bell-alert {
-  position: absolute;
-  top: 3px;
-  right: 10px;
-  color: orange;
-}
 .nav-logo {
   font-size: 45px;
   color: #FFAE00;
@@ -677,4 +662,14 @@ a:hover {
   right: 40%;
   text-align: center;
 }
-
+.icon_layers {
+  position: relative;
+}
+.icon_layers_counter{
+  font-size: 15px;
+  width: 20px;
+  position: absolute;
+  top: 0;
+  left: 15px;
+  background: Tomato;
+}

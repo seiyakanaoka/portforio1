@@ -47,6 +47,21 @@
                 </li>
 
                 <li class="nav-item">
+                  <%= link_to notifications_path, class: "nav-link deco" do %>
+                    <% if unchecked_notifications.any? %>
+                    <span class="icon_layers fa-fw text-dark">
+                      <i class="fas fa-bell icon_layers_icon"></i>
+                      <% if unchecked_notifications.exists? %>
+                        <span class="icon_layers_counter rounded-circle text-center"><%= unchecked_notifications.count %></span>
+                      <% end %>
+                    </span>
+                    <% else %>
+                    <i class="fas fa-bell text-dark"></i>
+                    <% end %>
+                  <% end %>
+                </li>
+
+                <li class="nav-item">
                   <%= link_to my_page_user_path(current_user.id), class: "nav-link deco text-dark" do %><i class="fas fa-user-circle"></i><% end %>
                 </li>
 
@@ -148,16 +163,6 @@
         </div>
       </nav>
     </header>
-
-    <span class="tuchi">
-        <%= link_to notifications_path, class: "btn deco" do %>
-          <% if unchecked_notifications.any? %>
-            <i class="fas fa-bell"></i>
-          <% else %>
-            <i class="fas fa-bell tuchi-bell"></i><i class="fas fa-circle bell-alert"></i>
-          <% end %>
-        <% end %>
-    </span>
 
     <%= yield %>
   </body>

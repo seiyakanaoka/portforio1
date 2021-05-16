@@ -27,8 +27,8 @@ class User < ApplicationRecord
 
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy  # 自分からの通知
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy  # 相手からの通知
-  
-  
+
+
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
@@ -68,5 +68,10 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+
+
+
+  
 
 end

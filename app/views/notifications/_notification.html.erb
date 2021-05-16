@@ -1,27 +1,27 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
-<div class="col-md-6 mx-auto">
-  <div class="form-inline">
-    <span>
-      <%= link_to user_path(visitor) do %><%= visitor.name %><% end %><%= "さんが" %>
-
-      <% case notification.action %>
-      <% when 'follow' then %>
-        <%= "あなたをフォローしました" %>
-      <% when  'favorite' then %>
-        <%= link_to 'あなたの投稿', notification.log, style: "font-weight: bold;" %><%= "にいいねしました" %>
-      <% when 'comment' then %>
-        <% if notification.log.user_id == visited.id %>
-          <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
-        <% else %>
-          <span>
-            <%= link_to log_path(notification.log) do %><%= notification.log.user_nick_name %>さんの投稿<% end %><%= "に投稿しました" %>
-            <p><%= LogComment.find_by(id: notification.comment.comment_id)&.comment %></p>
-          </span>
-        <% end %>
-      <% end %>
-    </span>
-    <small class="text-right text-muted"><%= time_ago_in_words(notification.created_at).upcase %>
-  </div>
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3 mx-auto">
+  <table class="table table-border-bottom form-inline">
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to user_path(visitor), class: "text-dark" do %><strong><%= visitor.nick_name %>さん</strong>が<% end %>
+          <% case notification.action %>
+          <% when 'follow' then %>
+            <%= "あなたをフォローしました" %>
+          <% when  'favorite' then %>
+            <%= link_to 'あなたの投稿', notification.log, class: "text-dark", style: "font-weight: bold;" %><%= "にいいねしました" %>
+          <% else %>
+            <%= link_to "あなたの投稿", notification.log, class: "text-dark", style: "font-weight: bold;" %>
+            <span>
+              <%= "にコメントしました" %>
+              <p class="text-secondary"><%= LogComment.find_by(id: notification.log_comment_id).comment %></p>
+            </span>
+          <% end %>
+          <small class="text-right text-muted"><%= time_ago_in_words(notification.created_at).upcase %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
