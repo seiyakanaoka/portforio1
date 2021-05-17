@@ -22,10 +22,6 @@ class LogsController < ApplicationController
 
   def show
     @log = Log.includes(log_comments: [:user, :replies]).find(params[:id])
-    @logcomments = @log.log_comments
-
-
-
     @logcomment = LogComment.new
     gon.log = @log
     impressionist(@log, nil, :unique => [:session_hash.to_s])

@@ -1,4 +1,4 @@
-<% logcomments.reverse.each do |comment| %>
+<% log.log_comments.each do |comment| %>
   <% if comment.reply_comment.present? %>
     <% next %>
   <% end %>
@@ -25,7 +25,7 @@
 
       <!--ここの部分が返信コメントの記述。２０pxにしてるから小さくなる-->
       <% if comment.replies.present? %>
-        <% comment.replies.reverse.each do |reply| %>
+        <% comment.replies.each do |reply| %>
           <p style="padding-left: 20px;">
             <%= attachment_image_tag reply.user, :profile_image, size: "25x25", class: "rounded-circle" %>
             <%= reply.user.name %>

@@ -599,16 +599,29 @@ a:hover {
   background: #32cd54;
 }
 .my-dm {
-   position: relative;
-    background: #32cd54;
-    border: 1px solid #777;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 15px;
-    margin-left: 20%;
-    clear: both;
-    max-width: 500px;
-    float: right;
+  background: #32cd54;
+  border: 1px solid #777;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  margin-left: 20%;
+  clear: both;
+  max-width: 500px;
+  float: right;
+}
+.faceicon {
+  float: left;
+}
+.other-dm {
+  background: #edf1ee;
+  border: 1px solid #777;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  margin-right: 20%;
+  clear: both;
+  max-width: 500px;
+  float: left;
 }
 // DM機能ここまでーーーーーーーーー＞
 // ランキングーーーーーーーーーーー＞
@@ -684,21 +697,3 @@ a:hover {
   left: 15px;
   background: Tomato;
 }
-.icon_dm {
-  position: relative;
-}
-.icon_dm_counter{
-  font-size: 15px;
-  width: 20px;
-  position: absolute;
-  top: 0;
-  left: 15px;
-  background: Tomato;
-}
-
-
-
-
-
-
-

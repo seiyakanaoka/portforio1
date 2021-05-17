@@ -43,10 +43,10 @@
                 <li class="nav-item">
                   <%= link_to rooms_path, class: "nav-link deco" do %>
                     <% if unchecked_directs.any? %>
-                      <span class="icon_dm fa-fw text-dark">
+                      <span class="icon_layers fa-fw text-dark">
                         <i class="fas fa-envelope icon_layers_icon"></i>
                         <% if unchecked_directs.exists? %>
-                          <span class"icon_dm_counter rounded-circle text-center"><%= unchecked_directs.count %></span>
+                          <span class="icon_layers_counter rounded-circle text-center"><%= unchecked_directs.count %></span>
                         <% end %>
                       </span>
                     <% else %>
@@ -58,7 +58,7 @@
                 <li class="nav-item">
                   <%= link_to notifications_path, class: "nav-link deco" do %>
                     <% if unchecked_notifications.any? %>
-                    <span class="icon_layers fa-fw">
+                    <span class="icon_layers fa-fw text-dark">
                       <i class="fas fa-bell icon_layers_icon"></i>
                       <% if unchecked_notifications.exists? %>
                         <span class="icon_layers_counter rounded-circle text-center"><%= unchecked_notifications.count %></span>

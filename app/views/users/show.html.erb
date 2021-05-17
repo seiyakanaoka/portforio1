@@ -62,7 +62,7 @@
 
     <h1 class="logo text-center mt-5"><%= @user.nick_name %> Memories</h1>
     <% unless @user.logs.empty? %>
-      <div class="row mt-5 border border-light shadow-lg" style="background: #DEF3F7;">
+      <div class="row mt-5 border border-light shadow-lg">
         <% @user.logs.reverse.each do |user_log| %>
           <div class="col-lg-4 mt-5 mb-5 text-center user-memory img-fluid">
             <%= user_log.created_at.strftime('%Y/%m/%d') %><br />
