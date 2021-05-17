@@ -12,7 +12,7 @@
 
           <table class="table table-borderless dm_list">
             <tbody>
-              <% @anotherEntries.each do |e, index| %>
+              <% @anotherEntries.includes(:room).each do |e, index| %>
                 <tr>
                   <td>
                     <%= link_to user_path(e.user_id), class: "text-dark" do %>

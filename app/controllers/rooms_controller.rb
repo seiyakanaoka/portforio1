@@ -9,13 +9,18 @@ class RoomsController < ApplicationController
   end
 
   def index
+    @directs = current_user.passive_directs.page(params[:page]).per(20)
+    @directs.where(checked: false).each do |direct|
+      direct.update_attributes(checked: true)
+    end
+
     @user = current_user
-    @currentEntries = current_user.entries
+    @currentEntries = current_user.entries.includes(:room)
     myRoomIds = []
     @currentEntries.each do |entry|
       myRoomIds << entry.room.id
     end
-    @anotherEntries = Entry.where(room_id: myRoomIds).where('user_id != ?', @user)
+    @anotherEntries = Entry.includes(:user).where(room_id: myRoomIds).where('user_id != ?', @user)
     @anotherEntries
   end
 

@@ -12,7 +12,7 @@
             <%= "あなたをフォローしました" %>
           <% when  'favorite' then %>
             <%= link_to 'あなたの投稿', notification.log, class: "text-dark", style: "font-weight: bold;" %><%= "にいいねしました" %>
-          <% else %>
+          <% when 'comment' then %>
             <%= link_to "あなたの投稿", notification.log, class: "text-dark", style: "font-weight: bold;" %>
             <span>
               <%= "にコメントしました" %>

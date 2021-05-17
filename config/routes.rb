@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/log/hashtag' => 'logs#hashtag'
 
   resources :notifications, only: [:index]
+  resources :directs, only: [:index]
 
   resources :ranks, only: [:index] do
     collection do

@@ -1,6 +1,6 @@
 class LogsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_log, only: [:show, :edit, :update, :destroy]
+  before_action :set_log, only: [:edit, :update, :destroy]
 
   def new
     @log = Log.new
@@ -21,6 +21,11 @@ class LogsController < ApplicationController
   end
 
   def show
+    @log = Log.includes(log_comments: [:user, :replies]).find(params[:id])
+    @logcomments = @log.log_comments
+
+
+
     @logcomment = LogComment.new
     gon.log = @log
     impressionist(@log, nil, :unique => [:session_hash.to_s])
