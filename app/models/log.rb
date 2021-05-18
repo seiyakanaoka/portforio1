@@ -7,7 +7,7 @@ class Log < ApplicationRecord
   validates :dive_number, presence: true
   validates :dive_point, presence: true
   validates :water_temperature, presence: true
-  validates :title, length: { maximum: 12 }
+  validates :title, length: { maximum: 20 }
   validates :body, length: { maximum: 150 }
   validates :address, presence: true
 
