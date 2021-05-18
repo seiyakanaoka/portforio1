@@ -41,17 +41,8 @@
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to rooms_path, class: "nav-link deco" do %>
-                    <% if unchecked_directs.any? %>
-                      <span class="icon_layers fa-fw text-dark">
-                        <i class="fas fa-envelope icon_layers_icon"></i>
-                        <% if unchecked_directs.exists? %>
-                          <span class="icon_layers_counter rounded-circle text-center"><%= unchecked_directs.count %></span>
-                        <% end %>
-                      </span>
-                    <% else %>
-                      <i class="fas fa-envelope text-dark"></i>
-                    <% end %>
+                  <%= link_to rooms_path, class: "nav-link deco text-dark" do %>
+                    <i class="fas fa-envelope icon_layers_icon"></i>
                   <% end %>
                 </li>
 

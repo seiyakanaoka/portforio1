@@ -111,6 +111,16 @@
           </div>
         </div>
 
+        <div class="row pt-5">
+          <div class="col-sm-10 text-center mx-auto map">
+            <div class="row">
+              <div class="col-sm-8 mx-auto">
+                <%= f.text_field :address, class: "form-control #{"is-invalid" if @log.errors.include?(:address)} mt-3 mb-4", placeholder: "住所をここに" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="row edit-btn">
           <div class="col-sm-6 offset-sm-3">
             <%= f.submit '編集', class: "btn edit-btn-gradation rounded-pill" %>

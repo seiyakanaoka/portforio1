@@ -8,17 +8,17 @@ class MessagesController < ApplicationController
 
       @othermember = Entry.where(room_id: @room.id).where.not(user_id: current_user.id)
       @theid = @othermember.find_by(room_id: @room.id)
-      direct = current_user.active_directs.new(
+      notification = current_user.active_notifications.new(
         room_id: @room.id,
         message_id: @message.id,
         visited_id: @theid.user_id,
         visitor_id: current_user.id,
         action: 'dm'
       )
-      if direct.visitor_id == direct.visited_id
-        direct.checked = true
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
       end
-      direct.save if direct.valid?
+      notification.save if notification.valid?
 
     else
       redirect_back(fallback_location: root_path)

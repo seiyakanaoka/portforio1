@@ -18,6 +18,12 @@
               <%= "にコメントしました" %>
               <p class="text-secondary"><%= LogComment.find_by(id: notification.log_comment_id).comment %></p>
             </span>
+          <% else %>
+            <%= link_to "あなたにメッセージ", notification.room, class: "text-dark", style: "font-weight: bold;" %>
+            <span>
+              <%= "を送信しました" %>
+              <p class="text-secondary"><%= Message.find_by(id: notification.message_id).content %></p>
+            </span>
           <% end %>
           <small class="text-right text-muted"><%= time_ago_in_words(notification.created_at).upcase %>
         </td>
