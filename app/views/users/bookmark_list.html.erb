@@ -1,9 +1,9 @@
 <div class="container all">
   <div clas="row">
-    <div class="col-sm-10">
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
       <div class="row">
         <% @bookmarks.reverse.each do |mark|%>
-          <div class="col-sm-4 user-memory">
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 user-memory">
             <%= link_to log_path(mark.log) do %><%= attachment_image_tag mark.log, :log_image, size: "200x200" %><% end %>
           </div>
         <% end %>

@@ -1,12 +1,12 @@
 <div class='row mb-3'>
-  <div class='col-sm-6 offset-sm-3 text-center'>
+  <div class='col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3 text-center'>
     <h1 class='logo pr-5'>Search Result</h1>
   </div>
 </div>
 
 <div class='row'>
   <% logs.each do |log| %>
-    <div class='col-sm-4 mb-2'>
+    <div class='col-xs-4 col-sm-4 col-md-4 col-lg-4 mb-2'>
       <%= link_to log_path(log) do %>
         <div class='row mb-3'>
           <strong><span class='text-dark'>【<%= log.title %>】</span></strong><br />
