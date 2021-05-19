@@ -49,10 +49,14 @@ class UsersController < ApplicationController
 
   def withdraw
     @user = User.find(params[:id])
-    @user.update(is_deleted: true)
-    reset_session
-    flash[:alert] = "退会処理を実行いたしました"
-    redirect_to root_path
+    unless @user.email == "guest@example.com"
+      @user.update(is_deleted: true)
+      reset_session
+      flash[:alert] = "退会処理を実行いたしました"
+      redirect_to root_path
+    else
+      redirect_to my_page_user_path(@user)
+    end
   end
 
   def dive_profile
