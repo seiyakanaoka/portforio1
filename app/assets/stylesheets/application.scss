@@ -40,7 +40,9 @@ header {
   height: 90px;
   top: 0;
   left: 0;
-  // background: #fff;
+  background: #B2FEFA;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 .nav-link {
     font-size: 30px;
   }
@@ -60,6 +62,17 @@ header {
   top: 15%;
   text-align:center;
   margin: auto;
+}
+.icon_layers {
+  position: relative;
+}
+.icon_layers_counter{
+  font-size: 15px;
+  width: 20px;
+  position: absolute;
+  top: 0;
+  left: 15px;
+  background: Tomato;
 }
 // ハンバーガーーーーーーーーーー＞
 #hm-icon {
@@ -162,9 +175,9 @@ header {
 }
 // Homeここからーーーーーーー＞
 .start {
-  background: #1FA2FF;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #B2FEFA;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   position: fixed;
   top: 0;
   left: 0;
@@ -183,12 +196,40 @@ header {
   color: #FF4500;
   font-size: 100px;
 }
-
+.slide-image1 {
+  background-image: image-url('sea-view16.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.slide-image2 {
+  background-image: image-url('sea-view.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.slide-image3 {
+  background-image: image-url('sea-view22.jpg');
+  background-size: cover;
+  background-position: bottom;
+}
+.top-image {
+  width: 100%;
+  height: auto;
+  margin-top: 86px;
+  position: relative;
+}
+.top-text-content {
+  font-family: "Sawarabi Mincho";
+  color: #fff;
+  font-size: 80px;
+  position: absolute;
+  top: 530px;
+  right: 40%;
+  text-align: center;
+}
 .ripples {
 	width: 100%;
 	height: auto;
 }
-
 .logo {
   font-family: 'Kaushan Script', cursive;
   font-size: 40px;
@@ -642,11 +683,9 @@ a:hover {
 #map {
   height: 800px;
 }
-
 .gmap input {
   border: 1px solid #000;
 }
-
 .field_with_errors {
   display: inline;
 }
@@ -656,53 +695,3 @@ a:hover {
   font-size: 32px;
 }
 // ランキングここまでーーーーーーーーー＞
-
-
-
-.slide-image1 {
-  background-image: image-url('sea-view16.jpg');
-  background-size: cover;
-  background-position: center;
-}
-.slide-image2 {
-  background-image: image-url('sea-view.jpg');
-  background-size: cover;
-  background-position: center;
-}
-.slide-image3 {
-  background-image: image-url('sea-view22.jpg');
-  background-size: cover;
-  background-position: bottom;
-}
-// .footer-image {
-//   background-image: image-url('/assets/sea-view25.jpg');
-//   background-size: cover;
-//   background-position: center;
-//   width: 100%;
-// }
-.top-image {
-  width: 100%;
-  height: auto;
-  margin-top: 86px;
-  position: relative;
-}
-.top-text-content {
-  font-family: "Sawarabi Mincho";
-  color: #fff;
-  font-size: 80px;
-  position: absolute;
-  top: 530px;
-  right: 40%;
-  text-align: center;
-}
-.icon_layers {
-  position: relative;
-}
-.icon_layers_counter{
-  font-size: 15px;
-  width: 20px;
-  position: absolute;
-  top: 0;
-  left: 15px;
-  background: Tomato;
-}

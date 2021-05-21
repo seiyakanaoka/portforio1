@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :log do
-    log_image { 'spec/fixtures/sea-view12.jpg' }
+    log_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/sea-view12.jpg')) }
     weather { 0 }
     dive_depth { 0 }
     dive_number { 0 }

@@ -9,7 +9,6 @@
 
       <div class="row">
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 offset-xs-1 offset-sm-1 offset-md-1 offset-lg-1">
-
           <table class="table table-border-bottom dm_list">
             <tbody>
               <% @anotherEntries.includes(:room).each do |e, index| %>
@@ -19,13 +18,12 @@
                       <%= attachment_image_tag e.user, :profile_image, size: "50x50", class: "rounded-circle" %>
                       <span class="dm_user ml-2"><strong><%= e.user.name %></strong></span>
                     <% end %>
-                    <%= link_to room_path(e.room), class: 'btn btn-success ml-4' do %><span class="dm_user_room">メッセージを送る</span><% end %>
                   </td>
+                  <td class="edit-btn"><%= link_to room_path(e.room), class: 'btn edit-btn-gradation ml-4' do %><span class="dm_user_room">メッセージを送る</span><% end %></td>
                 </tr>
               <% end %>
             </tbody>
           </table>
-
         </div>
       </div>
     </div>

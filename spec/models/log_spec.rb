@@ -66,7 +66,7 @@ RSpec.describe 'Logモデルのテスト', type: :model do
       #   is_expected.to eq true
       # end
       it '20文字以下であること: 21文字は×' do
-        log.body = Faker::Lorem.characters(number: 21)
+        log.title = Faker::Lorem.characters(number: 21)
         is_expected.to eq false
       end
     end
