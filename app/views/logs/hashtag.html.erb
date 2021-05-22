@@ -7,7 +7,7 @@
       <div class="row mb-5">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <% @log.each do |log| %>
-            <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "200x200" %><% end %>
+            <%= link_to log_path(log.id) do %><%= attachment_image_tag log, :log_image, size: "200x200", class: "mb-1" %><% end %>
           <% end %>
         </div>
       </div>

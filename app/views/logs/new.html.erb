@@ -1,5 +1,5 @@
 <div class="container all">
-  <%= form_with model: @log, local: true do |f| %>
+  
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 shadow-lg bg-light text pt-5 pb-5">
 
@@ -24,6 +24,8 @@
             <% end %>
           </div>
         </div>
+        
+        <%= form_with model: @log, local: true do |f| %>
 
         <div class="row text-dark">
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

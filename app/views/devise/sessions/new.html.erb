@@ -33,9 +33,14 @@
             <span class="btn-border2"><%= f.submit "Log in", class: "btn" %><br /><i class="fas fa-arrow-alt-circle-right pb-2"></i></span>
           </div>
         </div>
-      <% end %>
 
-            <%= render "devise/shared/links" %>
+        <div class="row mt-4">
+          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 offset-xs-4 offset-sm-4 offset-md-4 offset-lg-4 text-center">
+            <span class="btn-border2"><%= link_to users_guest_sign_in_path, method: :post, class: "btn" do %>Guest Log in<% end %><br /><i class="fas fa-arrow-alt-circle-right pb-2"></i></span>
+          </div>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>

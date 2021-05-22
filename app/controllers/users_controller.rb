@@ -45,6 +45,10 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to my_page_user_path
+    end
   end
 
   def withdraw

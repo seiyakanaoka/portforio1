@@ -76,9 +76,9 @@ header {
 }
 // ハンバーガーーーーーーーーーー＞
 #hm-icon {
-  position: fixed;
+  position: absolute;
   right: 40px;
-  top: 3%;
+  top: 40%;
   z-index: 1700;
 }
 .menu-trigger,
@@ -400,7 +400,6 @@ header {
   opacity: 1;
   transform: translateX(200px);
 }
-
 .go {
   text-align: center;
 }
@@ -410,7 +409,6 @@ header {
   margin-bottom: 20px;
   padding-top: 150px;
 }
-
 // Homeの画像スライドここまでーーーーーー＞
 // Homeここまでーーーーーーー＞
 
@@ -621,7 +619,6 @@ a:hover {
   cursor: pointer;
   transform: scale(1.1, 1.1);
 }
-
 // DM機能ーーーーーーーーーーーーー＞
 .dm_host_user {
   font-size: 32px;
