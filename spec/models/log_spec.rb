@@ -4,6 +4,73 @@ require 'rails_helper'
 
 RSpec.describe 'Logモデルのテスト', type: :model do
 
+  describe 'メソッドの確認' do
+    describe 'いいね機能のテスト' do
+
+      context 'ログインユーザーのいいねデータの有無確認' do
+        let(:user) { FactoryBot.create(:user) }
+        let(:log) { FactoryBot.create(:log, user: user) }
+
+        before do
+          user.favorites.create(log_id: log.id)
+        end
+
+        it 'Favoriteモデルにログインユーザーのデータが存在する場合' do
+          expect(log.favorited_by?(user)).to eq true
+        end
+        it 'Favoriteモデルにログインユーザーのデータが存在しない場合' do
+          user.favorites.find_by(log_id: log.id).destroy
+          expect(log.favorited_by?(user)).to eq false
+        end
+      end
+
+      context 'いいねした時の通知機能の確認' do
+        let(:user) { FactoryBot.create(:user) }
+        let!(:other_user) { FactoryBot.create(:user) }
+        let!(:other_log) { FactoryBot.create(:log, user: other_user) }
+
+        before do
+          user.favorites.create(log_id: other_log.id)
+        end
+
+        it 'ログインユーザーが他の投稿にいいねした時、通知情報が作成されるか' do
+          expect(other_log.create_notification_favorite!(user)).to eq true
+        end
+      end
+    end
+
+    describe 'ブックマーク機能のテスト' do
+      let(:user) { FactoryBot.create(:user) }
+      let(:log) { FactoryBot.create(:log, user: user) }
+
+      before do
+        user.bookmarks.create(log_id: log.id)
+      end
+
+      it 'Favoriteモデルにログインユーザーのデータが存在する場合' do
+        expect(log.bookmarked_by?(user)).to eq true
+      end
+      it 'Favoriteモデルにログインユーザーのデータが存在しない場合' do
+        user.bookmarks.find_by(log_id: log.id).destroy
+        expect(log.bookmarked_by?(user)).to eq false
+      end
+    end
+
+    describe 'コメントの通知機能のテスト' do
+      let(:user) { FactoryBot.create(:user) }
+      let!(:other_user) { FactoryBot.create(:user) }
+      let!(:other_log) { FactoryBot.create(:log, user: other_user) }
+
+      before do
+        other_log.log_comments.create(log_id: other_log.id, user_id: user.id, comment: "test")
+      end
+
+      it 'Favoriteモデルにログインユーザーのデータが存在しない場合' do
+        expect(other_log.create_notification_comment!(user, user.log_comments)).to eq true
+      end
+    end
+  end
+
   describe '実際に投稿してみる' do
     subject { log.valid? }
 

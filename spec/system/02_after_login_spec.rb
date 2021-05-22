@@ -35,12 +35,6 @@ describe '[STEP2] ユーザーログイン後のテスト' do
         click_link new_log_link
         is_expected.to eq '/logs/new'
       end
-      # it 'Rankingを押すとランキング画面に遷移する' do
-      #   ranking_link = find_all('a')[10].native.inner_text
-      #   ranking_link = ranking_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-      #   click_link ranking_link
-      #   is_expected.to eq '/'
-      # end
       it 'DM Listを押すとDM一覧画面に遷移する' do
         dm_list_link = find_all('a')[11].native.inner_text
         dm_list_link = dm_list_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
@@ -65,16 +59,22 @@ describe '[STEP2] ユーザーログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/logs'
       end
-      # it '自分の画像のリンク先が正しい' do
-      #   # binding.pry
-      #   expect(page).to have_link '', href: user_path(log.user)
-      # end
+      it '自分の画像のリンク先が正しい' do
+        # binding.pry
+        expect(page).to have_link '', href: my_page_user_path(log.user)
+      end
       it '他人の画像のリンク先が正しい' do
         expect(page).to have_link '', href: user_path(other_log.user)
       end
-      # it '新規投稿ボタンのリンク先が正しい' do
-      #   expect(page).to have_link '投稿する'
-      # end
+
+      context 'logがある場合' do
+        let!(:log) { create(:log, user: user) }
+
+        it '新規投稿ボタンのリンク先が正しい' do
+          expect(page).to have_link '投稿する'
+        end
+
+      end
       it '自分の投稿と他人の投稿の画像のリンク先がそれぞれ正しい' do
         expect(page).to have_link '', href: log_path(log)
         expect(page).to have_link '', href: log_path(other_log)

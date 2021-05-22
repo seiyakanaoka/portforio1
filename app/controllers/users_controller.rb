@@ -53,13 +53,13 @@ class UsersController < ApplicationController
 
   def withdraw
     @user = User.find(params[:id])
-    unless @user.email == "guest@example.com"
+    if @user.email == "guest@example.com"
+      redirect_to my_page_user_path(@user)
+    else
       @user.update(is_deleted: true)
       reset_session
       flash[:alert] = "退会処理を実行いたしました"
       redirect_to root_path
-    else
-      redirect_to my_page_user_path(@user)
     end
   end
 

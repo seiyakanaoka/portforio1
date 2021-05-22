@@ -23,7 +23,7 @@ class Log < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-    enum weather: {
+  enum weather: {
     ☀️: 0,
     🌥: 1,
     ☔: 2,
@@ -74,7 +74,7 @@ class Log < ApplicationRecord
       if notification.visitor_id == notification.visited_id
         notification.checked = true
       end
-      notification.save if notification.valid?  # （エラーが発生した場合はture, ない場合はfalseを返す）
+      notification.save  # （エラーが発生した場合はture, ない場合はfalseを返す）
     end
   end
 

@@ -41,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && !self.is_deleted
   end
 
   def follow(user_id)
