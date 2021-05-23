@@ -2,6 +2,11 @@
   <div class="row">
     </div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 
+    <div class="row mb-5">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3 text-center">
+        <h2 class="logo">Hashtag</h2>
+      </div>
+    </div>
 
     <% unless params[:name] == nil %>
       <div class="row mb-5">
@@ -12,7 +17,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row border-top dorder-dark pt-2">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 offset-xs-2 offset-sm-2 offset-md-2 offset-lg-2 hashtag-name">
           <% @hashtags.sort.reverse.each do |count| %>
             <% count[1].each do |hashtag| %>

@@ -9,7 +9,7 @@ FactoryBot.define do
     title { Faker::Lorem.characters(number: 10) }
     body { Faker::Lorem.characters(number: 100) }
     address { Faker::Lorem.characters(number: 20) }
-    hashbody { Faker::Lorem.characters(number: 10) }
+    hashbody { "test" }
     impressions_count { 0 }
     latitude { 0 }
     longitude { 0 }

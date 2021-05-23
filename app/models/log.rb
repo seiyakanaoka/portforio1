@@ -42,14 +42,18 @@ class Log < ApplicationRecord
    #DBへのコミット直前に実施する
   after_create do
     log = Log.find_by(id: self.id)
+    # 正規表現でLogのhashbodyの「#」がついた文字列を検索する
     hashtags  = self.hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    # hashtags変数の中で、重複するものは除外し、配列として返す（それをブロック変数で使えるようにする）
     hashtags.uniq.map do |hashtag|
-      #ハッシュタグは先頭の'#'を外した上で保存
+      #ハッシュタグは先頭の'#'を外した上で保存　find_or_create_byメソッドで、データにない場合は作る
       tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+      # logのhashtagsに上記の情報を入れる
       log.hashtags << tag
     end
   end
-
+  
+  # 更新時のメソッド
   before_update do
     log = Log.find_by(id: self.id)
     log.hashtags.clear
