@@ -7,7 +7,7 @@
         <% unless @bookmarks.empty? %>
           <% @bookmarks.reverse.each do |mark|%>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mt-5 mb-5 text-center user-memory">
-              <%= link_to log_path(mark.log) do %><%= attachment_image_tag mark.log, :log_image, size: "160x160", class: "w-100 h-100"%><% end %>
+              <%= link_to log_path(mark.log) do %><%= attachment_image_tag mark.log, :log_image, size: "210x210", class: "w-100" %><% end %>
             </div>
           <% end %>
         <% end %>
