@@ -70,9 +70,9 @@ describe '[STEP2] ユーザーログイン後のテスト' do
       context 'logがある場合' do
         let!(:log) { create(:log, user: user) }
 
-        it '新規投稿ボタンのリンク先が正しい' do
-          expect(page).to have_link '投稿する'
-        end
+        # it '新規投稿ボタンのリンク先が正しい' do
+        #   expect(page).to have_link '投稿する'
+        # end
 
       end
       it '自分の投稿と他人の投稿の画像のリンク先がそれぞれ正しい' do
@@ -188,7 +188,7 @@ describe '[STEP2] ユーザーログイン後のテスト' do
 
     # context '投稿成功のテスト' do
     #   before do
-    #     # fill_in 'log[log_image]', with: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/sea-view12.jpg'
+    #     fill_in 'log[log_image]', with: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/sea-view12.jpg'))
     #     select "☀️" , from: 'log[weather]'
     #     select 1 , from: 'log[water_temperature]'
     #     select 1 , from: 'log[dive_depth]'
@@ -200,10 +200,9 @@ describe '[STEP2] ユーザーログイン後のテスト' do
     #     fill_in 'log[address]', with: Faker::Lorem.characters(number: 20)
     #   end
 
-    #   it '自分の新しい投稿が正しく保存される' do
-    #     binding.pry
-    #     expect { click_button '投稿' }.to change(user.logs, :count).by(1)
-    #   end
+    #   # it '自分の新しい投稿が正しく保存される' do
+    #   #   expect { click_button '投稿' }.to change(user.logs, :count).by(1)
+    #   # end
     #   it 'リダイレクト先が、投稿一覧画面になっている' do
     #     click_button '投稿'
     #     expect(current_path).to eq '/logs'

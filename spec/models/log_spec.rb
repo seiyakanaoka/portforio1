@@ -127,11 +127,6 @@ RSpec.describe 'Logモデルのテスト', type: :model do
     end
 
     context 'titleカラム' do
-      # it '20文字以下であること: 20文字は〇' do
-      #   log.title = Faker::Lorem.characters(number: 20)
-      #   # binding.pry
-      #   is_expected.to eq true
-      # end
       it '20文字以下であること: 21文字は×' do
         log.title = Faker::Lorem.characters(number: 21)
         is_expected.to eq false
@@ -139,10 +134,6 @@ RSpec.describe 'Logモデルのテスト', type: :model do
     end
 
     context 'bodyカラム' do
-      # it '150文字以下であること: 150文字は〇' do
-      #   log.body = Faker::Lorem.characters(number: 150)
-      #   is_expected.to eq true
-      # end
       it '150文字以下であること: 151文字は×' do
         log.body = Faker::Lorem.characters(number: 151)
         is_expected.to eq false
