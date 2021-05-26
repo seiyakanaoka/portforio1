@@ -14,7 +14,7 @@ class LogCommentsController < ApplicationController
   end
 
   def destroy
-    @destroy = LogComment.find_by(id: params[:id], log_id:params[:log_id]).destroy.id
+    @destroy = LogComment.find_by(id: params[:id], log_id: params[:log_id]).destroy.id
   end
 
   private
@@ -22,5 +22,4 @@ class LogCommentsController < ApplicationController
   def comment_params
     params.require(:log_comment).permit(:comment, :reply_comment)
   end
-
 end

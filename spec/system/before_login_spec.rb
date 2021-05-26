@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe '[STEP1] ユーザーログイン前のテスト'do
-
+describe '[STEP1] ユーザーログイン前のテスト' do
   describe 'トップ画面のテスト' do
     before do
       visit root_path
@@ -198,8 +197,8 @@ describe '[STEP1] ユーザーログイン前のテスト'do
 
     context 'ログイン失敗のテスト' do
       before do
-        fill_in 'user[name]', with:  ''
-        fill_in 'user[password]',with:  ''
+        fill_in 'user[name]', with: ''
+        fill_in 'user[password]', with: ''
         click_button 'Log in'
       end
 
@@ -251,7 +250,7 @@ describe '[STEP1] ユーザーログイン前のテスト'do
   end
 
   describe 'ユーザーのログアウトのテスト' do
-    let(:user) {create(:user)}
+    let(:user) { create(:user) }
 
     before do
       visit new_user_session_path
@@ -275,5 +274,4 @@ describe '[STEP1] ユーザーログイン前のテスト'do
       end
     end
   end
-
 end

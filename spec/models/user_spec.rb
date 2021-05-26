@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Userモデルのテスト', type: :model do
-
   describe 'メソッドの確認' do
     describe '退会機能の確認' do
       let(:user) { FactoryBot.create(:user) }
@@ -53,25 +52,24 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
   end
 
-  it "有効な名前、メール、パスワード、電話番号がある場合は保存されるか、" do
+  it '有効な名前、メール、パスワード、電話番号がある場合は保存されるか、' do
     expect(FactoryBot.build(:user)).to be_valid
   end
 
-  context "空白のバリデーションチェック" do
-    it "名前、メール、パスワード、電話番号が空白の場合、バリデーションチェックされエラーメッセージが返ってくるか" do
+  context '空白のバリデーションチェック' do
+    it '名前、メール、パスワード、電話番号が空白の場合、バリデーションチェックされエラーメッセージが返ってくるか' do
       user_info = User.new(name: '', email: '', password: '', telephone_number: '')
       expect(user_info).to be_invalid
     end
-    it "プロフィール画像が空白の場合、バリデーションチェックされエラーメッセージが返ってくるか" do
+    it 'プロフィール画像が空白の場合、バリデーションチェックされエラーメッセージが返ってくるか' do
       image = User.new(profile_image: '')
       expect(image).to be_invalid
     end
-    it "ニックネームが空白の場合、バリデーションチェックされエラーメッセージが返ってくるか" do
+    it 'ニックネームが空白の場合、バリデーションチェックされエラーメッセージが返ってくるか' do
       nick_name = User.new(nick_name: '')
       expect(nick_name).to be_invalid
     end
   end
-
 
   describe 'アソシエーションのテスト' do
     context 'Bookモデルとの関係' do

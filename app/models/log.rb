@@ -26,10 +26,10 @@ class Log < ApplicationRecord
   enum weather: {
     ☀️: 0,
     🌥: 1,
-    ☔: 2,
+    ☔: 2
   }
 
-  is_impressionable counter_cache: true, :unique => true
+  is_impressionable counter_cache: true, unique: true
 
   def favorited_by?(user)
     favorites.where(user_id: user).exists?
@@ -39,25 +39,25 @@ class Log < ApplicationRecord
     bookmarks.where(user_id: user).exists?
   end
 
-   #DBへのコミット直前に実施する
+  # DBへのコミット直前に実施する
   after_create do
-    log = Log.find_by(id: self.id)
+    log = Log.find_by(id: id)
     # 正規表現でLogのhashbodyの「#」がついた文字列を検索する
-    hashtags  = self.hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     # hashtags変数の中で、重複するものは除外し、配列として返す（それをブロック変数で使えるようにする）
     hashtags.uniq.map do |hashtag|
-      #ハッシュタグは先頭の'#'を外した上で保存　find_or_create_byメソッドで、データにない場合は作る
+      # ハッシュタグは先頭の'#'を外した上で保存　find_or_create_byメソッドで、データにない場合は作る
       tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
       # logのhashtagsに上記の情報を入れる
       log.hashtags << tag
     end
   end
-  
+
   # 更新時のメソッド
   before_update do
-    log = Log.find_by(id: self.id)
+    log = Log.find_by(id: id)
     log.hashtags.clear
-    hashtags = self.hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
       tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
       log.hashtags << tag
@@ -66,7 +66,8 @@ class Log < ApplicationRecord
 
   def create_notification_favorite!(current_user)
     # すでにいいねされているか検索
-    temp = Notification.where(['visitor_id = ? and visited_id = ? and log_id = ? and action = ? ', current_user.id, user_id, id, 'favorite'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and log_id = ? and action = ? ', current_user.id,
+                               user_id, id, 'favorite'])
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
@@ -75,10 +76,8 @@ class Log < ApplicationRecord
         action: 'favorite'
       )
       # 自分の投稿に対するいいねの場合は、通知済みとする
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
-      notification.save  # （エラーが発生した場合はture, ない場合はfalseを返す）
+      notification.checked = true if notification.visitor_id == notification.visited_id
+      notification.save # （エラーが発生した場合はture, ない場合はfalseを返す）
     end
   end
 
@@ -101,10 +100,7 @@ class Log < ApplicationRecord
       action: 'comment'
     )
     # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visitor_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
-
 end

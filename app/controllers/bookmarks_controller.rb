@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-   before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     @log = Log.find(params[:log_id])

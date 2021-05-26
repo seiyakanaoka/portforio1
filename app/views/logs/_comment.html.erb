@@ -9,16 +9,13 @@
         <strong><%= comment.user.name %></strong>
       <% end %>
       <%= comment.comment %>
-      <% if comment.user_id == current_user %>
-        <%= link_to '削除', log_log_comment_path(comment.log, comment), method: :delete, remote: true, class: "btn text-danger" %>
-      <% end %>
 
       <div class="row mt-1">
         <div class="col-sm-8">
           <%= form_with(model:[log, LogComment.new]) do |f| %>
-          <%= f.text_field :comment, class: "rounded-pill form-control" %>
-          <%= f.hidden_field :reply_comment, :value => comment.id  %>
-          <%= f.submit "返信する", class: "btn" %>
+            <%= f.text_field :comment, class: "rounded-pill form-control" %>
+            <%= f.hidden_field :reply_comment, :value => comment.id  %>
+            <%= f.submit "返信する", class: "btn" %>
           <% end %>
         </div>
       </div>

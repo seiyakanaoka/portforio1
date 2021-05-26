@@ -3,7 +3,8 @@ class MessagesController < ApplicationController
 
   def create
     if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
-      @message = Message.create(params.require(:message).permit(:user_id, :room_id, :content).merge(user_id: current_user.id))
+      @message = Message.create(params.require(:message).permit(:user_id, :room_id,
+                                                                :content).merge(user_id: current_user.id))
       @room = @message.room
 
       @othermember = Entry.where(room_id: @room.id).where.not(user_id: current_user.id)
@@ -15,9 +16,7 @@ class MessagesController < ApplicationController
         visitor_id: current_user.id,
         action: 'dm'
       )
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
+      notification.checked = true if notification.visitor_id == notification.visited_id
       notification.save if notification.valid?
 
     else

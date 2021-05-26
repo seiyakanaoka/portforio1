@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :dive_profile, :follow, :follower]
+  before_action :set_user, only: %i[show edit update dive_profile follow follower]
 
   def show
-    if @user.id == current_user.id
-      render :my_page
-    end
+    render :my_page if @user.id == current_user.id
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
-          if cu.room_id == u.room_id then
+          if cu.room_id == u.room_id
             @isRoom = true
             @roomid = cu.room_id
           end
@@ -26,7 +24,7 @@ class UsersController < ApplicationController
 
   def edit
     if @user == current_user
-      render "edit"
+      render 'edit'
     else
       redirect_to user_path(current_user)
     end
@@ -46,19 +44,17 @@ class UsersController < ApplicationController
 
   def unsubscribe
     @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to my_page_user_path
-    end
+    redirect_to my_page_user_path unless @user == current_user
   end
 
   def withdraw
     @user = User.find(params[:id])
-    if @user.email == "guest@example.com"
+    if @user.email == 'guest@example.com'
       redirect_to my_page_user_path(@user)
     else
       @user.update(is_deleted: true)
       reset_session
-      flash[:alert] = "退会処理を実行いたしました"
+      flash[:alert] = '退会処理を実行いたしました'
       redirect_to root_path
     end
   end
@@ -82,11 +78,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:profile_image, :nick_name, :introduction, :license_rank, :best_point, :best_point_image)
+    params.require(:user).permit(:profile_image, :nick_name, :introduction, :license_rank, :best_point,
+                                 :best_point_image)
   end
 
   def set_user
     @user = User.find(params[:id])
   end
-
 end

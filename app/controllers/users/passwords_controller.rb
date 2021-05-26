@@ -14,9 +14,7 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   def ensure_normal_user
-    if params[:user][:email].downcase == 'guest@example.com'
-      redirect_to new_user_session_path
-    end
+    redirect_to new_user_session_path if params[:user][:email].downcase == 'guest@example.com'
   end
 
   # GET /resource/password/edit?reset_password_token=abcdef

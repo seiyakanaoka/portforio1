@@ -73,7 +73,6 @@ describe '[STEP2] ユーザーログイン後のテスト' do
         # it '新規投稿ボタンのリンク先が正しい' do
         #   expect(page).to have_link '投稿する'
         # end
-
       end
       it '自分の投稿と他人の投稿の画像のリンク先がそれぞれ正しい' do
         expect(page).to have_link '', href: log_path(log)
@@ -144,7 +143,7 @@ describe '[STEP2] ユーザーログイン後のテスト' do
 
   describe '新規投稿画面のテスト' do
     before do
-    visit new_log_path
+      visit new_log_path
     end
 
     context '表示の確認' do

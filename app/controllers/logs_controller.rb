@@ -1,6 +1,6 @@
 class LogsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_log, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :set_log, only: %i[edit update destroy]
 
   def new
     @log = Log.new
@@ -21,10 +21,10 @@ class LogsController < ApplicationController
   end
 
   def show
-    @log = Log.includes(log_comments: [:user, :replies]).find(params[:id])
+    @log = Log.includes(log_comments: %i[user replies]).find(params[:id])
     @logcomment = LogComment.new
     gon.log = @log
-    impressionist(@log, nil, :unique => [:session_hash.to_s])
+    impressionist(@log, nil, unique: [:session_hash.to_s])
   end
 
   def edit
@@ -51,11 +51,11 @@ class LogsController < ApplicationController
   def hashtag
     @user = current_user
     if params[:name].nil?
-      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.logs.count}
+      @hashtags = Hashtag.all.to_a.group_by { |hashtag| hashtag.logs.count }
     else
       @hashtag = Hashtag.find_by(hashname: params[:name])
       @log = @hashtag.logs.page(params[:page]).per(20).reverse_order
-      @hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.logs.count}
+      @hashtags = Hashtag.all.to_a.group_by { |hashtag| hashtag.logs.count }
     end
   end
 
@@ -66,7 +66,7 @@ class LogsController < ApplicationController
   end
 
   def log_params
-    params.require(:log).permit(:log_image, :title, :body, :weather, :water_temperature, :dive_number, :dive_depth, :dive_point, :hashbody, :address, :latitude, :longitude)
+    params.require(:log).permit(:log_image, :title, :body, :weather, :water_temperature, :dive_number, :dive_depth,
+                                :dive_point, :hashbody, :address, :latitude, :longitude)
   end
-
 end

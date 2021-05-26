@@ -22,11 +22,9 @@ class Users::SessionsController < Devise::SessionsController
 
   def reject_user
     @user = User.find_by(name: params[:user][:name])
-    if @user
-      if !@user.active_for_authentication?
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_user_registration_path
-      end
+    if @user && !@user.active_for_authentication?
+      flash[:notice] = '退会済みです。再度ご登録をしてご利用ください。'
+      redirect_to new_user_registration_path
     end
   end
 
@@ -41,6 +39,4 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
-
 end

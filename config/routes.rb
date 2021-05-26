@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {
-    :registrations => 'users/registrations',
-    :sessions => 'users/sessions',
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
     password: 'users/passwords'
   }
   devise_scope :user do
@@ -24,11 +24,11 @@ Rails.application.routes.draw do
   end
 
   resources :logs do
-    resources :log_comments, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
-    resource :bookmarks, only: [:create, :destroy]
+    resources :log_comments, only: %i[create destroy]
+    resource :favorites, only: %i[create destroy]
+    resource :bookmarks, only: %i[create destroy]
   end
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: %i[show edit update] do
     member do
       get :follow, :follower
       get :my_page
@@ -37,10 +37,9 @@ Rails.application.routes.draw do
       get :bookmark_list
       patch :withdraw
     end
-    resource :relationships, only: [:create, :destroy]
+    resource :relationships, only: %i[create destroy]
   end
 
-  resources :rooms, only: [:index, :show, :create]
+  resources :rooms, only: %i[index show create]
   resources :messages, only: [:create]
-
 end

@@ -34,13 +34,13 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address:              'smtp.gmail.com',
-  port:                 587,
-  domain:               'example.com',
-  user_name:            ENV['MY_EMAIL_ADDRESS'],
-  password:             ENV['MY_GOOGLE_APPLICATION_PASSWORD'],
-  authentication:       'plain',
-  enable_starttls_auto: true,
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'example.com',
+    user_name: ENV['MY_EMAIL_ADDRESS'],
+    password: ENV['MY_GOOGLE_APPLICATION_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
 
   config.action_mailer.perform_caching = false

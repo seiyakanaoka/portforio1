@@ -3,10 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Logモデルのテスト', type: :model do
-
   describe 'メソッドの確認' do
     describe 'いいね機能のテスト' do
-
       context 'ログインユーザーのいいねデータの有無確認' do
         let(:user) { FactoryBot.create(:user) }
         let(:log) { FactoryBot.create(:log, user: user) }
@@ -62,7 +60,7 @@ RSpec.describe 'Logモデルのテスト', type: :model do
       let!(:other_log) { FactoryBot.create(:log, user: other_user) }
 
       before do
-        other_log.log_comments.create(log_id: other_log.id, user_id: user.id, comment: "test")
+        other_log.log_comments.create(log_id: other_log.id, user_id: user.id, comment: 'test')
       end
 
       it 'Favoriteモデルにログインユーザーのデータが存在しない場合' do
