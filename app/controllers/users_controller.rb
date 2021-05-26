@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   end
 
   def bookmark_list
-    @bookmarks = Bookmark.where(user_id: current_user.id)
+    @bookmarks = Bookmark.includes(:log).where(user_id: current_user.id)
   end
 
   private
