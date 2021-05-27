@@ -7,36 +7,38 @@
           <h2 class="logo mb-3">follow</h2>
         </div>
       </div>
-
-      <div class="row bg-light">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-          <table class="table table-border-bottom">
-            <tbody>
-              <% @follow.each do |follow| %>
-              <tr>
-                <td><%= link_to user_path(follow.id), class: "text-dark" do %><%= attachment_image_tag follow, :profile_image, size: "50x50", class: "rounded-circle" %><% end %></td>
-                <td>
-                  <%= link_to user_path(follow.id), class: "text-dark" do %>
-                    <% if follow.nick_name %>
-                      <span><strong><%= follow.nick_name %></strong><small> by  <%= follow.name %></small></span>
-                    <% else %>
-                      <%= follow.name %>
+      
+      <% if @follow.present? %>
+        <div class="row bg-light">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <table class="table table-border-bottom">
+              <tbody>
+                <% @follow.each do |follow| %>
+                <tr>
+                  <td><%= link_to user_path(follow.id), class: "text-dark" do %><%= attachment_image_tag follow, :profile_image, size: "50x50", class: "rounded-circle" %><% end %></td>
+                  <td>
+                    <%= link_to user_path(follow.id), class: "text-dark" do %>
+                      <% if follow.nick_name %>
+                        <span><strong><%= follow.nick_name %></strong><small> by  <%= follow.name %></small></span>
+                      <% else %>
+                        <%= follow.name %>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                </td>
-                <td>
-                  <% if current_user != follow %>
-                    <span class="ml-2" id="follow_<%= follow.id %>">
-                      <%= render 'relationships/follow', user: follow %>
-                    </span>
-                  <% end %>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
+                  </td>
+                  <td>
+                    <% if current_user != follow %>
+                      <span class="ml-2" id="follow_<%= follow.id %>">
+                        <%= render 'relationships/follow', user: follow %>
+                      </span>
+                    <% end %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
+      <% end %>
 
     </div>
   </div>
