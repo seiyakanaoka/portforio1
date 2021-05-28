@@ -12,7 +12,7 @@
             <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 pt-3"><br /><br />
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h1 class="logo text-center">Memories</h1>
+                <h1 class="logo text-center logo-text">Memories</h1>
               </div>
             </div>
             <h2 class="text-center">さぁ、思い出を投稿しよう！</h2><br /><br />
@@ -20,7 +20,7 @@
             <p class="custom-btn"><%= link_to new_log_path, class: "btn-gradation rounded-pill" do %>投稿する<% end %></p><br />
               <% @logs.reverse.each do |log| %>
             <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 logs text-dark shadow-lg bg-light border border-light mb-5 pt-3 pb-3 content">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 logs text-dark shadow-lg bg-white border border-light mb-5 pt-3 pb-3 content">
                 <div class="row">
                   <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 index-user float-left">
                     <% if log.user != current_user %>
@@ -78,7 +78,7 @@
           <%= render 'logs/log', logs: @logs %>
         <% end %>
         <% if user_signed_in? %>
-          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 pt-5 shadow-lg bg-light border border-light text" style="height: 430px; position: fixed; right: 150px; top: 130px;">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 pt-5 shadow-lg bg-white border border-light text" style="height: 430px; position: fixed; right: 150px; top: 130px;">
             <h3 class="text-center logo mb-3">My Profile</h3>
 
             <table class="table table-borderless">

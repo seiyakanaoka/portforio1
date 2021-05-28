@@ -30,7 +30,24 @@
           <%= attachment_image_tag @log, :log_image, class: "w-100 h-auto" %>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <%= @log.body %>
+          <p>
+            <% if @log.user != current_user %>
+            <%= link_to user_path(@log.user_id) do %>
+              <p>
+                <%= attachment_image_tag @log.user, :profile_image, size: "50x50", class: "rounded-circle" %>
+                <span class="text-dark"><%= @log.user.name %></span>
+              </p>
+            <% end %>
+          <% else %>
+            <%= link_to my_page_user_path(current_user.id) do %>
+              <p>
+                <%= attachment_image_tag current_user, :profile_image, size: "50x50", class: "rounded-circle" %>
+                <span class="text-dark"><%= current_user.name %></span>
+              </p>
+            <% end %>
+          <% end %>
+          </p>
+          <p><%= @log.body %><p>
         </div>
       </div>
 
@@ -112,5 +129,5 @@
   }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MY_GOOGLE_MAP_API'] %>&callback=initMap" async defer>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MY_GOOGLE_MAP_API'] %>&callback=initMap">
 </script>
