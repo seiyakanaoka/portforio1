@@ -63,6 +63,20 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "portforio1_#{Rails.env}"
 
+  config.action_mailer.default_url_options = { host: '18.178.246.121/' }
+
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'example.com',
+    user_name: ENV['MY_EMAIL_ADDRESS'],
+    password: ENV['MY_GOOGLE_APPLICATION_PASSWORD'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
