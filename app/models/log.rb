@@ -87,8 +87,6 @@ class Log < ApplicationRecord
     temp_ids.each do |temp_id|
       save_notification_comment!(current_user, log_comment_id, temp_id['user_id'])
     end
-    # まだ誰もコメントしていない場合は、投稿者に通知を送る
-    save_notification_comment!(current_user, log_comment_id, user_id)
   end
 
   def save_notification_comment!(current_user, log_comment_id, visited_id)
