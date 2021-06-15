@@ -7,7 +7,6 @@ class LogCommentsController < ApplicationController
     @comment.log_id = @log.id
     if @comment.save
       # 通知機能
-      @log.save_notification_comment!(current_user, @comment.id, @log.user_id)
       @log.create_notification_comment!(current_user, @comment.id)
     else
       render 'logs/show'
