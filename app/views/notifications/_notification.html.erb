@@ -13,11 +13,7 @@
           <% when  'favorite' then %>
             <%= link_to 'あなたの投稿', notification.log, class: "text-dark", style: "font-weight: bold;" %><%= "にいいねしました" %>
           <% when 'comment' then %>
-            <% if notification.log.user_id == visited.id %>
-              <%= link_to "あなたの投稿", notification.log, class: "text-dark", style: "font-weight: bold;" %>
-            <% else %>
-              <%= notification.log.user.name + "さんの" %><%= link_to "投稿", notification.log, class: "text-dark", style: "font-weight: bold;" %>
-            <% end %>
+            <%= link_to "投稿", notification.log, class: "text-dark", style: "font-weight: bold;" %>
             <span>
               <%= "にコメントしました" %>
               <p class="text-secondary"><%= LogComment.find_by(id: notification.log_comment_id).comment %></p>
