@@ -13,7 +13,7 @@
           <% when  'favorite' then %>
             <%= link_to 'あなたの投稿', notification.log, class: "text-dark", style: "font-weight: bold;" %><%= "にいいねしました" %>
           <% when 'comment' then %>
-            <%= link_to "あなたの投稿", notification.log, class: "text-dark", style: "font-weight: bold;" %>
+            <%= link_to "投稿", notification.log, class: "text-dark", style: "font-weight: bold;" %>
             <span>
               <%= "にコメントしました" %>
               <p class="text-secondary"><%= LogComment.find_by(id: notification.log_comment_id).comment %></p>
