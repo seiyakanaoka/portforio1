@@ -32,13 +32,13 @@ $(document).on('turbolinks:load', () => {
 });
 
 // 検索機能ーーーーーーーー＞
-$(document).on('turbolinks:load', () => {
-  $(function(){
-    $("#search__form").on('ajax:success', function(event) {
-        $("#result").html(event.detail[2].response);
-    });
-  });
-});
+// $(document).on('turbolinks:load', () => {
+//   $(function(){
+//     $("#search__form").on('ajax:success', function(event) {
+//         $("#result").html(event.detail[2].response);
+//     });
+//   });
+// });
 // 検索機能ここまでーーーーーーーー＞
 //ハンバーガー------------>
 document.addEventListener("turbolinks:load", function () {
