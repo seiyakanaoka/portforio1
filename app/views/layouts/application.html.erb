@@ -26,132 +26,19 @@
           <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
           <!--  <span class="navbar-toggler-icon"></sapn>-->
           <!--</button>-->
-
+        
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
              <ul class="navbar-nav">
-              <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to logs_path,  class: "nav-link deco text-dark" do %><i class="fas fa-list"></i><% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to new_log_path, class: "nav-link deco text-dark" do %><i class="far fa-plus-square"></i><% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to ranks_path, class: "nav-link deco text-dark" do %><i class="fas fa-award"></i><% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to rooms_path, class: "nav-link deco text-dark" do %>
-                    <i class="fas fa-envelope icon_layers_icon"></i>
-                  <% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to notifications_path, class: "nav-link deco" do %>
-                    <% if unchecked_notifications.any? %>
-                    <span class="icon_layers fa-fw text-dark">
-                      <i class="fas fa-bell icon_layers_icon"></i>
-                      <% if unchecked_notifications.exists? %>
-                        <span class="icon_layers_counter rounded-circle text-center"><%= unchecked_notifications.count %></span>
-                      <% end %>
-                    </span>
-                    <% else %>
-                    <i class="fas fa-bell text-dark"></i>
-                    <% end %>
-                  <% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to my_page_user_path(current_user.id), class: "nav-link deco text-dark" do %><i class="fas fa-user-circle"></i><% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to destroy_user_session_path, method: :delete, class: "nav-link deco text-dark" do %><i class="fas fa-sign-out-alt"></i><% end %>
-                </li>
-              <% else %>
-
-                <li class="nav-item">
-                  <%= link_to logs_path,  class: "nav-link deco text-dark" do %><i class="far fa-list-alt"></i><% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to ranks_path, class: "nav-link deco text-dark" do %><i class="fas fa-award"></i><% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to new_user_registration_path, class: "nav-link deco text-dark" do %><i class="fas fa-plus"></i><% end %>
-                </li>
-
-                <li class="nav-item">
-                  <%= link_to new_user_session_path, class: "nav-link deco text-dark" do %><i class="fas fa-sign-in-alt"></i><% end %>
-                </li>
-              <% end %>
+              <%= render "layouts/header" %>
             </ul>
           </div>
-
+        
           <div id="sp-menu">
             <ul>
-              <% if user_signed_in? %>
-                <li>
-                  <%= link_to logs_path do %>Log List<% end %>
-                  <p>投稿一覧</p>
-                </li>
-
-                <li>
-                  <%= link_to new_log_path do %>New Log<% end %>
-                  <p>新規投稿</p>
-                </li>
-
-                <li>
-                  <%= link_to ranks_path do %>Ranking<% end %>
-                  <p>ランキング</p>
-                </li>
-
-                <li>
-                  <%= link_to rooms_path do %>DM List<% end %>
-                  <p>ダイレクトメッセージ</p>
-                </li>
-
-                <li>
-                  <%= link_to my_page_user_path(current_user.id) do %>My Page<% end %>
-                  <p>マイページ</p>
-                </li>
-
-                <li>
-                  <%= link_to destroy_user_session_path, method: :delete do %>Log Out<% end %>
-                  <p>ログアウト</p>
-                </li>
-              <% else %>
-                <li>
-                  <%= link_to logs_path do %>Log List<% end %>
-                  <p>投稿一覧</p>
-                </li>
-
-                <li>
-                  <%= link_to ranks_path do %>Ranking<% end %>
-                  <p>ランキング</p>
-                </li>
-
-                <li>
-                  <%= link_to new_user_registration_path do %>Sign Up<% end %>
-                  <p>会員登録</p>
-                </li>
-
-                <li>
-                  <%= link_to new_user_session_path do %>Sign In<% end %>
-                  <p>ログイン</p>
-                </li>
-
-                <li>
-                  <%= link_to users_guest_sign_in_path, method: :post do %>Guest<% end %>
-                  <p>ゲストログイン</p>
-                </li>
-              <% end %>
+              <%= render "layouts/humburger" %>
             </ul>
           </div>
-
+        
           <div id="hm-icon">
             <span class="menu-trigger">
               <span></span>

@@ -39,7 +39,7 @@
                   <% end %>
                   <strong><%= rank.impressionist_count %>PV</strong><br />
                   <%= link_to log_path(rank.id) do %>
-                    <%= attachment_image_tag rank, :log_image, size: "250x250", class: "image-fluid" %>
+                    <%= attachment_image_tag rank, :log_image, :fill, 250, 250, size: "250x250" %>
                   <% end %>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
