@@ -101,26 +101,10 @@
     </div>
   </div>
 
-  <% if controller.controller_name == "logs" && controller.action_name == "new" %>
-    <div class="row custom-btn">
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
-        <%= f.submit '投稿', class: "btn btn-gradation rounded-pill" %>
-      </div>
+  <div class="row custom-btn">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
+      <%= f.submit '投稿', class: "btn btn-gradation rounded-pill" %>
     </div>
-  <% else %>
-    <div class="row edit-btn">
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
-        <%= f.submit '編集', class: "btn edit-btn-gradation rounded-pill" %>
-      </div>
-    </div>
-
-    <div class="row danger-btn">
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
-        <%= link_to '削除', log_path(log.id), method: :delete, data: {confirm: "削除しますか？"}, class: "btn danger-btn-gradation rounded-pill" %>
-      <div>
-    </div>
-  <% end %>
-
-
+  </div>
 
 <% end %>
