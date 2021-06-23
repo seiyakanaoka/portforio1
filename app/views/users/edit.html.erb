@@ -23,45 +23,7 @@
 
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
-          <%= form_with model: @user, local: true do |f| %>
-
-          <div class="form">
-            <%= f.label :プロフィール画像 %><br />
-            <%= f.attachment_field :profile_image, class: "#{"is-invalid" if @user.errors.include?(:profile_image)}" %>
-          </div>
-
-          <div class="form">
-            <%= f.label :ニックネーム %><br />
-            <%= f.text_field :nick_name, class: "form-control #{"is-invalid" if @user.errors.include?(:nick_name)}" %>
-          </div>
-
-          <div class="form">
-            <%= f.label :自己紹介 %><br />
-            <%= f.text_field :introduction, class: "form-control" %>
-          </div>
-
-          <div class="form">
-            <%= f.label :ダイビングライセンス %><br />
-            <%= f.text_field :license_rank, class: "form-control" %>
-          </div>
-
-          <div class="form">
-            <%= f.label :一番の思い出ポイント %><br />
-            <%= f.text_field :best_point, class: "form-control" %>
-          </div>
-
-          <div class="form">
-            <%= f.label :思い出画像 %><br />
-            <%= f.attachment_field :best_point_image %>
-          </div>
-
-          <div class="row edit-btn">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
-              <%= f.submit '編集', class: "btn edit-btn-gradation rounded-pill" %>
-            </div>
-          </div>
-
-          <% end %>
+          <%= render "users/edit", user: @user %>
 
           <div class="row danger-btn">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
