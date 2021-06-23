@@ -11,133 +11,59 @@
 
         <div class="row text-center text-danger mb-4">
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
-            <% if @log.errors.any? %>
-            <div id="error_explanation">
-              <strong><%= @log.errors.count %>件のエラーが発生しました</strong><br />
-              <h5 class="text-danger">入力内容を確認してください</h5>
-              <ul class="h6" style="list-style: none;">
-              <% @log.errors.full_messages.each do |message| %>
-                <%= message %><br />
-              <% end %>
-              </ul>
-            </div>
-            <% end %>
+            <%= render "logs/log-error", log: @log %>
           </div>
         </div>
 
-        <%= form_with model: @log, local: true do |f| %>
+        <%= render "logs/log-form", log: @log %>
 
-        <div class="row text-dark">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mx-auto">
-                <div class="form mb-3">
-                  <%= f.label :画像 %><br />
-                  <%= f.attachment_field :log_image, class: "#{"is-invalid" if @log.errors.include?(:log_image)}" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mx-auto">
-                <div class="form mb-3">
-                  <%= f.label :天気 %><br />
-                  <%= f.select :weather, options_for_select(Log.weathers.keys), class: "form-control #{"is-invalid" if @log.errors.include?(:weather)}" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mx-auto">
-                <div class="form mb-3">
-                  <%= f.label :水温 %>
-                  <%= f.select :water_temperature, options_for_select((0..30).to_a), {prompt: '選択'}, class: "form-control #{"is-invalid" if @log.errors.include?(:water_temperature)}" %>℃
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mx-auto">
-                <div class="form mb-3">
-                  <%= f.label :潜水深度 %>
-                  <%= f.select :dive_depth, options_for_select((0..50).to_a), {prompt: '選択'}, class: "form-control #{"is-invalid" if @log.errors.include?(:dive_depth)}" %>M
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mx-auto">
-                <div class="form mb-3">
-                  <%= f.label :潜水本数 %>
-                  <%= f.select :dive_number, options_for_select((0..5).to_a), {prompt: '選択'}, class: "form-control #{"is-invalid" if @log.errors.include?(:dive_number)}" %>本
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <div class="row">
-              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                <div class="form mb-3">
-                  <%= f.label :ダイビングポイント %>
-                  <%= f.text_field :dive_point, class: "form-control #{"is-invalid" if @log.errors.include?(:dive_point)}" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                <div class="form mb-3">
-                  <%= f.label :タイトル %>
-                  <%= f.text_field :title, class: "form-control #{"is-invalid" if @log.errors.include?(:title)}" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                <div class="form mb-3">
-                  <%= f.label :内容 %>
-                  <%= f.text_area :body, class: "form-control #{"is-invalid" if @log.errors.include?(:body)}", rows: "6", placeholder: "150文字まで" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                <div class="form mb-3">
-                  <%= f.label :タグ %>
-                  <%= f.text_field :hashbody, class: "form-control" %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row pt-5">
-          <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-center mx-auto map">
-            <div class="row">
-              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 mx-auto">
-                <%= f.label :住所 %>
-                <%= f.text_field :address, class: "form-control #{"is-invalid" if @log.errors.include?(:address)} mt-3 mb-4", placeholder: "住所をここに" %>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row edit-btn">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
-            <%= f.submit '編集', class: "btn edit-btn-gradation rounded-pill" %>
-          </div>
-        </div>
-
-        <div class="row danger-btn">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3">
-            <%= link_to '削除', log_path(@log.id), method: :delete, data: {confirm: "削除しますか？"}, class: "btn danger-btn-gradation rounded-pill" %>
-          <div>
-        </div>
       </div>
     </div>
-  <% end %>
+
 </div>
+
+<script>
+  let map
+  let geocoder
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: -34.397,
+        lng: 150.644
+      },
+      zoom: 8
+    });
+  }
+
+  function codeAddress() {
+    let inputAddress = document.getElementById('address').value;
+
+    geocoder.geocode({
+      'address': inputAddress
+    }, function (results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+
+        // タイトルフォームにデフォルト値として検索値を設定
+        let title = document.getElementById('map_title');
+        title.setAttribute("value", inputAddress);
+
+        // 検索値を隠しデータとしてセット
+        let hidden_address = document.getElementById('hidden_address');
+        hidden_address.setAttribute("value", inputAddress);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MY_GOOGLE_MAP_API'] %>&callback=initMap" async defer>
+</script>

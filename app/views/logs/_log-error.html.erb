@@ -1,0 +1,11 @@
+<% if log.errors.any? %>
+  <div id="error_explanation">
+    <strong><%= log.errors.count %>件のエラーが発生しました</strong><br />
+    <h5 class="text-danger">入力内容を確認してください</h5>
+    <ul class="h6" style="list-style: none;">
+    <% log.errors.full_messages.each do |message| %>
+      <%= message %><br />
+    <% end %>
+    </ul>
+  </div>
+<% end %>
