@@ -16,7 +16,6 @@ class RoomsController < ApplicationController
       myRoomIds << entry.room.id
     end
     @anotherEntries = Entry.includes(:user).where(room_id: myRoomIds).where('user_id != ?', @user)
-    @anotherEntries
   end
 
   def show
