@@ -56,7 +56,6 @@ class LogsController < ApplicationController
       @hashtag = Hashtag.find_by(hashname: params[:name])
       @log = @hashtag.logs.page(params[:page]).per(20).reverse_order
       @hashtags = Hashtag.all.to_a.group_by { |hashtag| hashtag.logs.count }
-      binding.pry
     end
   end
 
