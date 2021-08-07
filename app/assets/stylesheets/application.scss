@@ -246,7 +246,7 @@ header {
 }
 .slider .slick-slide {
   transform: scale(0.8);/*左右の画像のサイズを80%に*/
-  transition: all .5s;/*拡大や透過のアニメーションを0.5秒で行う*/
+  transition: all 0.5s;/*拡大や透過のアニメーションを0.5秒で行う*/
   opacity: 0.5;/*透過50%*/
 }
 .slider .slick-slide.slick-center{
@@ -266,25 +266,8 @@ header {
     height: 15px;
     width: 15px;
 }
-.slick-prev {/*戻る矢印の位置と形状*/
-    left: -1.5%;
-    transform: rotate(-135deg);
-}
-.slick-next {/*次へ矢印の位置と形状*/
-    right: -1.5%;
-    transform: rotate(45deg);
-}
 /*ドットナビゲーションの設定*/
-.slick-dots {
-    text-align:center;
-  margin:20px 0 0 0;
-}
-.slick-dots a {
-    display:inline-block;
-  margin:0 5px;
-}
 .slick-dots button {
-    color: transparent;
     outline: none;
     width:8px;/*ドットボタンのサイズ*/
     height:8px;/*ドットボタンのサイズ*/
