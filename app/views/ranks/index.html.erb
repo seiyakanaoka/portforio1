@@ -9,15 +9,10 @@
       </div>
 
       <div class="row search mb-5">
-        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 offset-xs-3 offset-sm-3 offset-md-3 offset-lg-3 pt-2">
-          <%= form_with model: Log.new, url: search_ranks_path, method: :get, id: "search" do |f| %>
-          <%= f.text_field :keyword, required: true, id: "form", placeholder: "投稿タイトル", class: "form-control" %>
-        </div>
-
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 pb-2">
-          <%= f.submit 'Search', class: 'btn search-btn mt-2' %>
-        </div>
-          <% end %>
+        <%= form_with model: Log.new, url: search_ranks_path, method: :get, id: "search" do |f| %>
+          <%= f.text_field :keyword, required: true, size: 60, id: "form", placeholder: "投稿タイトル" %>
+          <%= f.submit 'Search', class: 'btn search-btn' %>
+        <% end %>
       </div>
 
       <div class="row">
